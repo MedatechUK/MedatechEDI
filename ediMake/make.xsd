@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="table">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="col">
+          <xs:complexType>
+            <xs:attribute name="line" type="xs:unsignedByte" use="required" />
+            <xs:attribute name="name" type="xs:string" use="required" />
+            <xs:attribute name="width" type="xs:unsignedByte" use="optional" />            
+          </xs:complexType>          
+        </xs:element>
+        <xs:element ref="table" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="name" type="xs:string" use="required" />
+      <xs:attribute name="connectionString" type="xs:string" use="optional" />
+      <xs:attribute name="db" type="xs:string" use="optional" />
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="makeconfig">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="output">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="table" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="filespec" type="xs:string" use="required" />
+            <xs:attribute name="deliminator" type="xs:string" use="optional" />
+            <xs:attribute name="lineend" type="xs:string" use="optional" />
+            <xs:attribute name="encoding" type="xs:string" use="optional" />
+            <xs:attribute name="runcount" type="xs:unsignedByte" use="optional" />
+            <xs:attribute name="format" type="xs:string" use="optional" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="connectionString" type="xs:string" use="optional" />
+      <xs:attribute name="db" type="xs:string" use="optional" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
