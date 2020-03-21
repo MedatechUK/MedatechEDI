@@ -62,6 +62,7 @@ Namespace oData
 
                 Catch ex As Exception
                     Throw New Exception("Invalid oData configuration.")
+
                 End Try
 
             End Using

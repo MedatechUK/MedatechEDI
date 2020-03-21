@@ -48,9 +48,6 @@
       <HintPath>..\..\..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="oDataCli">
-      <HintPath>..\lib\oData\bin\Debug\oDataCli.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
@@ -102,6 +99,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Schema\LOGPART.vb" />
+    <Compile Include="Schema\ODAT_LOAD.vb" />
+    <Compile Include="Schema\ODAT_TRANS.vb" />
     <Compile Include="Schema\ORDERITEMS.vb" />
     <Compile Include="Schema\ORDERS.vb" />
     <Compile Include="Schema\PART.vb" />
@@ -138,6 +137,12 @@
     </None>
     <None Include="packages.config" />
     <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\oData.net\oData.vbproj">
+      <Project>{fad21603-631e-4240-bfad-8af718eceaa6}</Project>
+      <Name>oData</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

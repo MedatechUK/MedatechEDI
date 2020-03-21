@@ -10,10 +10,10 @@ which provides details of the SQL views / tabula functions to export.
 	 -config (Optional) Create an example make.config in the current working 
 	                    directory. Edit this to point to your database.
 
-						If a valid config file already exists the config
-						option checks the colums in the specified SQL objects
-						and prompts the user to update the columns specified in
-						the make.config file.
+					If a valid config file already exists the config
+					option checks the colums in the specified SQL objects
+					and prompts the user to update the columns specified in
+					the make.config file.
 
 	 -w      (Optional) Wait for key press after execution.
 

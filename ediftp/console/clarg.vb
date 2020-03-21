@@ -77,10 +77,11 @@ Public Class clArg
 
     Sub line(str As String, ParamArray param() As String)
         Console.Write(String.Format(str, param))
+
         Console.Write(
             String.Format(
                 " {0} ",
-                New String("."c, 40 - Console.CursorLeft)
+                New String("."c, Console.WindowWidth - (10 + String.Format(str, param).Length))
             )
         )
     End Sub

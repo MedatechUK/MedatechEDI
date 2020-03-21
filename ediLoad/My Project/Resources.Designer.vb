@@ -61,6 +61,44 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+        '''&lt;loadconfig&gt;
+        '''
+        '''  &lt;!-- The SMTP server details used to nofify admins of errors --&gt;
+        '''  &lt;notifyerror smtp=&quot;mail.medatechuk.com&quot; from=&quot;noreply@medatechuk.com&quot;&gt;
+        '''
+        '''    &lt;!-- Multiple addresses can be configured --&gt;
+        '''    &lt;notify address=&quot;support@medatechuk.com&quot;/&gt;
+        '''    &lt;notify address=&quot;si@medatechuk.com&quot;/&gt;
+        '''
+        '''  &lt;/notifyerror&gt;
+        '''
+        '''&lt;/loadconfig&gt;
+        '''
+        '''.
+        '''</summary>
+        Friend ReadOnly Property _default() As String
+            Get
+                Return ResourceManager.GetString("_default", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        '''&lt;odataConfig 
+        '''  oDataHost=&quot;&quot;
+        '''  tabulaini=&quot;&quot;
+        '''  ouser=&quot;&quot;
+        '''  opass=&quot;&quot;
+        '''/&gt;.
+        '''</summary>
+        Friend ReadOnly Property odata() As String
+            Get
+                Return ResourceManager.GetString("odata", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to .
         '''</summary>
         Friend ReadOnly Property syntax() As String

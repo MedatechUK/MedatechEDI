@@ -9,11 +9,11 @@ Imports System.Runtime.InteropServices
 ' Review the values of the assembly attributes
 
 <Assembly: AssemblyTitle("oDatalib")>
-<Assembly: AssemblyDescription("")>
-<Assembly: AssemblyCompany("")>
+<Assembly: AssemblyDescription("This utility deserialises object notation data from downloaded files.")>
+<Assembly: AssemblyCompany("MedtechUK")>
 <Assembly: AssemblyProduct("oDatalib")>
 <Assembly: AssemblyCopyright("Copyright ©  2020")>
-<Assembly: AssemblyTrademark("")>
+<Assembly: AssemblyTrademark("Future proof your business.")>
 
 <Assembly: ComVisible(False)>
 

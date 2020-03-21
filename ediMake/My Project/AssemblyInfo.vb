@@ -9,11 +9,11 @@ Imports System.Runtime.InteropServices
 ' Review the values of the assembly attributes
 
 <Assembly: AssemblyTitle("ediMake")>
-<Assembly: AssemblyDescription("")>
-<Assembly: AssemblyCompany("")>
+<Assembly: AssemblyDescription("This utility creates nested export data from a Priority SQL server.")>
+<Assembly: AssemblyCompany("MedatechUK")>
 <Assembly: AssemblyProduct("ediMake")>
 <Assembly: AssemblyCopyright("Copyright ©  2020")>
-<Assembly: AssemblyTrademark("")>
+<Assembly: AssemblyTrademark("Future proof your business.")>
 
 <Assembly: ComVisible(False)>
 

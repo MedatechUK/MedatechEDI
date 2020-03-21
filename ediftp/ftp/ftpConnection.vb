@@ -167,17 +167,17 @@ Public Class ftpConnection : Implements IDisposable
                         With .StartInfo
                             .FileName = sender.bin
                             .WorkingDirectory = e.Dir.FullName
-                            .UseShellExecute = True
+                            .UseShellExecute = False
                             .WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden
                             .CreateNoWindow = True
+                            .RedirectStandardOutput = True
 
                         End With
 
                         .Start()
-                        While Not .HasExited
-                            Threading.Thread.Sleep(100)
+                        Console.WriteLine(.StandardOutput.ReadToEnd)
+                        .WaitForExit()
 
-                        End While
                         args.Colourise(ConsoleColor.Green, "OK")
 
                     End With
@@ -310,8 +310,8 @@ Public Class ftpConnection : Implements IDisposable
             If Not sender.bin Is Nothing Then
                 args.line(
                     "Executing {0} {1}.",
-                    sender.bin,
-                    FN.FullName
+                    New FileInfo(sender.bin).Name,
+                    FN.FullName.Replace(Directory.GetCurrentDirectory, "")
                 )
                 Try
                     Using myProcess As System.Diagnostics.Process = New System.Diagnostics.Process()
@@ -320,17 +320,17 @@ Public Class ftpConnection : Implements IDisposable
                                 .FileName = sender.bin
                                 .Arguments = FN.FullName
                                 .WorkingDirectory = curdir.FullName
-                                .UseShellExecute = True
+                                .UseShellExecute = False
                                 .WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden
                                 .CreateNoWindow = True
+                                .RedirectStandardOutput = True
 
                             End With
 
                             .Start()
-                            While Not .HasExited
-                                Threading.Thread.Sleep(100)
+                            Console.WriteLine(.StandardOutput.ReadToEnd)
+                            .WaitForExit()
 
-                            End While
                             args.Colourise(ConsoleColor.Green, "OK")
 
                         End With

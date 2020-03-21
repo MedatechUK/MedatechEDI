@@ -9,11 +9,11 @@ Imports System.Runtime.InteropServices
 ' Review the values of the assembly attributes
 
 <Assembly: AssemblyTitle("ediftp")>
-<Assembly: AssemblyDescription("")>
-<Assembly: AssemblyCompany("")>
+<Assembly: AssemblyDescription("This utility sends / receives files using ftp, sftp, webdav and S3.")>
+<Assembly: AssemblyCompany("MedatechUK")>
 <Assembly: AssemblyProduct("ediftp")>
 <Assembly: AssemblyCopyright("Copyright ©  2020")>
-<Assembly: AssemblyTrademark("")>
+<Assembly: AssemblyTrademark("Future proof your business.")>
 
 <Assembly: ComVisible(False)>
 
