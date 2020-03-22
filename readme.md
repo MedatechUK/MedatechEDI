@@ -5,11 +5,11 @@
 ### Common Switches
 	
 	-config		This creates whatever .config file are needed to store
-		program settings. Documentation about what should be 
-		included in these files is included.
+			program settings. Documentation about what should be 
+			included in these files is included.
 	
 	-w			This option causes the program to wait for user keypress
-		after execution, so you can see the output window.
+			after execution, so you can see the output window.
 
 	-?			Displays the help file for the program.
 
