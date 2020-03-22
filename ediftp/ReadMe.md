@@ -23,4 +23,4 @@ which provides connection and ftp details.
 
 	 -?      (Optional) This file.
 
-[See the ftp.config documentation](https://github.com/MedatechUK/ediftp/blob/master/default.config).
+[See the ftp.config documentation](https://github.com/MedatechUK/MedatechEDI/blob/master/ediftp/default.config).

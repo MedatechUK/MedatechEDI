@@ -19,4 +19,4 @@ which provides details of the SQL views / tabula functions to export.
 
 	 -?      (Optional) This file.
 
-[See the make.config documentation](https://github.com/MedatechUK/ediMake/blob/master/default.config).
+[See the make.config documentation](https://github.com/MedatechUK/MedatechEDI/blob/master/ediMake/default.config).
