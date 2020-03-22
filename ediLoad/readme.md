@@ -42,3 +42,5 @@ general load table.
 [See the load.config documentation](https://github.com/MedatechUK/MedatechEDI/blob/master/ediLoad/default.config)
 
 [See the odata.config documentation](https://github.com/MedatechUK/MedatechEDI/blob/master/ediLoad/Resources/odata.config)
+
+[See the Ashridge documentation](https://github.com/MedatechUK/MedatechEDI/blob/master/ediLoad/ashridge.md)
