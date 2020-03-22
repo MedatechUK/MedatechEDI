@@ -48,7 +48,7 @@ which provides details of the SQL views / tabula functions to export.
 
 ## Library Files.
 
-### [oDataCli.dll](https://github.com/MedatechUK/MedatechEDI/tree/master/PriorityForms)
+### [oDataCli.dll](https://github.com/MedatechUK/MedatechEDI/tree/master/oData.net)
 
 The oData library used by [ediLoad.exe](https://github.com/MedatechUK/MedatechEDI/tree/master/ediLoad) to talk to the Priority oData service.
 

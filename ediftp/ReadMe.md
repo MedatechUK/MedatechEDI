@@ -1,13 +1,17 @@
-﻿Medatech UK FTP utility.
-si@medatechuk.com
+﻿# Medatech UK FTP utility.
+[si@medatechuk.com](si@medatechuk.com)
+
+## Purpose
 
 This utility sends / receives files using ftp, sftp, webdav and S3.
 The -config option can be used to generate an ftp.config in the working directory, 
 which provides connection and ftp details.
 
+## Syntax
+
   ediFTP.exe {{-d DirectoryName} {-m ModeName} {-i|-o}} | {-config} {-w} {-?}
 
-	 -d      (Optional) If specified, the ftp directory. 
+	 -d      (Optional) If specified, this sets the current working directory. 
 	                    The current working directory will be used if ommited.
 
 	 -m      (Optional) If specified, the mode that will be used. 
@@ -22,5 +26,7 @@ which provides connection and ftp details.
 	 -w      (Optional) Wait for key press after execution.
 
 	 -?      (Optional) This file.
+
+## Reference
 
 [See the ftp.config documentation](https://github.com/MedatechUK/MedatechEDI/blob/master/ediftp/default.config).
