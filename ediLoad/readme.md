@@ -6,7 +6,7 @@
 This utility deserialises object notation data from downloaded files. 
 It uses the [Medatech oData Library](https://github.com/MedatechUK/MedatechEDI/tree/master/oData.net) to write that data to Priority.
 The -config option can be used to generate an oData.config and make.config
-(see references)in the working directory, which provides odata and email 
+(see references) in the working directory, which provides odata and email 
 notification details.
 
 This program can be run by an [ftp receive act](https://github.com/MedatechUK/MedatechEDI/blob/master/ediftp/default.config). 
@@ -16,10 +16,14 @@ This program can be run by an [ftp receive act](https://github.com/MedatechUK/Me
 
 Once data has been posted to the oData server, the {file} is moved.
 If the loading reported no errors it is moved to:
-> [CURDIR\sent](https://github.com/MedatechUK/MedatechEDI/tree/master/example/sent)\{year}-{month}\yyMMdd.txt
+> [CURDIR\sent](https://github.com/MedatechUK/MedatechEDI/tree/master/example/sent)\{year}-{month}\bubbleid.txt
 
 If errors occured the file is moved to:
-> [CURDIR\err](https://github.com/MedatechUK/MedatechEDI/tree/master/example/err)\{year}-{month}\yyMMdd.txt
+> [CURDIR\err](https://github.com/MedatechUK/MedatechEDI/tree/master/example/err)\{year}-{month}\bubbleid.txt
+
+The bubbleid is a system.guid that is used to create a reference for loading.
+This is recorded in the ODATATRANS form when pushing data to Priority ODAT_TRANS 
+general load table.
 
 ## Syntax
 
