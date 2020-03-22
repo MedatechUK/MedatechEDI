@@ -10,7 +10,7 @@ The deserialisation from the {file} specified occurs in the [Deserialise propert
 
 Onced an [ashridge.Order](https://github.com/MedatechUK/MedatechEDI/blob/master/ediLoad/ashridgeOrder.vb) is deserialised, it is used to create two loadings.
 
-### [customer record](https://github.com/MedatechUK/MedatechEDI/blob/master/ediLoad/Module1.vb#L193) 
+### Create [Customer Loading](https://github.com/MedatechUK/MedatechEDI/blob/master/ediLoad/Module1.vb#L193) 
 
 This creates a new transaction of type "CST" in the [ODAT_TRANS](https://github.com/MedatechUK/MedatechEDI/blob/master/PriorityForms/Schema/ODAT_TRANS.vb) definition.
 
@@ -18,8 +18,8 @@ Rows for this loading, including a RECORDTYPE, [are added](https://github.com/Me
 
 Once all rows are posted [we set the upper level](https://github.com/MedatechUK/MedatechEDI/blob/master/ediLoad/Module1.vb#L240) of [ODAT_TRANS](https://github.com/MedatechUK/MedatechEDI/blob/master/PriorityForms/Schema/ODAT_TRANS.vb) to complete, which triggers the loading interface specified in the ODATATYPE for the ODATATRANS.
 
-### [order record](https://github.com/MedatechUK/MedatechEDI/blob/master/ediLoad/Module1.vb#L262) 
+### Create [Order Loading](https://github.com/MedatechUK/MedatechEDI/blob/master/ediLoad/Module1.vb#L262) 
 
-This creates a new transaction of type "CST" in the [ODAT_TRANS](https://github.com/MedatechUK/MedatechEDI/blob/master/PriorityForms/Schema/ODAT_TRANS.vb) definition.
+This creates a new transaction of type "ORD" in the [ODAT_TRANS](https://github.com/MedatechUK/MedatechEDI/blob/master/PriorityForms/Schema/ODAT_TRANS.vb) definition.
 
-It works in the same way.
+It works in the same way as the Customer Loading.
