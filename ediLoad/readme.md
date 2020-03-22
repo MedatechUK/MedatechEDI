@@ -12,6 +12,15 @@ notification details.
 This program can be run by an [ftp receive act](https://github.com/MedatechUK/MedatechEDI/blob/master/ediftp/default.config). 
 [ediFTP.exe](https://github.com/MedatechUK/MedatechEDI/tree/master/ediftp) will pass any downloadeded file as the {file} parameter to the program for loading.
 
+## Posted data
+
+Once data has been posted to the oData server, the {file} is moved.
+If the loading reported no errors it is moved to:
+> [CURDIR\sent](https://github.com/MedatechUK/MedatechEDI/tree/master/example/sent)\{year}-{month}\yyMMdd.txt
+
+If errors occured the file is moved to:
+> [CURDIR\err](https://github.com/MedatechUK/MedatechEDI/tree/master/example/err)\{year}-{month}\yyMMdd.txt
+
 ## Syntax
 
   ediLoad.exe {file} | {-config} {-w} {-?}

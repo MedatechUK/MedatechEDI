@@ -23,7 +23,7 @@ scheduled task to specify the working directory that will be used.
 ### Logging.
 
 All programs log events to a file in the format 
-> CURDIR\log\{year}{month}\day.txt
+> CURDIR\log\{year}-{month}\yyMMdd.txt
 
 Additionally, any errors can be emailed using the mail settings in the
 programs .config file.
