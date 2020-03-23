@@ -21,6 +21,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_14D0AFB8B4A54EF8A20E1FBE93068F03"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_1BD2F8CCB4E846049715AF04810D8958"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -45,7 +51,19 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_5960953C1B374304AC71FD34A898FD85"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_602CBA30DD88459BAD449C5CA1D33C45"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_72041E54EA7F46A797D4C87D909B529C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -88,6 +106,12 @@
         "Entry"
         {
         "MsmKey" = "8:_D540FD368A744DB7B644948C00A9B7BC"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D91154970A924E4D96CA0B7F254240EA"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -278,6 +302,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_14D0AFB8B4A54EF8A20E1FBE93068F03"
+            {
+            "SourcePath" = "8:D:\\priority\\system\\upgrades\\AshrigeInterface.rv"
+            "TargetName" = "8:AshrigeInterface.rv"
+            "Tag" = "8:"
+            "Folder" = "8:_1CD1CB3325624014BD1EE4F0588FD823"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4432A806DDD9467097DA5FF5B25175CC"
             {
             "SourcePath" = "8:..\\top.jpg"
@@ -327,6 +371,46 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5960953C1B374304AC71FD34A898FD85"
+            {
+            "SourcePath" = "8:D:\\priority\\system\\upgrades\\oDataLoad.rv"
+            "TargetName" = "8:oDataLoad.rv"
+            "Tag" = "8:"
+            "Folder" = "8:_1CD1CB3325624014BD1EE4F0588FD823"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_72041E54EA7F46A797D4C87D909B529C"
+            {
+            "SourcePath" = "8:D:\\priority\\system\\upgrades\\AshrigeInterface.sh"
+            "TargetName" = "8:AshrigeInterface.sh"
+            "Tag" = "8:"
+            "Folder" = "8:_1CD1CB3325624014BD1EE4F0588FD823"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_87BC0947FDDDA82A08A9FCD3C232368B"
@@ -417,6 +501,26 @@
             "TargetName" = "8:MedatechEDI.sln"
             "Tag" = "8:"
             "Folder" = "8:_26AE5DC5A340424F94EE13631A503708"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D91154970A924E4D96CA0B7F254240EA"
+            {
+            "SourcePath" = "8:D:\\priority\\system\\upgrades\\oDataLoad.sh"
+            "TargetName" = "8:oDataLoad.sh"
+            "Tag" = "8:"
+            "Folder" = "8:_1CD1CB3325624014BD1EE4F0588FD823"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -529,6 +633,17 @@
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_1CD1CB3325624014BD1EE4F0588FD823"
+                    {
+                    "Name" = "8:PrioritySh"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_D431223333B74D60B12592A9E68914E8"
+                        "Folders"
+                        {
+                        }
+                    }
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_33E5675CEBAF443D852E49F12F6101BB"
                     {
                     "Name" = "8:PriorityForms"
@@ -658,7 +773,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:MedatechEDI"
         "ProductCode" = "8:{52289161-EB05-4B88-AD3A-6E91BEB5A1A6}"
-        "PackageCode" = "8:{9D47DB66-CC95-4CBC-95AE-BD8CE9374AD2}"
+        "PackageCode" = "8:{D0050953-38CE-4CC4-927D-6CB90D2270B3}"
         "UpgradeCode" = "8:{7E177C5E-C29C-4F93-9EF5-E13D82207012}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

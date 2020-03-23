@@ -137,6 +137,8 @@
     </None>
     <None Include="packages.config" />
     <None Include="README.md" />
+    <None Include="ShellFiles\oDataLoad.rv" />
+    <None Include="ShellFiles\oDataLoad.sh" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\oData.net\oData.vbproj">
