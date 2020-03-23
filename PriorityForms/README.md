@@ -34,12 +34,34 @@ The client then populates the ODATALOAD using the sub-level form [ODAT_LOAD](htt
 ```
             With .ODAT_LOAD.AddRow
                 .RECORDTYPE = "1"
-                .TEXT1 = String.Format("C-{0}", Replace(e.billingaddress.company.ToUpper, " ", "").Substring(0, 5))
-                .TEXT2 = String.Format("{0} {1}", e.customer.lastName, e.customer.firstName)
-                .TEXT3 = e.order_id                
+				
+                .TEXT1 = String.Format("{0} {1}", e.customer.lastName, e.customer.firstName)                
 				...
 				.REAL1 = e.total_refunded
 				...
 				.INT1 = DateDiff(DateInterval.Minute, dot, DateTime.Parse(e.created_at))
 				...
+```
+
+Once the data has been inserted into the ODATALOAD table, the client MUST tell Priority that it finished sending the transaction, by marking it as COMPLETE. This will trigger the loading interface for this transaction.
+```
+            Using F As New PriBase.ODAT_TRANS(
+                Assembly.Load(
+                    "PriBase"
+                )
+            )
+                With F
+                    With .AddRow()
+                        .TYPENAME = "CST"
+                        .BUBBLEID = id
+                        .COMPLETE = "Y"
+
+                    End With
+
+                    .Post()
+                    ErCheck(F)
+
+                End With
+
+            End Using
 ```
