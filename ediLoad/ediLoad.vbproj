@@ -11,7 +11,7 @@
     <AssemblyName>ediLoad</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Console</MyType>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
@@ -52,6 +52,12 @@
     <ApplicationIcon>emerge.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MedatechUK.CLI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MedatechUK.CLI.1.1.0\lib\net461\MedatechUK.CLI.dll</HintPath>
+    </Reference>
+    <Reference Include="MedatechUK.oData, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MedatechUK.oData.1.3.0\lib\net461\MedatechUK.oData.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -77,8 +83,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ashridgeOrder.vb" />
-    <Compile Include="console\clarg.vb" />
-    <Compile Include="console\cursorloc.vb" />
     <Compile Include="load.vb" />
     <Compile Include="Module1.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -120,16 +124,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="readme.md" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\oData.net\oData.vbproj">
-      <Project>{fad21603-631e-4240-bfad-8af718eceaa6}</Project>
-      <Name>oData</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PriorityForms\PriBase.vbproj">
-      <Project>{b2d762a3-17fc-4232-bf66-10a3963a3e30}</Project>
-      <Name>PriBase</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="emerge.ico" />

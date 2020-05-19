@@ -1,5 +1,6 @@
 ﻿Imports System.IO
 Imports System.Net.Mail
+Imports MedatechUK.CLI
 
 Module Module1
 
@@ -15,12 +16,13 @@ Module Module1
         Dim errNotify As ftpconfigNotifyerror
 
         Try
-            args = New clArg(arg)
+            args = New clArg()
             For Each k As String In args.Keys
                 Select Case k.ToLower
                     Case "?", "help"
                         args.syntax()
                         args.wait()
+                        End
 
                     Case "mode", "m"
                         mode = args(k)

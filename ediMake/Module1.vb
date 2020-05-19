@@ -3,6 +3,7 @@ Imports System.Net.Mail
 Imports System.Text
 Imports System.Xml
 Imports System.Xml.Serialization
+Imports MedatechUK.CLI
 
 Module Module1
 
@@ -22,7 +23,7 @@ Module Module1
         Dim config As makeconfig
 
         Try
-            args = New clArg(arg)
+            args = New clArg()
             For Each k As String In args.Keys
                 Select Case k.ToLower
                     Case "?", "help"

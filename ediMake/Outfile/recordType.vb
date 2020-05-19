@@ -1,6 +1,7 @@
 ﻿Imports System.Data.SqlClient
 Imports System.IO
 Imports System.Text
+Imports MedatechUK.CLI
 
 Public Class recordType : Inherits List(Of recordType)
 
@@ -10,7 +11,6 @@ Public Class recordType : Inherits List(Of recordType)
     Private _Params As List(Of String)
     Private _cn As SqlConnection
     Private _view As String
-    Private cur As cursorloc
 
 #End Region
 
@@ -343,7 +343,7 @@ Public Class recordType : Inherits List(Of recordType)
     Public Sub write(ByRef sw As StreamWriter)
 
         If _parent Is Nothing Then
-            cur = New cursorloc(cmdCount.ExecuteScalar)
+            args.StartProgress(cmdCount.ExecuteScalar)
 
         End If
 
@@ -393,7 +393,7 @@ Public Class recordType : Inherits List(Of recordType)
             Next
 
             If _parent Is Nothing Then
-                cur.current += 1
+                args.Progress += 1
 
             End If
 

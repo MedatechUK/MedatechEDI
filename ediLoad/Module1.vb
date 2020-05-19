@@ -3,7 +3,8 @@ Imports System.Net.Mail
 Imports System.Reflection
 Imports System.Xml.Serialization
 Imports Newtonsoft.Json
-Imports PriPROC6.Interface.oData
+Imports MedatechUK.oData
+Imports MedatechUK.CLI
 
 Module Module1
 
@@ -115,12 +116,13 @@ Module Module1
 
 #Region "Command Line args"
 
-            args = New clArg(arg)
+            args = New clArg()
             For Each k As String In args.Keys
                 Select Case k.ToLower
                     Case "?", "help"
                         args.syntax()
                         args.wait()
+                        End
 
                     Case "config"
                         If Not ConfigFile.Exists Then
@@ -170,6 +172,7 @@ Module Module1
                         End If
 
                         args.wait()
+                        End
 
                 End Select
 
@@ -181,6 +184,7 @@ Module Module1
             Catch ex As Exception
                 args.syntax()
                 args.wait()
+                End
 
             End Try
 
@@ -192,18 +196,11 @@ Module Module1
 
 #Region "Create Customer record"
 
-            Using F As New PriBase.ODAT_TRANS(
-                Assembly.Load(
-                    "PriBase"
-                )
-            )
+            Using F As New MedatechUK.oData.Loading("CST")
                 With F
-                    With .AddRow()
-                        .TYPENAME = "CST"
-                        .BUBBLEID = id
+                    With .AddRow(1)
 
-                        With .ODAT_LOAD.AddRow
-                            .RECORDTYPE = "1"
+                        .RECORDTYPE = "1"
                             .TEXT1 = String.Format("C-{0}", Replace(e.billingaddress.company.ToUpper, " ", "").Substring(0, 5))
                             .TEXT2 = e.billingaddress.company
                             .TEXT5 = e.billingaddress.telephone
@@ -218,40 +215,18 @@ Module Module1
 
                         End With
 
-                        With .ODAT_LOAD.AddRow
-                            .RECORDTYPE = "2"
-                            .TEXT1 = e.customer.id
-                            .TEXT2 = e.customer.group_id
-                            .TEXT3 = e.customer.prefix
-                            .TEXT4 = e.customer.firstName
-                            .TEXT5 = e.customer.lastName
-                            .TEXT6 = e.customer.email
-
-                        End With
+                    With .AddRow(2)
+                        .RECORDTYPE = "2"
+                        .TEXT1 = e.customer.id
+                        .TEXT2 = e.customer.group_id
+                        .TEXT3 = e.customer.prefix
+                        .TEXT4 = e.customer.firstName
+                        .TEXT5 = e.customer.lastName
+                        .TEXT6 = e.customer.email
 
                     End With
 
                     .Post()
-
-                End With
-
-            End Using
-
-            Using F As New PriBase.ODAT_TRANS(
-                Assembly.Load(
-                    "PriBase"
-                )
-            )
-                With F
-                    With .AddRow()
-                        .TYPENAME = "CST"
-                        .BUBBLEID = id
-                        .COMPLETE = "Y"
-
-                    End With
-
-                    .Post()
-                    ErCheck(F)
 
                 End With
 
@@ -260,107 +235,76 @@ Module Module1
 #End Region
 
             ' Create Order
-            Using F As New PriBase.ODAT_TRANS(
-                Assembly.Load(
-                    "PriBase"
-                )
-            )
+            Using F As New MedatechUK.oData.Loading("ORD")
                 With F
-                    With .AddRow()
-                        .TYPENAME = "ORD"
-                        .BUBBLEID = id
+                    With .AddRow(1)
 
-                        With .ODAT_LOAD.AddRow
-                            .RECORDTYPE = "1"
-                            .TEXT1 = String.Format("C-{0}", Replace(e.billingaddress.company.ToUpper, " ", "").Substring(0, 5))
-                            .TEXT2 = String.Format("{0} {1}", e.customer.lastName, e.customer.firstName)
+                        .TEXT1 = String.Format("C-{0}", Replace(e.billingaddress.company.ToUpper, " ", "").Substring(0, 5))
+                        .TEXT2 = String.Format("{0} {1}", e.customer.lastName, e.customer.firstName)
 
-                            .TEXT3 = e.order_id
-                            .TEXT4 = e.reference_number
-                            .TEXT5 = e.state
-                            .TEXT6 = e.status
-                            .TEXT7 = e.ashridge_ship_method
-                            .TEXT8 = e.currency
-                            .TEXT9 = e.discount_code
+                        .TEXT3 = e.order_id
+                        .TEXT4 = e.reference_number
+                        .TEXT5 = e.state
+                        .TEXT6 = e.status
+                        .TEXT7 = e.ashridge_ship_method
+                        .TEXT8 = e.currency
+                        .TEXT9 = e.discount_code
 
-                            .TEXT28 = e.instruction_for_courier
-                            .TEXT29 = e.message_for_ashridge
-                            .TEXT30 = e.warehouse_special_note
+                        .TEXT28 = e.instruction_for_courier
+                        .TEXT29 = e.message_for_ashridge
+                        .TEXT30 = e.warehouse_special_note
 
-                            .REAL1 = e.discount_amount
-                            .REAL2 = e.shipping_amount
-                            .REAL3 = e.subtotal
-                            .REAL4 = e.grandtotal
-                            .REAL5 = e.total_paid
-                            .REAL6 = e.total_due
-                            .REAL7 = e.total_refunded
+                        .REAL1 = e.discount_amount
+                        .REAL2 = e.shipping_amount
+                        .REAL3 = e.subtotal
+                        .REAL4 = e.grandtotal
+                        .REAL5 = e.total_paid
+                        .REAL6 = e.total_due
+                        .REAL7 = e.total_refunded
 
-                            .INT1 = DateDiff(DateInterval.Minute, dot, DateTime.Parse(e.created_at))
-
-                        End With
-
-                        With .ODAT_LOAD.AddRow
-                            .RECORDTYPE = "2"
-                            .TEXT1 = e.shippingaddress.company
-                            .TEXT2 = e.shippingaddress.prefix
-                            .TEXT3 = String.Format("{0} {1}", e.shippingaddress.lastName, e.shippingaddress.firstName)
-                            .TEXT5 = e.shippingaddress.telephone
-                            .TEXT6 = e.shippingaddress.street1
-                            .TEXT7 = e.shippingaddress.street2
-                            .TEXT8 = e.shippingaddress.city
-                            .TEXT9 = e.shippingaddress.state
-                            .TEXT10 = e.shippingaddress.country
-                            .TEXT11 = e.shippingaddress.postCode
-
-                            .TEXT12 = e.shipping_method.title
-                            .TEXT13 = e.shipping_method.currency
-                            .REAL1 = e.shipping_method.amount
-
-                        End With
-
-                        For Each i As ashridge.orderitem In e.orderitems
-                            With .ODAT_LOAD.AddRow
-                                .RECORDTYPE = "3"
-                                .TEXT1 = i.name
-                                .TEXT2 = i.sku
-                                .TEXT3 = i.size
-                                .REAL1 = i.discount
-                                .REAL2 = i.discount_percent
-                                .REAL3 = i.price
-                                .INT1 = i.qty
-                                .INT2 = DateDiff(DateInterval.Minute, dot, DateTime.Parse(e.delivery_at))
-                                .REAL4 = i.subtotal
-                                .REAL5 = i.tax
-                                .REAL6 = i.tax_percent
-                                .REAL7 = i.row_total
-
-                            End With
-
-                        Next
+                        .INT1 = DateDiff(DateInterval.Minute, dot, DateTime.Parse(e.created_at))
 
                     End With
 
-                    .Post()
+                    With .AddRow(2)
+                        .TEXT1 = e.shippingaddress.company
+                        .TEXT2 = e.shippingaddress.prefix
+                        .TEXT3 = String.Format("{0} {1}", e.shippingaddress.lastName, e.shippingaddress.firstName)
+                        .TEXT5 = e.shippingaddress.telephone
+                        .TEXT6 = e.shippingaddress.street1
+                        .TEXT7 = e.shippingaddress.street2
+                        .TEXT8 = e.shippingaddress.city
+                        .TEXT9 = e.shippingaddress.state
+                        .TEXT10 = e.shippingaddress.country
+                        .TEXT11 = e.shippingaddress.postCode
 
-                End With
-
-            End Using
-
-            Using F As New PriBase.ODAT_TRANS(
-                Assembly.Load(
-                    "PriBase"
-                )
-            )
-                With F
-                    With .AddRow()
-                        .TYPENAME = "ORD"
-                        .BUBBLEID = id
-                        .COMPLETE = "Y"
+                        .TEXT12 = e.shipping_method.title
+                        .TEXT13 = e.shipping_method.currency
+                        .REAL1 = e.shipping_method.amount
 
                     End With
 
+                    For Each i As ashridge.orderitem In e.orderitems
+                        With .AddRow(3)
+                            .RECORDTYPE = "3"
+                            .TEXT1 = i.name
+                            .TEXT2 = i.sku
+                            .TEXT3 = i.size
+                            .REAL1 = i.discount
+                            .REAL2 = i.discount_percent
+                            .REAL3 = i.price
+                            .INT1 = i.qty
+                            .INT2 = DateDiff(DateInterval.Minute, dot, DateTime.Parse(e.delivery_at))
+                            .REAL4 = i.subtotal
+                            .REAL5 = i.tax
+                            .REAL6 = i.tax_percent
+                            .REAL7 = i.row_total
+
+                        End With
+
+                    Next
+
                     .Post()
-                    ErCheck(F)
 
                 End With
 
@@ -396,6 +340,7 @@ Module Module1
 
             End With
             args.wait()
+            End
 
         End Try
 

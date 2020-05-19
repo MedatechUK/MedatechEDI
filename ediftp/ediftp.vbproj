@@ -53,6 +53,9 @@
     <ApplicationIcon>emerge.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MedatechUK.CLI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MedatechUK.CLI.1.1.0\lib\net461\MedatechUK.CLI.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -61,8 +64,8 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="WinSCPnet, Version=1.7.2.10240, Culture=neutral, PublicKeyToken=2271ec4a3c56d0bf, processorArchitecture=MSIL">
-      <HintPath>packages\WinSCP.5.17.1\lib\net40\WinSCPnet.dll</HintPath>
+    <Reference Include="WinSCPnet, Version=1.7.2.10414, Culture=neutral, PublicKeyToken=2271ec4a3c56d0bf, processorArchitecture=MSIL">
+      <HintPath>..\packages\WinSCP.5.17.5\lib\net40\WinSCPnet.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -77,8 +80,6 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="console\clarg.vb" />
-    <Compile Include="console\cursorloc.vb" />
     <Compile Include="ftp\ftpconfig.vb" />
     <Compile Include="ftp\ftpConnection.vb" />
     <Compile Include="ftp\ftpEventArgs.vb" />
@@ -120,11 +121,11 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="emerge.ico" />
     <Content Include="syntax.txt" />
+    <None Include="packages.config" />
     <None Include="ReadMe.md" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
@@ -134,5 +135,7 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('packages\WinSCP.5.17.1\build\WinSCP.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\WinSCP.5.17.1\build\WinSCP.targets'))" />
+    <Error Condition="!Exists('..\packages\WinSCP.5.17.5\build\WinSCP.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\WinSCP.5.17.5\build\WinSCP.targets'))" />
   </Target>
+  <Import Project="..\packages\WinSCP.5.17.5\build\WinSCP.targets" Condition="Exists('..\packages\WinSCP.5.17.5\build\WinSCP.targets')" />
 </Project>

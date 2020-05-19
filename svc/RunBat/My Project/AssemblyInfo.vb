@@ -2,34 +2,34 @@
 Imports System.Reflection
 Imports System.Runtime.InteropServices
 
-' General Information about an assembly is controlled through the following
+' General Information about an assembly is controlled through the following 
 ' set of attributes. Change these attribute values to modify the information
 ' associated with an assembly.
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("ediMake")>
-<Assembly: AssemblyDescription("This utility creates nested export data from a Priority SQL server.")>
-<Assembly: AssemblyCompany("MedatechUK")>
-<Assembly: AssemblyProduct("ediMake")>
-<Assembly: AssemblyCopyright("Copyright ©  2020")>
+<Assembly: AssemblyTitle("RunBat")>
+<Assembly: AssemblyDescription("Runs a Batch when a file is created.")>
+<Assembly: AssemblyCompany("Medatech UK")>
+<Assembly: AssemblyProduct("RunBat")>
+<Assembly: AssemblyCopyright("Copyright © Medatech 2019")>
 <Assembly: AssemblyTrademark("Future proof your business.")>
 
 <Assembly: ComVisible(False)>
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
-<Assembly: Guid("6722a6b9-871b-4632-8f26-e570cd7d3633")>
+<Assembly: Guid("127ab917-596a-4d03-b841-bf668ec12986")>
 
 ' Version information for an assembly consists of the following four values:
 '
 '      Major Version
-'      Minor Version
+'      Minor Version 
 '      Build Number
 '      Revision
 '
-' You can specify all the values or you can default the Build and Revision Numbers
+' You can specify all the values or you can default the Build and Revision Numbers 
 ' by using the '*' as shown below:
-' <Assembly: AssemblyVersion("1.0.*")>
+' <Assembly: AssemblyVersion("1.0.*")> 
 
 <Assembly: AssemblyVersion("1.1.0.0")>
 <Assembly: AssemblyFileVersion("1.1.0.0")>
