@@ -196,24 +196,24 @@ Module Module1
 
 #Region "Create Customer record"
 
-            Using F As New MedatechUK.oData.Loading("CST")
+            Using F As New MedatechUK.oData.Loading("CST", AddressOf logHandler)
                 With F
                     With .AddRow(1)
 
                         .RECORDTYPE = "1"
-                            .TEXT1 = String.Format("C-{0}", Replace(e.billingaddress.company.ToUpper, " ", "").Substring(0, 5))
-                            .TEXT2 = e.billingaddress.company
-                            .TEXT5 = e.billingaddress.telephone
-                            .TEXT6 = e.billingaddress.street1
-                            .TEXT7 = e.billingaddress.street2
-                            .TEXT8 = e.billingaddress.city
-                            .TEXT9 = e.billingaddress.state
-                            .TEXT10 = e.billingaddress.country
-                            .TEXT11 = e.billingaddress.postCode
-                            .TEXT12 = e.customer.email
-                            .TEXT30 = e.payment_method.card_token
+                        .TEXT1 = String.Format("C-{0}", Replace(e.billingaddress.company.ToUpper, " ", "").Substring(0, 5))
+                        .TEXT2 = e.billingaddress.company
+                        .TEXT5 = e.billingaddress.telephone
+                        .TEXT6 = e.billingaddress.street1
+                        .TEXT7 = e.billingaddress.street2
+                        .TEXT8 = e.billingaddress.city
+                        .TEXT9 = e.billingaddress.state
+                        .TEXT10 = e.billingaddress.country
+                        .TEXT11 = e.billingaddress.postCode
+                        .TEXT12 = e.customer.email
+                        .TEXT30 = e.payment_method.card_token
 
-                        End With
+                    End With
 
                     With .AddRow(2)
                         .RECORDTYPE = "2"
@@ -235,7 +235,7 @@ Module Module1
 #End Region
 
             ' Create Order
-            Using F As New MedatechUK.oData.Loading("ORD")
+            Using F As New MedatechUK.oData.Loading("ORD", AddressOf logHandler)
                 With F
                     With .AddRow(1)
 
@@ -359,6 +359,18 @@ Module Module1
             End If
 
         Next
+    End Sub
+
+    ''' <summary>
+    ''' Handles oData logging.
+    ''' oData events are fired into this method by instantiating the loading with 
+    ''' an event handler.
+    ''' </summary>
+    ''' <param name="sender">The calling object</param>
+    ''' <param name="e">The log arguments</param>
+    Private Sub logHandler(sender As Object, e As LogArgs)
+        args.Log(e.Message)
+
     End Sub
 
 End Module
