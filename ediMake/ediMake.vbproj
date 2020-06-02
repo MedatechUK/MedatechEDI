@@ -51,8 +51,8 @@
     <ApplicationIcon>emerge.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MedatechUK.CLI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MedatechUK.CLI.1.1.0\lib\net461\MedatechUK.CLI.dll</HintPath>
+    <Reference Include="MedatechUK.CLI, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MedatechUK.CLI.1.2.0\lib\net461\MedatechUK.CLI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
