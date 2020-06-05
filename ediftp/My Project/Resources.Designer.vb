@@ -63,7 +63,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
         '''
-        '''&lt;!-- The ftpconfig mode value specifies the default mode (-m) if ommitted from the command line --&gt;
+        '''&lt;!-- The ftpconfig mode value specifies the default mode if (-m) is ommitted on the command line --&gt;
         '''&lt;ftpconfig mode=&quot;sandbox&quot;&gt;
         '''  
         '''  &lt;!-- The mode server specified which server setting are used by this mode --&gt;
@@ -73,20 +73,11 @@ Namespace My.Resources
         '''      Act type attribute can be either &quot;send&quot; or &quot;receive&quot;. 
         '''      The bin attribute can also specify a binary file to run.
         '''      For send acts the binary is run before sending the files.
-        '''      [rest of string was truncated]&quot;;.
+        '''     [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property _default() As String
             Get
                 Return ResourceManager.GetString("_default", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Looks up a localized string similar to ediFTP.
-        '''</summary>
-        Friend ReadOnly Property syntax() As String
-            Get
-                Return ResourceManager.GetString("syntax", resourceCulture)
             End Get
         End Property
     End Module

@@ -52,12 +52,6 @@
     <ApplicationIcon>emerge.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MedatechUK.CLI, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MedatechUK.CLI.1.2.0\lib\net461\MedatechUK.CLI.dll</HintPath>
-    </Reference>
-    <Reference Include="MedatechUK.oData, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MedatechUK.oData.1.4.0\lib\net461\MedatechUK.oData.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -128,7 +122,17 @@
   <ItemGroup>
     <Content Include="emerge.ico" />
     <None Include="Resources\odata.config" />
-    <None Include="syntax.txt" />
+    <EmbeddedResource Include="syntax.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\MedatechUK.Packages\MedatechUK.CLI\MedatechUK.CLI.vbproj">
+      <Project>{b7e43843-b380-43bb-b73d-c61e51bb84b0}</Project>
+      <Name>MedatechUK.CLI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MedatechUK.Packages\MedatechUK.oData\MedatechUK.oData.vbproj">
+      <Project>{92bbb2f7-f2a1-44e0-a64d-fafca1ad30a0}</Project>
+      <Name>MedatechUK.oData</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

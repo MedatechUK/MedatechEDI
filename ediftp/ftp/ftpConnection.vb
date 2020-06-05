@@ -1,6 +1,4 @@
 ﻿Imports System.IO
-Imports System.Net.Mail
-Imports System.Xml.Serialization
 Imports WinSCP
 
 Public Class ftpConnection : Implements IDisposable
@@ -9,14 +7,6 @@ Public Class ftpConnection : Implements IDisposable
     Private sessionOptions As SessionOptions
 
 #Region "Public Properties"
-
-    Public Property errNotify As ftpconfigNotifyerror
-
-    Public ReadOnly Property ConfigFile As FileInfo
-        Get
-            Return New FileInfo(Path.Combine(curdir.FullName, "ftp.config"))
-        End Get
-    End Property
 
     Private _configMode As ftpconfigMode
     Public ReadOnly Property configMode As ftpconfigMode
@@ -38,22 +28,9 @@ Public Class ftpConnection : Implements IDisposable
 
     Sub New(Optional Mode As String = Nothing)
 
-        If Not ConfigFile.Exists Then
-            Throw New Exception(String.Format("Missing ftp.config in {0}.", Path.GetDirectoryName(ConfigFile.FullName)))
-
-        End If
-
-        Dim s As New XmlSerializer(GetType(ftpconfig))
-        Dim config As ftpconfig
-        Try
-            config = s.Deserialize(New StreamReader(ConfigFile.FullName))
-
-        Catch ex As Exception
-            Throw New Exception(String.Format("Invalid ftp.config in {0}.", Path.GetDirectoryName(ConfigFile.FullName)))
-
-        End Try
-
+        Dim config As ftpconfig = args.Deserial(ConfigFile, GetType(ftpconfig))
         Dim f As Boolean = False
+
         If Mode Is Nothing Then Mode = config.defaultmode
         For Each m As ftpconfigMode In config.mode
             If String.Compare(m.name, Mode, True) = 0 Then
@@ -90,8 +67,6 @@ Public Class ftpConnection : Implements IDisposable
             Next
         End With
 
-        errNotify = config.notifyerror
-
     End Sub
 
 #End Region
@@ -105,12 +80,27 @@ Public Class ftpConnection : Implements IDisposable
 
         sessionOptions = New SessionOptions
         With sessionOptions
-            .Protocol = _configServer.sProtocol
+            Select Case _configServer.sProtocol
+                Case 5
+                    .Protocol = Protocol.Ftp
+                    .FtpSecure = FtpSecure.Explicit
+                    .TlsHostCertificateFingerprint = _configServer.SshHostKeyFingerprint
+
+                Case 1, 0
+                    .Protocol = _configServer.sProtocol
+                    .SshHostKeyFingerprint = _configServer.SshHostKeyFingerprint
+
+                Case Else
+                    .Protocol = _configServer.sProtocol
+            End Select
+
             .HostName = _configServer.HostName
             .UserName = _configServer.UserName
             .Password = _configServer.Password
-            If _configServer.SshHostKeyFingerprint.Length > 0 Then _
-            .SshHostKeyFingerprint = _configServer.SshHostKeyFingerprint
+
+            If Not _configServer.Port = -1 Then
+                .PortNumber = _configServer.Port
+            End If
 
         End With
 
@@ -129,6 +119,9 @@ Public Class ftpConnection : Implements IDisposable
             Catch ex As Exception
                 args.Colourise(ConsoleColor.Red, "FAILED")
                 Throw ex
+
+            Finally
+                Console.WriteLine()
 
             End Try
 
@@ -187,6 +180,9 @@ Public Class ftpConnection : Implements IDisposable
                 args.Colourise(ConsoleColor.Red, "FAILED")
                 Throw ex
 
+            Finally
+                Console.WriteLine()
+
             End Try
 
         End If
@@ -220,6 +216,9 @@ Public Class ftpConnection : Implements IDisposable
             Catch ex As Exception
                 args.Colourise(ConsoleColor.Red, "FAILED")
                 Throw ex
+
+            Finally
+                Console.WriteLine()
 
             End Try
 
@@ -276,6 +275,7 @@ Public Class ftpConnection : Implements IDisposable
             ' Throw on any error
             transferResult.Check()
             args.Colourise(ConsoleColor.Green, "OK")
+            Console.WriteLine()
 
             Console.WriteLine(
                 String.Format(
@@ -288,9 +288,12 @@ Public Class ftpConnection : Implements IDisposable
             args.Colourise(ConsoleColor.Red, "FAILURE")
             Throw ex
 
+        Finally
+            Console.WriteLine("")
+
         End Try
 
-        Console.WriteLine("")
+
 
         For Each transfer In transferResult.Transfers
             Dim FN As New FileInfo(
@@ -340,6 +343,9 @@ Public Class ftpConnection : Implements IDisposable
                 Catch ex As Exception
                     args.Colourise(ConsoleColor.Red, "FAILED")
                     Throw ex
+
+                Finally
+                    Console.WriteLine()
 
                 End Try
 

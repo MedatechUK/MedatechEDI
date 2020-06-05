@@ -1,5 +1,4 @@
 ﻿Imports System.IO
-Imports System.Net.Mail
 Imports MedatechUK.CLI
 
 Module Module1
@@ -7,20 +6,32 @@ Module Module1
     Public args As clArg
     Public curdir As New DirectoryInfo(Environment.CurrentDirectory)
 
+    Public ReadOnly Property ConfigFile As FileInfo
+        Get
+            Return New FileInfo(Path.Combine(curdir.FullName, "ftp.config"))
+        End Get
+    End Property
+
     Sub Main(arg() As String)
 
         Dim mode As String = Nothing
-        Dim configMode As Boolean = False
         Dim send As Boolean = True
         Dim receive As Boolean = True
-        Dim errNotify As ftpconfigNotifyerror
 
         Try
+
+#Region "Command Line Arguments"
+
             args = New clArg()
             For Each k As String In args.Keys
                 Select Case k.ToLower
                     Case "?", "help"
                         args.syntax()
+                        args.wait()
+                        End
+
+                    Case "config"
+                        args.Attempt(AddressOf UnpackConfig, New EventArgs, "Unpacking Config")
                         args.wait()
                         End
 
@@ -38,72 +49,54 @@ Module Module1
                     Case "o", "out"
                         receive = False
 
-                    Case "config"
-                        configMode = True
-
                 End Select
 
             Next
 
-            If Not configMode Then
-                Using ftp As New ftpConnection(mode)
-                    errNotify = ftp.errNotify
-                    ftp.connect(send, receive)
+#End Region
 
-                End Using
+            Using ftp As New ftpConnection(mode)
+                ftp.connect(send, receive)
 
-            Else
-                args.line(
-                    "Creating {0}",
-                    Path.Combine(
-                        curdir.FullName,
-                        "ftp.config"
-                    )
-                )
-                ' Write blank ftp.config to the curdir
-                Dim cf As New FileInfo(Path.Combine(curdir.FullName, "ftp.config"))
-                If Not cf.Exists Then
-                    Using sw As New StreamWriter(cf.FullName)
-                        sw.Write(My.Resources._default)
-
-                    End Using
-                    args.Colourise(ConsoleColor.Green, "OK")
-
-                Else
-                    args.Colourise(ConsoleColor.Green, "FAIL")
-                    Throw New Exception(String.Format("The ftp.config file already exists in {0}.", curdir.FullName))
-
-                End If
-
-            End If
+            End Using
 
         Catch ex As Exception
             args.Colourise(ConsoleColor.Red, ex.Message)
+            Console.WriteLine()
             args.Log(ex.Message)
-
-            If Not errNotify Is Nothing Then
-                Dim erMail = New MailMessage(errNotify.from, errNotify.notify(0).address)
-                With erMail
-                    With .CC
-                        For i As Integer = 1 To errNotify.notify.Count - 1
-                            .Add(errNotify.notify(i).address)
-                        Next
-                    End With
-                    .Subject = "ediFtp runtime error."
-                    .Body = ex.Message
-
-                    Using c As New SmtpClient(errNotify.smtp)
-                        c.Send(erMail)
-
-                    End Using
-                End With
-
-            End If
+            args.errNotify("ediFtp runtime error.", ConfigFile, ex)
 
         Finally
             args.wait()
 
         End Try
+
+    End Sub
+
+    Private Sub UnpackConfig(sender As Object, e As EventArgs)
+
+        ' Write blank ftp.config to the curdir
+        Dim cf As New FileInfo(
+            Path.Combine(
+                curdir.FullName, "ftp.config"
+            )
+        )
+
+        If Not cf.Exists Then
+            Using sw As New StreamWriter(cf.FullName)
+                sw.Write(My.Resources._default)
+
+            End Using
+
+        Else
+            Throw New Exception(
+                String.Format(
+                    "The ftp.config file already exists in {0}.",
+                    curdir.FullName
+                )
+            )
+
+        End If
 
     End Sub
 

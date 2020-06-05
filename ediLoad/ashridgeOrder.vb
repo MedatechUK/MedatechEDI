@@ -1,5 +1,10 @@
-﻿Namespace ashridge
+﻿Imports System.IO
+
+Namespace ashridge
     Public Class Order
+
+        Public Source As FileInfo
+
         Private _order_id As String
         Private _reference_number As String
         Private _created_at As String

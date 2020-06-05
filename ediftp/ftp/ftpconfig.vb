@@ -226,6 +226,7 @@ Partial Public Class ftpconfigModeAct
             End Select
         End Get
     End Property
+
     '''<remarks/>
     <System.Xml.Serialization.XmlAttributeAttribute()>
     Public Property bin() As String
@@ -239,6 +240,7 @@ Partial Public Class ftpconfigModeAct
             Me.binField = Value
         End Set
     End Property
+
 End Class
 
 '''<remarks/>
@@ -262,6 +264,8 @@ Partial Public Class ftpconfigServer
     Private sshHostKeyFingerprintField As String
 
     Private nameField As String
+
+    Private PortField As Integer = -1
 
     '''<remarks/>
     Public Property HostName() As String
@@ -293,23 +297,26 @@ Partial Public Class ftpconfigServer
         End Set
     End Property
 
-    Public Property sProtocol() As WinSCP.Protocol
+    Public Property sProtocol() As Integer
         Get
             Select Case Me.protocolField.ToLower
                 Case "webdav"
-                    Return WinSCP.Protocol.Webdav
+                    Return 3
 
                 Case "s3"
-                    Return WinSCP.Protocol.S3
+                    Return 4
 
                 Case "scp"
-                    Return WinSCP.Protocol.Scp
+                    Return 1
 
                 Case "sftp"
-                    Return WinSCP.Protocol.Sftp
+                    Return 0
+
+                Case "tls"
+                    Return 5
 
                 Case Else
-                    Return WinSCP.Protocol.Ftp
+                    Return 2
 
 
             End Select
@@ -317,17 +324,20 @@ Partial Public Class ftpconfigServer
         End Get
         Set
             Select Case Value
-                Case WinSCP.Protocol.Webdav
+                Case 3
                     Me.protocolField = "Webdav"
 
-                Case WinSCP.Protocol.S3
+                Case 4
                     Me.protocolField = "S3"
 
-                Case WinSCP.Protocol.Scp
+                Case 1
                     Me.protocolField = "Scp"
 
-                Case WinSCP.Protocol.Sftp
+                Case 0
                     Me.protocolField = "Sftp"
+
+                Case 5
+                    Me.protocolField = "TLS"
 
                 Case Else
                     Me.protocolField = "Ftp"
@@ -402,6 +412,17 @@ Partial Public Class ftpconfigServer
             Me.nameField = Value
         End Set
     End Property
+
+    '''<remarks/>    
+    Public Property Port As Integer
+        Get
+            Return PortField
+        End Get
+        Set(value As Integer)
+            PortField = value
+        End Set
+    End Property
+
 End Class
 
 '''<remarks/>
@@ -472,4 +493,5 @@ Partial Public Class ftpconfigNotifyerrorNotify
             Me.addressField = Value
         End Set
     End Property
+
 End Class

@@ -1,8 +1,4 @@
 ﻿Imports System.IO
-Imports System.Net.Mail
-Imports System.Reflection
-Imports System.Xml.Serialization
-Imports Newtonsoft.Json
 Imports MedatechUK.oData
 Imports MedatechUK.CLI
 
@@ -11,8 +7,11 @@ Module Module1
     Public args As clArg
     Public configMode As Boolean = False
     Public dot As New Date(1988, 1, 1)
+    Public MoveTo As String = "sent"
 
 #Region "File references"
+
+    Private Fileparam As FileInfo
 
     Public ReadOnly Property ConfigFile As FileInfo
         Get
@@ -26,91 +25,9 @@ Module Module1
         End Get
     End Property
 
-    Private _Fileparam As FileInfo
-    Public ReadOnly Property Fileparam As FileInfo
-        Get
-            Return _Fileparam
-        End Get
-    End Property
-
-    Private Function MoveFolder(mv As String) As DirectoryInfo
-        Return New DirectoryInfo(
-            IO.Path.Combine(
-               Directory.GetCurrentDirectory,
-                String.Format(
-                    "{0}\{1}",
-                    mv,
-                    Now.ToString("yyyy-MM")
-                )
-            )
-        )
-
-    End Function
-
-#End Region
-
-#Region "Properties"
-
-    Private ReadOnly Property Deserialise As ashridge.Order
-        Get
-            Dim ret As ashridge.Order
-            args.line("Deserialising {0}", Fileparam.FullName)
-            If Not Fileparam.Exists Then
-                args.Colourise(ConsoleColor.Green, "FAIL")
-                Throw New Exception(String.Format("Input file not found {0}.", Fileparam.FullName))
-            End If
-            Try
-                Using sr As New StreamReader(Fileparam.FullName)
-                    ret = JsonConvert.DeserializeObject(sr.ReadToEnd, GetType(ashridge.Order))
-
-                End Using
-                args.Colourise(ConsoleColor.Green, "OK")
-                Return ret
-
-            Catch ex As Exception
-                args.Colourise(ConsoleColor.Red, "FAIL")
-                Throw ex
-
-            Finally
-                Console.WriteLine()
-
-            End Try
-        End Get
-    End Property
-
-    Private ReadOnly Property Config As loadconfig
-        Get
-            Dim ret As loadconfig
-            Dim s As New XmlSerializer(GetType(loadconfig))
-            args.line("Opening config {0}", ConfigFile.FullName)
-            If Not ConfigFile.Exists And oDataConfigFile.Exists Then
-                args.Colourise(ConsoleColor.Green, "FAIL")
-                Throw New Exception(String.Format("Config files not found. Please -config.", ""))
-
-            End If
-            Try
-                Using sr As New StreamReader(ConfigFile.FullName)
-                    ret = s.Deserialize(sr)
-                    args.Colourise(ConsoleColor.Green, "OK")
-                    Return ret
-
-                End Using
-
-            Catch ex As Exception
-                args.Colourise(ConsoleColor.Red, "FAIL")
-                Throw ex
-
-            End Try
-        End Get
-    End Property
-
 #End Region
 
     Sub Main(arg() As String)
-
-        Dim errNotify As ftpconfigNotifyerror
-        Dim MoveTo As String = "sent"
-        Dim id As String = System.Guid.NewGuid.ToString
 
         Try
 
@@ -125,51 +42,19 @@ Module Module1
                         End
 
                     Case "config"
-                        If Not ConfigFile.Exists Then
-                            Try
-                                args.line(
+                        args.Attempt(
+                            AddressOf UnpackConfig,
+                            New EventArgs(),
                             "Creating {0}",
                             ConfigFile.FullName
                         )
-                                Using sw As New StreamWriter(ConfigFile.FullName)
-                                    sw.Write(My.Resources._default)
 
-                                End Using
-                                args.Colourise(ConsoleColor.Green, "OK")
-
-                            Catch ex As Exception
-                                args.Colourise(ConsoleColor.Green, "FAIL")
-                                Throw ex
-
-                            End Try
-
-                        Else
-                            Console.WriteLine("{0} already exists in {1}.", ConfigFile.Name, Path.GetDirectoryName(ConfigFile.FullName))
-
-                        End If
-
-                        If Not oDataConfigFile.Exists Then
-                            Try
-                                args.line(
-                                "Creating {0}",
-                                oDataConfigFile.FullName
-                            )
-                                Using sw As New StreamWriter(oDataConfigFile.FullName)
-                                    sw.Write(My.Resources.odata)
-
-                                End Using
-                                args.Colourise(ConsoleColor.Green, "OK")
-
-                            Catch ex As Exception
-                                args.Colourise(ConsoleColor.Green, "FAIL")
-                                Throw ex
-
-                            End Try
-
-                        Else
-                            Console.WriteLine("{0} already exists in {1}.", oDataConfigFile.Name, Path.GetDirectoryName(oDataConfigFile.FullName))
-
-                        End If
+                        args.Attempt(
+                            AddressOf UnpackoDataConfig,
+                            New EventArgs(),
+                            "Creating {0}",
+                            oDataConfigFile.FullName
+                        )
 
                         args.wait()
                         End
@@ -179,7 +64,7 @@ Module Module1
             Next
 
             Try
-                _Fileparam = New FileInfo(arg(0))
+                Fileparam = New FileInfo(arg(0))
 
             Catch ex As Exception
                 args.syntax()
@@ -191,8 +76,7 @@ Module Module1
 
 #End Region
 
-            errNotify = Config.notifyerror
-            Dim e As ashridge.Order = Deserialise
+            Dim e As ashridge.Order = args.Deserial(Fileparam, GetType(ashridge.Order))
 
 #Region "Create Customer record"
 
@@ -234,7 +118,8 @@ Module Module1
 
 #End Region
 
-            ' Create Order
+#Region "Create Order"
+
             Using F As New MedatechUK.oData.Loading("ORD", AddressOf logHandler)
                 With F
                     With .AddRow(1)
@@ -310,35 +195,18 @@ Module Module1
 
             End Using
 
+#End Region
+
         Catch ex As Exception
             args.Colourise(ConsoleColor.Red, ex.Message)
+            Console.WriteLine()
             args.Log(ex.Message)
             MoveTo = "err"
-            If Not errNotify Is Nothing Then
-                Dim erMail = New MailMessage(errNotify.from, errNotify.notify(0).address)
-                With erMail
-                    With .CC
-                        For i As Integer = 1 To errNotify.notify.Count - 1
-                            .Add(errNotify.notify(i).address)
-                        Next
-                    End With
-                    .Subject = "ediLoad runtime error."
-                    .Body = ex.Message
 
-                    Using c As New SmtpClient(errNotify.smtp)
-                        c.Send(erMail)
-
-                    End Using
-                End With
-
-            End If
+            args.errNotify("EDI Load Failed.", ConfigFile, ex)
 
         Finally
-            With MoveFolder(MoveTo)
-                If Not .Exists Then .Create()
-                Fileparam.MoveTo(New FileInfo(Path.Combine(.FullName, String.Format("{0}.{1}", id, Fileparam.Extension))).FullName)
-
-            End With
+            args.Attempt(AddressOf MoveFile, New EventArgs, "Moving {0} to {1}", Fileparam.Name, MoveTo)
             args.wait()
             End
 
@@ -346,20 +214,7 @@ Module Module1
 
     End Sub
 
-    Private Sub ErCheck(f As oForm)
-        For Each row As oRow In f
-            If row.Exception Is Nothing Then
-                For Each sf As oForm In row.SubForms.Values
-                    ErCheck(sf)
-
-                Next
-            Else
-                Throw row.Exception
-
-            End If
-
-        Next
-    End Sub
+#Region "Handlers"
 
     ''' <summary>
     ''' Handles oData logging.
@@ -370,7 +225,82 @@ Module Module1
     ''' <param name="e">The log arguments</param>
     Private Sub logHandler(sender As Object, e As LogArgs)
         args.Log(e.Message)
+        Console.WriteLine(e.Message)
 
     End Sub
+
+    Private Sub UnpackConfig(sender As Object, e As EventArgs)
+        If Not ConfigFile.Exists Then
+            Using sw As New StreamWriter(ConfigFile.FullName)
+                sw.Write(My.Resources._default)
+
+            End Using
+
+        Else
+            Throw New Exception(
+                String.Format(
+                     "{0} already exists in {1}.",
+                     ConfigFile.Name,
+                     Path.GetDirectoryName(ConfigFile.FullName)
+                )
+            )
+
+        End If
+
+    End Sub
+
+    Private Sub UnpackoDataConfig(sender As Object, e As EventArgs)
+        If Not oDataConfigFile.Exists Then
+            Using sw As New StreamWriter(ConfigFile.FullName)
+                sw.Write(My.Resources._default)
+
+            End Using
+
+        Else
+            Throw New Exception(
+                String.Format(
+                    "{0} already exists in {1}.",
+                    oDataConfigFile.Name,
+                    Path.GetDirectoryName(oDataConfigFile.FullName)
+                )
+            )
+
+        End If
+
+    End Sub
+
+    Private Sub MoveFile(sender As Object, e As EventArgs)
+        If Fileparam.Exists Then
+            With args.DatedFolder(
+                New DirectoryInfo(
+                    Path.Combine(
+                        Directory.GetCurrentDirectory,
+                        MoveTo
+                    )
+                )
+            )
+                Fileparam.MoveTo(
+                    New FileInfo(
+                        Path.Combine(
+                            .FullName,
+                            String.Format(
+                                "{0}.{1}",
+                                Guid.NewGuid.ToString,
+                                Fileparam.Extension
+                            )
+                        )
+                    ).FullName
+                )
+
+            End With
+
+        Else
+            Throw New Exception(String.Format("File {0} not found.", Fileparam.Name))
+
+        End If
+
+    End Sub
+
+#End Region
 
 End Module
