@@ -46,10 +46,14 @@ Public Class RunBatSvc : Inherits MedatechUK.ntService
     Private Sub fsw_Created(ByVal sender As Object, ByVal e As FileSystemEventArgs)
         'TryCast(sender, FileSystemWatcher).Path
         If Not processing.Contains(e.FullPath) Then
-            processing.Add(e.FullPath)
             With New FileInfo(e.FullPath)
                 Select Case .Extension.ToLower
                     Case Else
+                        While processing.Count > 0
+                            Thread.Sleep(1000)
+
+                        End While
+                        processing.Add(e.FullPath)
                         With New Thread(AddressOf hLoad)
                             .Name = e.FullPath
                             .Start(e)
