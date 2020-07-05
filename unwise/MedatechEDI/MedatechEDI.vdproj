@@ -21,6 +21,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_18F425DD1DA54D83B3965352D20C239D"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_1DA49D379B614EC38FAF0ECAAA1F0EC1"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -93,6 +99,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_C27AAEB70775453191DCD39DFB8649A4"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_D540FD368A744DB7B644948C00A9B7BC"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -118,6 +130,12 @@
         "Entry"
         {
         "MsmKey" = "8:_DE22D63C77C8467D9F58BE1D46C6A8F2"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E97268DA20F6412E8976A657B28B966E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -340,6 +358,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_18F425DD1DA54D83B3965352D20C239D"
+            {
+            "SourcePath" = "8:..\\..\\RunBat\\bin\\Debug\\paths.xml"
+            "TargetName" = "8:paths.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_26AE5DC5A340424F94EE13631A503708"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_2638ABCEA2DDF058FB4B9081857A29A3"
             {
             "AssemblyRegister" = "3:1"
@@ -504,6 +542,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C27AAEB70775453191DCD39DFB8649A4"
+            {
+            "SourcePath" = "8:..\\..\\ediLoad\\bin\\Debug\\odata.config"
+            "TargetName" = "8:odata.config"
+            "Tag" = "8:"
+            "Folder" = "8:_26AE5DC5A340424F94EE13631A503708"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D540FD368A744DB7B644948C00A9B7BC"
             {
             "SourcePath" = "8:..\\..\\MedatechEDI.sln"
@@ -561,6 +619,26 @@
             "TargetName" = "8:EDI Tools Project (GitHub).url"
             "Tag" = "8:"
             "Folder" = "8:_C70521524C744AE8AB156B5A4E12492A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E97268DA20F6412E8976A657B28B966E"
+            {
+            "SourcePath" = "8:..\\..\\ediftp\\ftp.config"
+            "TargetName" = "8:ftp.config"
+            "Tag" = "8:"
+            "Folder" = "8:_26AE5DC5A340424F94EE13631A503708"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -665,7 +743,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:MedatechEDI"
         "ProductCode" = "8:{CDB954FE-0B4B-4E56-94E7-530A3C74F988}"
-        "PackageCode" = "8:{9D7BEA06-AED8-426B-A099-8017784E1D63}"
+        "PackageCode" = "8:{5065DEC2-F2A8-4E8C-8FF2-D1D078187556}"
         "UpgradeCode" = "8:{7E177C5E-C29C-4F93-9EF5-E13D82207012}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

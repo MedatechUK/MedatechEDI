@@ -94,7 +94,7 @@ Public Class RunBatSvc : Inherits MedatechUK.ntService
                     .WorkingDirectory = System.AppDomain.CurrentDomain.BaseDirectory
                     .FileName = Path.Combine(
                         AppDomain.CurrentDomain.BaseDirectory,
-                        String.Format("{0}.bat", bat)
+                        String.Format("{0}", bat)
                     )
                     .Arguments = e.FullPath & " " & System.Guid.NewGuid.ToString.Split("-")(0)
                     .RedirectStandardOutput = True
