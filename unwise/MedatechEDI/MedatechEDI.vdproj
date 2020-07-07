@@ -27,18 +27,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_1DA49D379B614EC38FAF0ECAAA1F0EC1"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_2638ABCEA2DDF058FB4B9081857A29A3"
-        "OwnerKey" = "8:_1DA49D379B614EC38FAF0ECAAA1F0EC1"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_2638ABCEA2DDF058FB4B9081857A29A3"
         "OwnerKey" = "8:_2D77ED9AEE2E4EAC9C88F811141DFA26"
         "MsmSig" = "8:_UNDEFINED"
@@ -52,12 +40,6 @@
         "Entry"
         {
         "MsmKey" = "8:_33B90F14D60B9721BE2988C7783667ED"
-        "OwnerKey" = "8:_1DA49D379B614EC38FAF0ECAAA1F0EC1"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_33B90F14D60B9721BE2988C7783667ED"
         "OwnerKey" = "8:_2D77ED9AEE2E4EAC9C88F811141DFA26"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -65,12 +47,6 @@
         {
         "MsmKey" = "8:_4432A806DDD9467097DA5FF5B25175CC"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_87BC0947FDDDA82A08A9FCD3C232368B"
-        "OwnerKey" = "8:_1DA49D379B614EC38FAF0ECAAA1F0EC1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -123,12 +99,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_DD250A39A09023E499C5A9B1DBF1BA5A"
-        "OwnerKey" = "8:_1DA49D379B614EC38FAF0ECAAA1F0EC1"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_DE22D63C77C8467D9F58BE1D46C6A8F2"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -137,12 +107,6 @@
         {
         "MsmKey" = "8:_E97268DA20F6412E8976A657B28B966E"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_1DA49D379B614EC38FAF0ECAAA1F0EC1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -724,6 +688,28 @@
             "Property" = "8:WindowsFolder"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_C244285DE4CE490EAE85D5AF201BB371"
+                    {
+                    "Name" = "8:Logs"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_34F48AC9B1294998B3C64F915FCC4C9A"
+                        "Folders"
+                        {
+                            "{9EF0B969-E518-4E46-987F-47570745A589}:_CAC3E766800A4A82BCC7205A9762F0E8"
+                            {
+                            "Name" = "8:runbat"
+                            "AlwaysCreate" = "11:TRUE"
+                            "Condition" = "8:"
+                            "Transitive" = "11:FALSE"
+                            "Property" = "8:_6388B0412F65418B9B6CCBDCE90BE963"
+                                "Folders"
+                                {
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -743,7 +729,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:MedatechEDI"
         "ProductCode" = "8:{CDB954FE-0B4B-4E56-94E7-530A3C74F988}"
-        "PackageCode" = "8:{5065DEC2-F2A8-4E8C-8FF2-D1D078187556}"
+        "PackageCode" = "8:{AB51F2CB-2A07-4057-A016-E4F29E231292}"
         "UpgradeCode" = "8:{7E177C5E-C29C-4F93-9EF5-E13D82207012}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -1286,34 +1272,6 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_1DA49D379B614EC38FAF0ECAAA1F0EC1"
-            {
-            "SourcePath" = "8:..\\..\\ediftp\\obj\\Debug\\ediftp.exe"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_E35EFA2D63544A90B5B69F5ADDA6FDBE"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{D5F6EBFB-C69A-49C2-99E6-1FE8B207B143}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_2D77ED9AEE2E4EAC9C88F811141DFA26"
             {
             "SourcePath" = "8:..\\..\\ediftp\\obj\\Debug\\ediftp.exe"
