@@ -20,6 +20,6 @@ To refer to this in a batch file, use %1 as the placeholder for your filename.
 ## path.xml example.
 
 ```<paths>
-```	<loc bat="SolidWorks1.exe" name="\\SVR2012\shared 2\Design Documentation\Priority BOM Exports"/>
-```	<loc bat="SolidWorks2.exe" name="\\SVR2012\shared 2\Design Documentation\Priority Electric Exports"/>
-```</paths>
+	<loc bat="SolidWorks1.exe" name="\\SVR2012\shared 2\Design Documentation\Priority BOM Exports"/>
+	<loc bat="SolidWorks2.exe" name="\\SVR2012\shared 2\Design Documentation\Priority Electric Exports"/>
+</paths>```
