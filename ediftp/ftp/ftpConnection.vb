@@ -26,9 +26,9 @@ Public Class ftpConnection : Implements IDisposable
 
 #Region "Ctor"
 
-    Sub New(Optional Mode As String = Nothing)
+    Sub New(ByRef config As ftpconfig, Optional Mode As String = Nothing)
 
-        Dim config As ftpconfig = args.Deserial(ConfigFile, GetType(ftpconfig))
+        'Dim config As ftpconfig = args.Deserial(ConfigFile, GetType(ftpconfig))
         Dim f As Boolean = False
 
         If Mode Is Nothing Then Mode = config.defaultmode

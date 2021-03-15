@@ -1,5 +1,7 @@
 ﻿Imports System.IO
 Imports MedatechUK.CLI
+Imports MedatechUK.Deserialiser
+Imports MedatechUK.Logging
 
 Module Module1
 
@@ -17,12 +19,13 @@ Module Module1
         Dim mode As String = Nothing
         Dim send As Boolean = True
         Dim receive As Boolean = True
+        Dim conf As ftpconfig = Nothing
 
         Try
 
 #Region "Command Line Arguments"
 
-            args = New clArg()
+            args = New clArg(AddressOf Events.logHandler)
             For Each k As String In args.Keys
                 Select Case k.ToLower
                     Case "?", "help"
@@ -31,7 +34,7 @@ Module Module1
                         End
 
                     Case "config"
-                        args.Attempt(AddressOf UnpackConfig, New EventArgs, "Unpacking Config")
+                        'args.Attempt(AddressOf UnpackConfig, New EventArgs, "Unpacking Config")
                         args.wait()
                         End
 
@@ -41,7 +44,7 @@ Module Module1
                     Case "dir", "d"
                         curdir = New DirectoryInfo(args(k))
                         If Not curdir.Exists Then _
-                            Throw New Exception(String.Format("Invalid -d folder {0}.", args(k)))
+                        Throw New Exception(String.Format("Invalid -d folder {0}.", args(k)))
 
                     Case "i", "in"
                         send = False
@@ -55,16 +58,23 @@ Module Module1
 
 #End Region
 
-            Using ftp As New ftpConnection(mode)
-                ftp.connect(send, receive)
+            Using ex As New AppExtension(AddressOf Events.logHandler)
+                For Each l As Lazy(Of ILexor, ILexorProps) In ex.Lexors
+                    If l.Metadata.SerialType Is GetType(ediftp.ftpconfig) Then
+                        Using ftp As New ftpConnection(l.Value.Deserialise(New StreamReader(ConfigFile.FullName)), mode)
+                            ftp.connect(send, receive)
 
+                        End Using
+
+                    End If
+                Next
             End Using
 
         Catch ex As Exception
             args.Colourise(ConsoleColor.Red, ex.Message)
             Console.WriteLine()
-            args.Log(ex.Message)
-            args.errNotify("ediFtp runtime error.", ConfigFile, ex)
+            Log(ex.Message)
+            'args.errNotify("ediFtp runtime error.", ConfigFile, ex)
 
         Finally
             args.wait()

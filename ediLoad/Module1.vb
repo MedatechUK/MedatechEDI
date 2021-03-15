@@ -223,7 +223,7 @@ Module Module1
     ''' </summary>
     ''' <param name="sender">The calling object</param>
     ''' <param name="e">The log arguments</param>
-    Private Sub logHandler(sender As Object, e As LogArgs)
+    Private Sub logHandler(sender As Object, e As MedatechUK.)
         args.Log(e.Message)
         Console.WriteLine(e.Message)
 

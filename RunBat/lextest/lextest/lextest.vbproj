@@ -4,18 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D5F6EBFB-C69A-49C2-99E6-1FE8B207B143}</ProjectGuid>
+    <ProjectGuid>{B03C24C4-BE70-46CF-8FEE-FD28E50A3572}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <StartupObject>ediftp.Module1</StartupObject>
-    <RootNamespace>ediftp</RootNamespace>
-    <AssemblyName>ediftp</AssemblyName>
+    <StartupObject>lextest.Module1</StartupObject>
+    <RootNamespace>lextest</RootNamespace>
+    <AssemblyName>lextest</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Console</MyType>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -24,7 +23,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>ediftp.xml</DocumentationFile>
+    <DocumentationFile>lextest.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -34,7 +33,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>ediftp.xml</DocumentationFile>
+    <DocumentationFile>lextest.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -49,12 +48,9 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationIcon>emerge.ico</ApplicationIcon>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -65,9 +61,6 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="WinSCPnet, Version=1.7.2.10516, Culture=neutral, PublicKeyToken=2271ec4a3c56d0bf, processorArchitecture=MSIL">
-      <HintPath>..\packages\WinSCP.5.17.6\lib\net40\WinSCPnet.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
@@ -81,9 +74,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ftp\ftpconfig.vb" />
-    <Compile Include="ftp\ftpConnection.vb" />
-    <Compile Include="ftp\ftpEventArgs.vb" />
+    <Compile Include="Ashridge.Order.vb" />
     <Compile Include="Module1.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -110,8 +101,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="default.config" />
-    <None Include="ftp.config" />
+    <None Include="create_order.json" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -122,35 +112,21 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="emerge.ico" />
-    <EmbeddedResource Include="syntax.txt" />
     <None Include="packages.config" />
-    <Content Include="ReadMe.md" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\MedatechUK.Packages\MedatechUK.CLI\MedatechUK.CLI.vbproj">
-      <Project>{B7E43843-B380-43BB-B73D-C61E51BB84B0}</Project>
-      <Name>MedatechUK.CLI</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\MedatechUK.Packages\MedatechUK.Deserial\MedatechUK.Deserial.vbproj">
+    <ProjectReference Include="..\..\..\..\MedatechUK.Packages\MedatechUK.Deserial\MedatechUK.Deserial.vbproj">
       <Project>{bb85998b-e526-4e64-b1c6-e89e853baf03}</Project>
       <Name>MedatechUK.Deserial</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\MedatechUK.Packages\MedatechUK.Log\MedatechUK.Log.vbproj">
+    <ProjectReference Include="..\..\..\..\MedatechUK.Packages\MedatechUK.Log\MedatechUK.Log.vbproj">
       <Project>{def77d25-0edd-42ad-84da-941965dd0eba}</Project>
       <Name>MedatechUK.Log</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\..\MedatechUK.Packages\MedatechUK.oData\MedatechUK.oData.vbproj">
+      <Project>{92bbb2f7-f2a1-44e0-a64d-fafca1ad30a0}</Project>
+      <Name>MedatechUK.oData</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
-  <Import Project="packages\WinSCP.5.17.1\build\WinSCP.targets" Condition="Exists('packages\WinSCP.5.17.1\build\WinSCP.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('packages\WinSCP.5.17.1\build\WinSCP.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\WinSCP.5.17.1\build\WinSCP.targets'))" />
-    <Error Condition="!Exists('..\packages\WinSCP.5.17.6\build\WinSCP.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\WinSCP.5.17.6\build\WinSCP.targets'))" />
-  </Target>
-  <Import Project="..\packages\WinSCP.5.17.6\build\WinSCP.targets" Condition="Exists('..\packages\WinSCP.5.17.6\build\WinSCP.targets')" />
 </Project>
