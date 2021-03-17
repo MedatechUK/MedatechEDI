@@ -3,7 +3,9 @@ Imports MedatechUK.Deserialiser
 Imports MedatechUK.Logging
 Imports WinSCP
 
-Public Class ftpConnection : Implements IDisposable
+Public Class ftpConnection
+    Inherits Logable
+    Implements IDisposable
 
     Private transferOptions As TransferOptions
     Private sessionOptions As SessionOptions
@@ -30,8 +32,9 @@ Public Class ftpConnection : Implements IDisposable
 
     Private _appEx As AppExtension
     Sub New(ByRef config As ftpconfig, ByRef appEx As AppExtension, Optional Mode As String = Nothing)
-        Me.
+
         _appEx = appEx
+        Me.logHandler = appEx.logHandler
         Dim f As Boolean = False
 
         If Mode Is Nothing Then Mode = config.defaultmode
@@ -294,17 +297,34 @@ Public Class ftpConnection : Implements IDisposable
                 Select Case sender.isLexor
                     Case True
                         With _appEx.LexByName(sender.bin)
-                            .Deserialise(New StreamReader(FN.FullName), sender.environment)
+                            Try
+                                args.line(
+                                    "Deserialisng with [{0}].",
+                                    New FileInfo(sender.bin).Name
+                                )
+                                .Deserialise(New StreamReader(FN.FullName), sender.environment)
+                                args.Colourise(ConsoleColor.Green, "OK")
+
+                            Catch ex As Exception
+                                args.Colourise(ConsoleColor.Red, "FAILED")
+                                Throw ex
+
+                            Finally
+                                Console.WriteLine()
+
+                            End Try
+
 
                         End With
 
                     Case Else
-                        args.line(
-                            "Executing {0} {1}.",
-                            New FileInfo(sender.bin).Name,
-                            FN.FullName.Replace(Directory.GetCurrentDirectory, "")
-                        )
                         Try
+                            args.line(
+                                "Executing {0} {1}.",
+                                New FileInfo(sender.bin).Name,
+                                FN.FullName.Replace(Directory.GetCurrentDirectory, "")
+                            )
+
                             Using myProcess As System.Diagnostics.Process = New System.Diagnostics.Process()
                                 With myProcess
                                     With .StartInfo

@@ -98,41 +98,12 @@ Module Module1
             End Using
 
         Catch ex As Exception
-            args.Colourise(ConsoleColor.Red, ex.Message)
-            Console.WriteLine()
             Log(ex.Message)
 
         Finally
             args.wait()
 
         End Try
-
-    End Sub
-
-    Private Sub UnpackConfig(sender As Object, e As EventArgs)
-
-        ' Write blank ftp.config to the curdir
-        Dim cf As New FileInfo(
-            Path.Combine(
-                curdir.FullName, "ftp.config"
-            )
-        )
-
-        If Not cf.Exists Then
-            Using sw As New StreamWriter(cf.FullName)
-                sw.Write(My.Resources._default)
-
-            End Using
-
-        Else
-            Throw New Exception(
-                String.Format(
-                    "The ftp.config file already exists in {0}.",
-                    curdir.FullName
-                )
-            )
-
-        End If
 
     End Sub
 
