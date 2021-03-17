@@ -149,7 +149,7 @@ Public Class RunBatSvc
     Private Sub hLoad(ByVal e As FileSystemEventArgs)
 
         Try
-            Threading.Thread.Sleep(500)
+            Threading.Thread.Sleep(1000)
             While IsFileInUse(e.FullPath)
                 Threading.Thread.Sleep(500)
 
