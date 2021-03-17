@@ -4,6 +4,7 @@ Imports WinSCP
 Public Class ftpEventArgs : Inherits EventArgs
 
     Private _session As WinSCP.Session
+
     Sub New(ByRef Act As ftpconfigModeAct, ByRef session As WinSCP.Session)
 
         _session = session
@@ -11,7 +12,7 @@ Public Class ftpEventArgs : Inherits EventArgs
         With New DirectoryInfo(Path.Combine(curdir.FullName, Act.dir))
             If Not .Exists Then .Create()
             _dir = New DirectoryInfo(.FullName)
-            If Act.stype = ftpconfigModeAct.eType.send Then
+            If Act.actType = eActType.send Then
                 With New DirectoryInfo(Path.Combine(.FullName, "save"))
                     If Not .Exists Then .Create()
                     _save = New DirectoryInfo(.FullName)

@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
+  <xsd:element name="ftpconfig">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="mode">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:choice maxOccurs="unbounded">
+                <xsd:element name="send">
+                  <xsd:complexType>
+                    <xsd:sequence>
+                      <xsd:element name="dir" type="xsd:string" />
+                      <xsd:element name="filespec" type="xsd:string" />
+                      <xsd:element name="remotedir" type="xsd:string" />
+                      <xsd:element name="delete" nillable="true" />
+                    </xsd:sequence>
+                  </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="receive">
+                  <xsd:complexType>
+                    <xsd:sequence>
+                      <xsd:element name="dir" type="xsd:string" />
+                      <xsd:element name="filespec" type="xsd:string" />
+                      <xsd:element name="remotedir" type="xsd:string" />
+                      <xsd:element name="delete" type="xsd:boolean" />
+                      <xsd:element name="bin" />
+                      <xsd:element name="environment" type="xsd:string" />
+                    </xsd:sequence>
+                  </xsd:complexType>
+                </xsd:element>
+              </xsd:choice>
+            </xsd:sequence>
+            <xsd:attribute name="name" type="xsd:string" use="required" />
+            <xsd:attribute name="server" type="xsd:string" use="required" />
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element name="server">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="HostName" type="xsd:string" />
+              <xsd:element name="Protocol" type="xsd:string" />
+              <xsd:element name="TransferMode" type="xsd:string" />
+              <xsd:element name="UserName" type="xsd:string" />
+              <xsd:element name="Password" type="xsd:unsignedInt" />
+              <xsd:element name="SshHostKeyFingerprint" type="xsd:string" />
+              <xsd:element name="Port" type="xsd:unsignedByte" />
+            </xsd:sequence>
+            <xsd:attribute name="name" type="xsd:string" use="required" />
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+      <xsd:attribute name="mode" type="xsd:string" use="required" />
+    </xsd:complexType>
+  </xsd:element>
+</xs:schema>

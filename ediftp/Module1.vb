@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports System.Xml.Serialization
 Imports MedatechUK.CLI
 Imports MedatechUK.Deserialiser
 Imports MedatechUK.Logging
@@ -22,6 +23,35 @@ Module Module1
         Dim conf As ftpconfig = Nothing
 
         Try
+
+#Region "Make Config File"
+
+            If Not ConfigFile.Exists Then
+                Using c As New ftpconfig("sandbox")
+                    With c
+                        With .server
+                            .Add(New ftpconfigServer("ftp.hostname.com", "NewHostName"))
+
+                        End With
+
+                        With .mode
+                            .Add(New ftpconfigMode("sandbox", c.server.Last))
+                            With .Last
+                                .Act.Add(New ftpconfigModeSend("OUT"))
+                                .Act.Add(New ftpconfigModeReceive("IN"))
+
+                            End With
+                        End With
+
+                    End With
+
+                    toFile(c)
+
+                End Using
+
+            End If
+
+#End Region
 
 #Region "Command Line Arguments"
 
@@ -59,22 +89,18 @@ Module Module1
 #End Region
 
             Using ex As New AppExtension(AddressOf Events.logHandler)
-                For Each l As Lazy(Of ILexor, ILexorProps) In ex.Lexors
-                    If l.Metadata.SerialType Is GetType(ediftp.ftpconfig) Then
-                        Using ftp As New ftpConnection(l.Value.Deserialise(New StreamReader(ConfigFile.FullName)), mode)
-                            ftp.connect(send, receive)
+                With ex.LexByAssemblyName(GetType(ftpconfig).FullName)
+                    Using ftp As New ftpConnection(.Deserialise(New StreamReader(ConfigFile.FullName)), ex, mode)
+                        ftp.connect(send, receive)
 
-                        End Using
-
-                    End If
-                Next
+                    End Using
+                End With
             End Using
 
         Catch ex As Exception
             args.Colourise(ConsoleColor.Red, ex.Message)
             Console.WriteLine()
             Log(ex.Message)
-            'args.errNotify("ediFtp runtime error.", ConfigFile, ex)
 
         Finally
             args.wait()
@@ -107,6 +133,17 @@ Module Module1
             )
 
         End If
+
+    End Sub
+
+    Private Sub toFile(settings As ftpconfig)
+        Dim writer As XmlSerializer
+        Try
+            writer = New XmlSerializer(GetType(ftpconfig))
+        Catch : End Try
+        Using f As New System.IO.StreamWriter(ConfigFile.FullName)
+            writer.Serialize(f, settings)
+        End Using
 
     End Sub
 

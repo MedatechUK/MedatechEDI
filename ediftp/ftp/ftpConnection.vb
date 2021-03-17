@@ -1,4 +1,6 @@
 ﻿Imports System.IO
+Imports MedatechUK.Deserialiser
+Imports MedatechUK.Logging
 Imports WinSCP
 
 Public Class ftpConnection : Implements IDisposable
@@ -26,9 +28,10 @@ Public Class ftpConnection : Implements IDisposable
 
 #Region "Ctor"
 
-    Sub New(ByRef config As ftpconfig, Optional Mode As String = Nothing)
-
-        'Dim config As ftpconfig = args.Deserial(ConfigFile, GetType(ftpconfig))
+    Private _appEx As AppExtension
+    Sub New(ByRef config As ftpconfig, ByRef appEx As AppExtension, Optional Mode As String = Nothing)
+        Me.
+        _appEx = appEx
         Dim f As Boolean = False
 
         If Mode Is Nothing Then Mode = config.defaultmode
@@ -55,15 +58,31 @@ Public Class ftpConnection : Implements IDisposable
 
         End If
 
-        ' Validate binaries
+        ' Validate binaries        
         With _configMode
-            For Each a As ftpconfigModeAct In .act
-                If Not a.bin Is Nothing Then
-                    If Not New FileInfo(a.bin).Exists Then _
-                        Throw New Exception(String.Format("Executable not found: [{0}]", a.bin))
+            For Each a As ftpconfigModeAct In .Act
+                If a.actType = eActType.receive Then
+                    With TryCast(a, ftpconfigModeReceive)
+                        If Not .bin Is Nothing Then
+
+                            For Each l As Lazy(Of ILexor, ILexorProps) In appEx.Lexors
+                                If String.Compare(l.Metadata.LexName, .bin, True) = 0 Then
+                                    .isLexor = True
+                                    Exit For
+                                End If
+                            Next
+
+                            If Not .isLexor Then
+                                If Not New FileInfo(.bin).Exists Then
+                                    Throw New Exception(String.Format("Executable not found: [{0}]", .bin))
+
+                                End If
+                            End If
+
+                        End If
+                    End With
 
                 End If
-
             Next
         End With
 
@@ -76,22 +95,22 @@ Public Class ftpConnection : Implements IDisposable
     Public Sub connect(send As Boolean, receive As Boolean)
 
         transferOptions = New TransferOptions
-        transferOptions.TransferMode = _configServer.sTransferMode
+        transferOptions.TransferMode = _configServer.TransferMode
 
         sessionOptions = New SessionOptions
         With sessionOptions
-            Select Case _configServer.sProtocol
+            Select Case _configServer.Protocol
                 Case 5
                     .Protocol = Protocol.Ftp
                     .FtpSecure = FtpSecure.Explicit
                     .TlsHostCertificateFingerprint = _configServer.SshHostKeyFingerprint
 
                 Case 1, 0
-                    .Protocol = _configServer.sProtocol
+                    .Protocol = _configServer.Protocol
                     .SshHostKeyFingerprint = _configServer.SshHostKeyFingerprint
 
                 Case Else
-                    .Protocol = _configServer.sProtocol
+                    .Protocol = _configServer.Protocol
             End Select
 
             .HostName = _configServer.HostName
@@ -128,9 +147,9 @@ Public Class ftpConnection : Implements IDisposable
             Dim onSend As EventHandler = AddressOf hsend
             Dim onReceive As EventHandler = AddressOf hreceive
 
-            For Each act As ftpconfigModeAct In _configMode.act
-                Select Case act.stype
-                    Case ftpconfigModeAct.eType.send
+            For Each act As ftpconfigModeAct In _configMode.Act
+                Select Case act.actType
+                    Case eActType.send
                         If send Then _
                             onSend.Invoke(act, New ftpEventArgs(act, session))
 
@@ -145,47 +164,9 @@ Public Class ftpConnection : Implements IDisposable
 
     End Sub
 
-    Public Sub hsend(sender As ftpconfigModeAct, e As ftpEventArgs)
+    Public Sub hsend(sender As ftpconfigModeSend, e As ftpEventArgs)
 
         Dim transferResult As TransferOperationResult
-
-        If Not sender.bin Is Nothing Then
-            args.line(
-                "Executing {0}.",
-                sender.bin
-            )
-            Try
-                Using myProcess As System.Diagnostics.Process = New System.Diagnostics.Process()
-                    With myProcess
-                        With .StartInfo
-                            .FileName = sender.bin
-                            .WorkingDirectory = e.Dir.FullName
-                            .UseShellExecute = False
-                            .WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden
-                            .CreateNoWindow = True
-                            .RedirectStandardOutput = True
-
-                        End With
-
-                        .Start()
-                        Console.WriteLine(.StandardOutput.ReadToEnd)
-                        .WaitForExit()
-
-                        args.Colourise(ConsoleColor.Green, "OK")
-
-                    End With
-                End Using
-
-            Catch ex As Exception
-                args.Colourise(ConsoleColor.Red, "FAILED")
-                Throw ex
-
-            Finally
-                Console.WriteLine()
-
-            End Try
-
-        End If
 
         ' Send outbound files                        
         If Not e.Dir.GetFiles(sender.filespec).Count > 0 Then
@@ -252,7 +233,7 @@ Public Class ftpConnection : Implements IDisposable
 
     End Sub
 
-    Public Sub hreceive(sender As ftpconfigModeAct, e As ftpEventArgs)
+    Public Sub hreceive(sender As ftpconfigModeReceive, e As ftpEventArgs)
 
         Dim transferResult As TransferOperationResult
         ' Get inbound files
@@ -293,8 +274,6 @@ Public Class ftpConnection : Implements IDisposable
 
         End Try
 
-
-
         For Each transfer In transferResult.Transfers
             Dim FN As New FileInfo(
                 Path.Combine(
@@ -311,43 +290,54 @@ Public Class ftpConnection : Implements IDisposable
             )
 
             If Not sender.bin Is Nothing Then
-                args.line(
-                    "Executing {0} {1}.",
-                    New FileInfo(sender.bin).Name,
-                    FN.FullName.Replace(Directory.GetCurrentDirectory, "")
-                )
-                Try
-                    Using myProcess As System.Diagnostics.Process = New System.Diagnostics.Process()
-                        With myProcess
-                            With .StartInfo
-                                .FileName = sender.bin
-                                .Arguments = FN.FullName
-                                .WorkingDirectory = curdir.FullName
-                                .UseShellExecute = False
-                                .WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden
-                                .CreateNoWindow = True
-                                .RedirectStandardOutput = True
 
-                            End With
-
-                            .Start()
-                            Console.WriteLine(.StandardOutput.ReadToEnd)
-                            .WaitForExit()
-
-                            args.Colourise(ConsoleColor.Green, "OK")
+                Select Case sender.isLexor
+                    Case True
+                        With _appEx.LexByName(sender.bin)
+                            .Deserialise(New StreamReader(FN.FullName), sender.environment)
 
                         End With
 
-                    End Using
+                    Case Else
+                        args.line(
+                            "Executing {0} {1}.",
+                            New FileInfo(sender.bin).Name,
+                            FN.FullName.Replace(Directory.GetCurrentDirectory, "")
+                        )
+                        Try
+                            Using myProcess As System.Diagnostics.Process = New System.Diagnostics.Process()
+                                With myProcess
+                                    With .StartInfo
+                                        .FileName = sender.bin
+                                        .Arguments = String.Format("{0} {1}", FN.FullName, sender.environment)
+                                        .WorkingDirectory = curdir.FullName
+                                        .UseShellExecute = False
+                                        .WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden
+                                        .CreateNoWindow = True
+                                        .RedirectStandardOutput = True
 
-                Catch ex As Exception
-                    args.Colourise(ConsoleColor.Red, "FAILED")
-                    Throw ex
+                                    End With
 
-                Finally
-                    Console.WriteLine()
+                                    .Start()
+                                    Console.WriteLine(.StandardOutput.ReadToEnd)
+                                    .WaitForExit()
 
-                End Try
+                                    args.Colourise(ConsoleColor.Green, "OK")
+
+                                End With
+
+                            End Using
+
+                        Catch ex As Exception
+                            args.Colourise(ConsoleColor.Red, "FAILED")
+                            Throw ex
+
+                        Finally
+                            Console.WriteLine()
+
+                        End Try
+
+                End Select
 
             End If
 
