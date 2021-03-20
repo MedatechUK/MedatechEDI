@@ -7,14 +7,13 @@ Imports System.ComponentModel.Composition
 Imports MedatechUK.Deserialiser
 Imports MedatechUK.Logging
 
-
 <Export(GetType(ILexor))>
 <ExportMetadata("LexName", "RunBatLexor")>
 <ExportMetadata("LexVers", "1.0")>
 <ExportMetadata("Parser", eParser.xml)>
 <ExportMetadata("SerialType", GetType(runbatconfig))>
 <ExportMetadata("LoadType", "abc")>
-Public Class LexConfig
+Public Class RunBatLex
     Inherits Lexor
     Implements ILexor
 
@@ -25,12 +24,12 @@ End Class
 '
 
 '''<remarks/>
-<System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.1432"),  _
- System.SerializableAttribute(),  _
- System.Diagnostics.DebuggerStepThroughAttribute(),  _
- System.ComponentModel.DesignerCategoryAttribute("code"),  _
- System.Xml.Serialization.XmlTypeAttribute(AnonymousType:=true),  _
- System.Xml.Serialization.XmlRootAttribute([Namespace]:="", IsNullable:=false)>  _
+<System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.1432"),
+ System.SerializableAttribute(),
+ System.Diagnostics.DebuggerStepThroughAttribute(),
+ System.ComponentModel.DesignerCategoryAttribute("code"),
+ System.Xml.Serialization.XmlTypeAttribute(AnonymousType:=True),
+ System.Xml.Serialization.XmlRootAttribute([Namespace]:="", IsNullable:=False)>
 Partial Public Class runbatconfig
     Implements IDisposable
 
@@ -77,16 +76,17 @@ Partial Public Class runbatconfig
         ' TODO: uncomment the following line if Finalize() is overridden above.
         ' GC.SuppressFinalize(Me)
     End Sub
+
 #End Region
 
 End Class
 
 '''<remarks/>
-<System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.1432"),  _
- System.SerializableAttribute(),  _
- System.Diagnostics.DebuggerStepThroughAttribute(),  _
- System.ComponentModel.DesignerCategoryAttribute("code"),  _
- System.Xml.Serialization.XmlTypeAttribute(AnonymousType:=true)>  _
+<System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.1432"),
+ System.SerializableAttribute(),
+ System.Diagnostics.DebuggerStepThroughAttribute(),
+ System.ComponentModel.DesignerCategoryAttribute("code"),
+ System.Xml.Serialization.XmlTypeAttribute(AnonymousType:=True)>
 Partial Public Class runbatconfigLoc
     Implements IDisposable
 

@@ -7,9 +7,9 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{AF69BA77-85B5-452D-B6F3-066833901368}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>RunBat.RunBatSvc</StartupObject>
-    <RootNamespace>RunBat</RootNamespace>
-    <AssemblyName>RunBat</AssemblyName>
+    <StartupObject>MedatechUK.RunBatSvc</StartupObject>
+    <RootNamespace>MedatechUK</RootNamespace>
+    <AssemblyName>ediSvc</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Console</MyType>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
@@ -45,8 +45,8 @@
     <DebugType>full</DebugType>
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>RunBat.xml</DocumentationFile>
+    <OutputPath>C:\Program Files\MedatechUK\MedatechEDI\</OutputPath>
+    <DocumentationFile>ediSvc.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
@@ -56,7 +56,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>RunBat.xml</DocumentationFile>
+    <DocumentationFile>ediSvc.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
@@ -99,7 +99,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
     </Compile>
-    <Compile Include="RUNBAT.vb" />
+    <Compile Include="RunBatConfig.vb" />
     <Compile Include="RunBatSvc.vb">
       <SubType>Component</SubType>
     </Compile>

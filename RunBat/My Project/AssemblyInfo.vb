@@ -8,10 +8,10 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("RunBat")>
-<Assembly: AssemblyDescription("Runs a Batch when a file is created.")>
+<Assembly: AssemblyTitle("ediSvc")>
+<Assembly: AssemblyDescription("Folder monitor.")>
 <Assembly: AssemblyCompany("Medatech UK")>
-<Assembly: AssemblyProduct("RunBat")>
+<Assembly: AssemblyProduct("ediSvc")>
 <Assembly: AssemblyCopyright("Copyright © Medatech 2019")>
 <Assembly: AssemblyTrademark("Future proof your business.")>
 
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.2.0.0")>
-<Assembly: AssemblyFileVersion("1.2.0.0")>
+<Assembly: AssemblyVersion("2.0.0.0")>
+<Assembly: AssemblyFileVersion("2.0.0.0")>

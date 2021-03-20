@@ -34,13 +34,13 @@
         "Entry"
         {
         "MsmKey" = "8:_118683D11AD95F6A226C53E11C2370FB"
-        "OwnerKey" = "8:_C15CE26EC0BE4076A2F865029A369735"
+        "OwnerKey" = "8:_FE033741C6904DD98BCE79E6ED15C050"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_118683D11AD95F6A226C53E11C2370FB"
-        "OwnerKey" = "8:_2D77ED9AEE2E4EAC9C88F811141DFA26"
+        "OwnerKey" = "8:_A9319C97FEFF4B34BF478BB474CDE220"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -57,8 +57,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_2D77ED9AEE2E4EAC9C88F811141DFA26"
-        "OwnerKey" = "8:_UNDEFINED"
+        "MsmKey" = "8:_2C6F54BA57FF1836106F1D106F3C8A30"
+        "OwnerKey" = "8:_A9319C97FEFF4B34BF478BB474CDE220"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -70,7 +70,7 @@
         "Entry"
         {
         "MsmKey" = "8:_5EFE7BB02AEC21212B5A6DC82D917E5E"
-        "OwnerKey" = "8:_2D77ED9AEE2E4EAC9C88F811141DFA26"
+        "OwnerKey" = "8:_A9319C97FEFF4B34BF478BB474CDE220"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -82,37 +82,31 @@
         "Entry"
         {
         "MsmKey" = "8:_694EE25DB9CAFA01B29E5229DFE6BFE1"
-        "OwnerKey" = "8:_C15CE26EC0BE4076A2F865029A369735"
+        "OwnerKey" = "8:_FE033741C6904DD98BCE79E6ED15C050"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_694EE25DB9CAFA01B29E5229DFE6BFE1"
-        "OwnerKey" = "8:_2D77ED9AEE2E4EAC9C88F811141DFA26"
+        "OwnerKey" = "8:_A9319C97FEFF4B34BF478BB474CDE220"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_6B29FABB6E96AB2CD176D710E6C103B2"
-        "OwnerKey" = "8:_2D77ED9AEE2E4EAC9C88F811141DFA26"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_8EF00A5B2770CA68636A1CC758FD6EDF"
-        "OwnerKey" = "8:_2D77ED9AEE2E4EAC9C88F811141DFA26"
+        "OwnerKey" = "8:_A9319C97FEFF4B34BF478BB474CDE220"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_9838F6EC919E440C68681B539DDD1650"
-        "OwnerKey" = "8:_2D77ED9AEE2E4EAC9C88F811141DFA26"
+        "OwnerKey" = "8:_A9319C97FEFF4B34BF478BB474CDE220"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_9838F6EC919E440C68681B539DDD1650"
-        "OwnerKey" = "8:_C15CE26EC0BE4076A2F865029A369735"
+        "OwnerKey" = "8:_FE033741C6904DD98BCE79E6ED15C050"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -129,19 +123,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_9B4B3F2EA02940C8890EF199CDE652BA"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_C15CE26EC0BE4076A2F865029A369735"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_D540FD368A744DB7B644948C00A9B7BC"
+        "MsmKey" = "8:_A9319C97FEFF4B34BF478BB474CDE220"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -154,37 +136,49 @@
         "Entry"
         {
         "MsmKey" = "8:_EC3B330EADCE03FFADC651BAD3B8043A"
-        "OwnerKey" = "8:_2D77ED9AEE2E4EAC9C88F811141DFA26"
+        "OwnerKey" = "8:_A9319C97FEFF4B34BF478BB474CDE220"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_EC3B330EADCE03FFADC651BAD3B8043A"
-        "OwnerKey" = "8:_C15CE26EC0BE4076A2F865029A369735"
+        "OwnerKey" = "8:_FE033741C6904DD98BCE79E6ED15C050"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_F9BEA0B3C42B86336D4845B7045781A0"
-        "OwnerKey" = "8:_C15CE26EC0BE4076A2F865029A369735"
+        "OwnerKey" = "8:_FE033741C6904DD98BCE79E6ED15C050"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_FE033741C6904DD98BCE79E6ED15C050"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_2D77ED9AEE2E4EAC9C88F811141DFA26"
+        "OwnerKey" = "8:_FE033741C6904DD98BCE79E6ED15C050"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_C15CE26EC0BE4076A2F865029A369735"
+        "OwnerKey" = "8:_2C6F54BA57FF1836106F1D106F3C8A30"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_F9BEA0B3C42B86336D4845B7045781A0"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_A9319C97FEFF4B34BF478BB474CDE220"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -209,12 +203,6 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_118683D11AD95F6A226C53E11C2370FB"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_8EF00A5B2770CA68636A1CC758FD6EDF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -301,59 +289,59 @@
     {
         "CustomAction"
         {
-            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_6434BEA604624BFCABA944F6945CC360"
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_5144B71BF19044AE91F22170F236AF48"
             {
-            "Name" = "8:Primary output from RunBat (Active)"
+            "Name" = "8:Primary output from ediSvc (Active)"
             "Condition" = "8:"
-            "Object" = "8:_C15CE26EC0BE4076A2F865029A369735"
-            "FileType" = "3:2"
-            "InstallAction" = "3:4"
-            "Arguments" = "8:"
-            "EntryPoint" = "8:"
-            "Sequence" = "3:1"
-            "Identifier" = "8:_E82BB2E1_45F4_49E0_9377_73BE4BA00326"
-            "InstallerClass" = "11:TRUE"
-            "CustomActionData" = "8:"
-            }
-            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_6E796F3BE33D4F7A898562EE5AE69A8A"
-            {
-            "Name" = "8:Primary output from RunBat (Active)"
-            "Condition" = "8:"
-            "Object" = "8:_C15CE26EC0BE4076A2F865029A369735"
-            "FileType" = "3:2"
-            "InstallAction" = "3:3"
-            "Arguments" = "8:"
-            "EntryPoint" = "8:"
-            "Sequence" = "3:1"
-            "Identifier" = "8:_2128AAD1_07F2_4288_AFE9_07B34EE1B09E"
-            "InstallerClass" = "11:TRUE"
-            "CustomActionData" = "8:"
-            }
-            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_F93077C9089C4A4198530F34C339FAE4"
-            {
-            "Name" = "8:Primary output from RunBat (Active)"
-            "Condition" = "8:"
-            "Object" = "8:_C15CE26EC0BE4076A2F865029A369735"
+            "Object" = "8:_FE033741C6904DD98BCE79E6ED15C050"
             "FileType" = "3:2"
             "InstallAction" = "3:2"
             "Arguments" = "8:"
             "EntryPoint" = "8:"
             "Sequence" = "3:1"
-            "Identifier" = "8:_7ED0370F_8A76_49ED_805D_229917517ECC"
+            "Identifier" = "8:_5BF89619_6655_4BF5_8993_7C0EDBCACD0C"
             "InstallerClass" = "11:TRUE"
             "CustomActionData" = "8:"
             }
-            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_FA325D679158488C85503BC1D9761503"
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_639F3C097C624626AD281ECE49787A1A"
             {
-            "Name" = "8:Primary output from RunBat (Active)"
+            "Name" = "8:Primary output from ediSvc (Active)"
             "Condition" = "8:"
-            "Object" = "8:_C15CE26EC0BE4076A2F865029A369735"
+            "Object" = "8:_FE033741C6904DD98BCE79E6ED15C050"
+            "FileType" = "3:2"
+            "InstallAction" = "3:4"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_CE2E8490_EEC8_4B22_9AD3_27578F677895"
+            "InstallerClass" = "11:TRUE"
+            "CustomActionData" = "8:"
+            }
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_A0A7A0D8BD4244F3BDD58DD6B8B34377"
+            {
+            "Name" = "8:Primary output from ediSvc (Active)"
+            "Condition" = "8:"
+            "Object" = "8:_FE033741C6904DD98BCE79E6ED15C050"
+            "FileType" = "3:2"
+            "InstallAction" = "3:3"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_DCB36537_76E2_4550_81DE_5021792E98A5"
+            "InstallerClass" = "11:TRUE"
+            "CustomActionData" = "8:"
+            }
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_E6D77896024340968026C45CD28AE4AF"
+            {
+            "Name" = "8:Primary output from ediSvc (Active)"
+            "Condition" = "8:"
+            "Object" = "8:_FE033741C6904DD98BCE79E6ED15C050"
             "FileType" = "3:2"
             "InstallAction" = "3:1"
             "Arguments" = "8:"
             "EntryPoint" = "8:"
             "Sequence" = "3:1"
-            "Identifier" = "8:_10C73B62_DBE0_46FA_87C1_AEDB391568CE"
+            "Identifier" = "8:_2AF98AAC_D882_4B59_A28C_932126766F62"
             "InstallerClass" = "11:TRUE"
             "CustomActionData" = "8:"
             }
@@ -414,6 +402,37 @@
                     }
                 }
             "SourcePath" = "8:MedatechUK.Log.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_26AE5DC5A340424F94EE13631A503708"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_2C6F54BA57FF1836106F1D106F3C8A30"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:WinSCPnet, Version=1.7.2.11087, Culture=neutral, PublicKeyToken=2271ec4a3c56d0bf, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_2C6F54BA57FF1836106F1D106F3C8A30"
+                    {
+                    "Name" = "8:WinSCPnet.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:WinSCPnet.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_26AE5DC5A340424F94EE13631A503708"
@@ -529,38 +548,7 @@
             "SourcePath" = "8:System.Net.Http.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
-            "Folder" = "8:_E35EFA2D63544A90B5B69F5ADDA6FDBE"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_8EF00A5B2770CA68636A1CC758FD6EDF"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:WinSCPnet, Version=1.7.2.10516, Culture=neutral, PublicKeyToken=2271ec4a3c56d0bf, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_8EF00A5B2770CA68636A1CC758FD6EDF"
-                    {
-                    "Name" = "8:WinSCPnet.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:WinSCPnet.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_E35EFA2D63544A90B5B69F5ADDA6FDBE"
+            "Folder" = "8:_26AE5DC5A340424F94EE13631A503708"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -604,46 +592,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9B4B3F2EA02940C8890EF199CDE652BA"
-            {
-            "SourcePath" = "8:..\\..\\packages\\WinSCP.5.17.6\\tools\\WinSCP.exe"
-            "TargetName" = "8:WinSCP.exe"
-            "Tag" = "8:"
-            "Folder" = "8:_E35EFA2D63544A90B5B69F5ADDA6FDBE"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D540FD368A744DB7B644948C00A9B7BC"
-            {
-            "SourcePath" = "8:..\\..\\MedatechEDI.sln"
-            "TargetName" = "8:MedatechEDI.sln"
-            "Tag" = "8:"
-            "Folder" = "8:_26AE5DC5A340424F94EE13631A503708"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DE22D63C77C8467D9F58BE1D46C6A8F2"
@@ -817,15 +765,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:MedatechEDI"
-        "ProductCode" = "8:{CDB954FE-0B4B-4E56-94E7-530A3C74F988}"
-        "PackageCode" = "8:{A589850D-E77A-47D7-A474-E29AC12A4CBA}"
+        "ProductCode" = "8:{47880864-EF35-43C1-B4CD-0B044E3214DD}"
+        "PackageCode" = "8:{C48DAC71-A685-448F-A58D-783C42CC78E6}"
         "UpgradeCode" = "8:{7E177C5E-C29C-4F93-9EF5-E13D82207012}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
-        "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.2.0"
+        "InstallAllUsers" = "11:TRUE"
+        "ProductVersion" = "8:2.1.0"
         "Manufacturer" = "8:MedatechUK"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -1347,7 +1295,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_2D77ED9AEE2E4EAC9C88F811141DFA26"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_A9319C97FEFF4B34BF478BB474CDE220"
             {
             "SourcePath" = "8:..\\..\\ediftp\\obj\\Debug\\ediftp.exe"
             "TargetName" = "8:"
@@ -1375,9 +1323,9 @@
                 {
                 }
             }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_C15CE26EC0BE4076A2F865029A369735"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_FE033741C6904DD98BCE79E6ED15C050"
             {
-            "SourcePath" = "8:..\\..\\RunBat\\obj\\Debug\\RunBat.exe"
+            "SourcePath" = "8:..\\..\\RunBat\\obj\\Debug\\ediSvc.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_26AE5DC5A340424F94EE13631A503708"

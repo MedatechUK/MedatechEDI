@@ -5,7 +5,7 @@ Imports MedatechUK.Deserialiser
 Imports MedatechUK.Logging
 
 Module Module1
-
+    Public config As ftpconfig
     Public args As clArg
     Public curdir As New DirectoryInfo(Environment.CurrentDirectory)
 
@@ -54,47 +54,55 @@ Module Module1
 #End Region
 
 #Region "Command Line Arguments"
+            Using ex As New AppExtension(AddressOf Events.logHandler)
 
-            args = New clArg(AddressOf Events.logHandler)
-            For Each k As String In args.Keys
-                Select Case k.ToLower
-                    Case "?", "help"
-                        args.syntax()
-                        args.wait()
-                        End
+                args = New clArg(AddressOf Events.logHandler)
+                For Each k As String In args.Keys
+                    Select Case k.ToLower
+                        Case "?", "help"
+                            args.syntax()
+                            args.wait()
+                            End
 
-                    Case "config"
-                        'args.Attempt(AddressOf UnpackConfig, New EventArgs, "Unpacking Config")
-                        args.wait()
-                        End
+                        Case "config"
+                            With ex.LexByAssemblyName(GetType(ftpconfig).FullName)
+                                config = .Deserialise(New StreamReader(ConfigFile.FullName))
+                                Using c As New frmConfig()
+                                    c.ShowDialog()
 
-                    Case "mode", "m"
-                        mode = args(k)
+                                End Using
+                                toFile(config)
+                                End
 
-                    Case "dir", "d"
-                        curdir = New DirectoryInfo(args(k))
-                        If Not curdir.Exists Then _
-                        Throw New Exception(String.Format("Invalid -d folder {0}.", args(k)))
+                            End With
 
-                    Case "i", "in"
-                        send = False
+                        Case "mode", "m"
+                            mode = args(k)
 
-                    Case "o", "out"
-                        receive = False
+                        Case "dir", "d"
+                            curdir = New DirectoryInfo(args(k))
+                            If Not curdir.Exists Then _
+                            Throw New Exception(String.Format("Invalid -d folder {0}.", args(k)))
 
-                End Select
+                        Case "i", "in"
+                            send = False
 
-            Next
+                        Case "o", "out"
+                            receive = False
+
+                    End Select
+
+                Next
 
 #End Region
 
-            Using ex As New AppExtension(AddressOf Events.logHandler)
                 With ex.LexByAssemblyName(GetType(ftpconfig).FullName)
                     Using ftp As New ftpConnection(.Deserialise(New StreamReader(ConfigFile.FullName)), ex, mode)
                         ftp.connect(send, receive)
 
                     End Using
                 End With
+
             End Using
 
         Catch ex As Exception

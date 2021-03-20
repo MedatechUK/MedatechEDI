@@ -17,7 +17,7 @@ Public Class RunBatSvc
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-        _appEx = New AppExtension(Me.logHandler)
+
 
     End Sub
 
@@ -61,8 +61,13 @@ Public Class RunBatSvc
 
     Overrides Sub svcStart(ByVal args As Dictionary(Of String, String))
 
-        Log("Starting...")
+
+
         Try
+            If _appEx Is Nothing Then _
+                _appEx = New AppExtension(Me.logHandler)
+
+            Log("Starting...")
 
 #Region "Make config file"
 

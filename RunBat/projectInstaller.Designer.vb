@@ -21,13 +21,14 @@
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.ServiceInstaller1 = New System.ServiceProcess.ServiceInstaller
-        Me.ServiceProcessInstaller1 = New System.ServiceProcess.ServiceProcessInstaller
+        Me.ServiceInstaller1 = New System.ServiceProcess.ServiceInstaller()
+        Me.ServiceProcessInstaller1 = New System.ServiceProcess.ServiceProcessInstaller()
         '
         'ServiceInstaller1
         '
-        Me.ServiceInstaller1.DisplayName = "RunBat Service"
-        Me.ServiceInstaller1.ServiceName = "RUNBAT"
+        Me.ServiceInstaller1.Description = "Folder monitoring for EDI."
+        Me.ServiceInstaller1.DisplayName = "MedatechUK EDI Service"
+        Me.ServiceInstaller1.ServiceName = "edisvc"
         Me.ServiceInstaller1.StartType = System.ServiceProcess.ServiceStartMode.Automatic
         '
         'ServiceProcessInstaller1

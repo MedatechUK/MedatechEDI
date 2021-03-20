@@ -1,4 +1,5 @@
-﻿Imports System.ComponentModel.Composition
+﻿Imports System.ComponentModel
+Imports System.ComponentModel.Composition
 Imports MedatechUK.Deserialiser
 
 <Export(GetType(ILexor))>
@@ -66,6 +67,7 @@ Partial Public Class ftpconfig
 #End Region
 
     '''<remarks/>
+    <Browsable(False)>
     <System.Xml.Serialization.XmlElementAttribute("mode")>
     Public Property mode As List(Of ftpconfigMode)
         Get
@@ -77,6 +79,7 @@ Partial Public Class ftpconfig
     End Property
 
     '''<remarks/>
+    <Browsable(False)>
     <System.Xml.Serialization.XmlElementAttribute("server")>
     Public Property server As List(Of ftpconfigServer)
         Get
@@ -88,6 +91,10 @@ Partial Public Class ftpconfig
     End Property
 
     '''<remarks/>
+    <DisplayName("Default Mode"),
+    Description("The mode that will be used if not specified by the -m parameter."),
+    Category("Defaults"),
+    TypeConverter(GetType(ModeList))>
     <System.Xml.Serialization.XmlAttributeAttribute("mode")>
     Public Property defaultmode() As String
         Get
@@ -154,10 +161,18 @@ Partial Public Class ftpconfigMode
 
     End Sub
 
+    Sub New(Name As String, ByRef Server As String)
+        nameField = Name
+        serverField = Server
+
+    End Sub
+
     Sub New()
 
     End Sub
+
     '''<remarks/>
+    <Browsable(False)>
     <System.Xml.Serialization.XmlElementAttribute("receive", GetType(ftpconfigModeReceive)),
      System.Xml.Serialization.XmlElementAttribute("send", GetType(ftpconfigModeSend))>
     Public Property Act() As List(Of ftpconfigModeAct)
@@ -170,6 +185,10 @@ Partial Public Class ftpconfigMode
     End Property
 
     '''<remarks/>
+    <DisplayName("Mode Name"),
+    Description("A mode is a collection of send/receive actions. Mode can be specified by running the ediftp.exe with the -m {mode} parameter."),
+    Category("Mode"),
+    [ReadOnly](True)>
     <System.Xml.Serialization.XmlAttributeAttribute()>
     Public Property name() As String
         Get
@@ -181,6 +200,10 @@ Partial Public Class ftpconfigMode
     End Property
 
     '''<remarks/>
+    <DisplayName("Server"),
+    Description("The server to run this action against."),
+    Category("Mode"),
+    TypeConverter(GetType(ServerList))>
     <System.Xml.Serialization.XmlAttributeAttribute()>
     Public Property server() As String
         Get
@@ -207,6 +230,10 @@ Partial Public MustInherit Class ftpconfigModeAct
 
     Private remotedirField As String
 
+    <DisplayName("Action Type"),
+    Description("Send or receive Action."),
+    Category("Action"),
+    [ReadOnly](True)>
     Public MustOverride ReadOnly Property actType As eActType
 
 #Region "CTOR"
@@ -225,6 +252,9 @@ Partial Public MustInherit Class ftpconfigModeAct
 #End Region
 
     '''<remarks/>
+    <DisplayName("Directory"),
+    Description("The local directory for the action."),
+    Category("Action")>
     Public Property dir() As String
         Get
             Return Me.dirField
@@ -235,6 +265,9 @@ Partial Public MustInherit Class ftpconfigModeAct
     End Property
 
     '''<remarks/>
+    <DisplayName("File type"),
+    Description("The type of file to process, e.g. *.xml"),
+    Category("Action")>
     Public Property filespec() As String
         Get
             Return Me.filespecField
@@ -245,6 +278,9 @@ Partial Public MustInherit Class ftpconfigModeAct
     End Property
 
     '''<remarks/>
+    <DisplayName("Remote Directory"),
+    Description("The directory for the action on the remote file server."),
+    Category("Action")>
     Public Property remotedir() As String
         Get
             Return Me.remotedirField
@@ -331,6 +367,9 @@ Partial Public Class ftpconfigModeReceive
 #End Region
 
     '''<remarks/>
+    <DisplayName("Delete"),
+    Description("Delete downloaded files from the remote file server."),
+    Category("Receive")>
     Public Property delete() As Boolean
         Get
             Return Me.deleteField
@@ -341,6 +380,9 @@ Partial Public Class ftpconfigModeReceive
     End Property
 
     '''<remarks/>
+    <DisplayName("Binary"),
+    Description("The batch (.bat), executable (.exe) or Lexor class that handles downloaded files. For .bat/.exe binary the downloaded filename is passed as %1 (1st parameter)."),
+    Category("Receive")>
     Public Property bin() As String
         Get
             Return Me.binField
@@ -351,6 +393,9 @@ Partial Public Class ftpconfigModeReceive
     End Property
 
     '''<remarks/>
+    <DisplayName("Environment"),
+    Description("The Priority environment that downloaded files will to loaded to. For .bat/.exe binary this is passed as %2 (2nd parameter)."),
+    Category("Receive")>
     Public Property environment() As String
         Get
             Return Me.environmentField
@@ -447,6 +492,9 @@ Partial Public Class ftpconfigServer
 #End Region
 
     '''<remarks/>
+    <DisplayName("Hostname or IP address"),
+    Description("The address of the remote file service."),
+    Category("Server")>
     Public Property HostName() As String
         Get
             Return Me.hostNameField
@@ -457,6 +505,9 @@ Partial Public Class ftpconfigServer
     End Property
 
     '''<remarks/>
+    <DisplayName("Service Protocol"),
+    Description("The protocol used by the host to send/receive files."),
+    Category("Server")>
     Public Property Protocol() As eProtocol
         Get
             Return Me.protocolField
@@ -466,7 +517,23 @@ Partial Public Class ftpconfigServer
         End Set
     End Property
 
+    '''<remarks/>  
+    <DisplayName("Port Number"),
+    Description("The TCP/IP port number of the file server."),
+    Category("Server")>
+    Public Property Port As Integer
+        Get
+            Return PortField
+        End Get
+        Set(value As Integer)
+            PortField = value
+        End Set
+    End Property
+
     '''<remarks/>
+    <DisplayName("Transfer Mode"),
+    Description("Select ASCII or binary transfer as required, or leave automatic."),
+    Category("Server")>
     Public Property TransferMode() As WinSCP.TransferMode
         Get
             Return Me.transferModeField
@@ -477,6 +544,9 @@ Partial Public Class ftpconfigServer
     End Property
 
     '''<remarks/>
+    <DisplayName("User name"),
+    Description("The user credentials for connecting to the file server."),
+    Category("Security")>
     Public Property UserName() As String
         Get
             Return Me.userNameField
@@ -487,6 +557,10 @@ Partial Public Class ftpconfigServer
     End Property
 
     '''<remarks/>
+    <DisplayName("Password"),
+    Description("The password credentials for connecting to the file server."),
+    Category("Security"),
+    PasswordPropertyText(True)>
     Public Property Password() As String
         Get
             Return Me.passwordField
@@ -497,6 +571,9 @@ Partial Public Class ftpconfigServer
     End Property
 
     '''<remarks/>
+    <DisplayName("SSH Host Key"),
+    Description("The SSH key allows encryption for secure FTP connections."),
+    Category("Security")>
     Public Property SshHostKeyFingerprint() As String
         Get
             Return Me.sshHostKeyFingerprintField
@@ -508,22 +585,16 @@ Partial Public Class ftpconfigServer
 
     '''<remarks/>
     <System.Xml.Serialization.XmlAttributeAttribute()>
+    <DisplayName("Friendly Name"),
+    Description("The name of this server configuration."),
+    Category("General"),
+    [ReadOnly](True)>
     Public Property name() As String
         Get
             Return Me.nameField
         End Get
         Set
             Me.nameField = Value
-        End Set
-    End Property
-
-    '''<remarks/>    
-    Public Property Port As Integer
-        Get
-            Return PortField
-        End Get
-        Set(value As Integer)
-            PortField = value
         End Set
     End Property
 
