@@ -23,9 +23,9 @@ Partial Class frmConfig
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim TreeNode4 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Servers", 1, 1)
-        Dim TreeNode5 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Modes", 2, 2)
-        Dim TreeNode6 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Configuration", 0, 0, New System.Windows.Forms.TreeNode() {TreeNode4, TreeNode5})
+        Dim TreeNode1 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Servers", 1, 1)
+        Dim TreeNode2 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Modes", 2, 2)
+        Dim TreeNode3 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Configuration", 0, 0, New System.Windows.Forms.TreeNode() {TreeNode1, TreeNode2})
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmConfig))
         Me.ServerContextMenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.AddServerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -130,21 +130,21 @@ Partial Class frmConfig
         Me.Tree.LabelEdit = True
         Me.Tree.Location = New System.Drawing.Point(0, 0)
         Me.Tree.Name = "Tree"
-        TreeNode4.ContextMenuStrip = Me.ServerContextMenu
-        TreeNode4.ImageIndex = 1
-        TreeNode4.Name = "NodeServer"
-        TreeNode4.SelectedImageIndex = 1
-        TreeNode4.Text = "Servers"
-        TreeNode5.ContextMenuStrip = Me.ModeContextMenu
-        TreeNode5.ImageIndex = 2
-        TreeNode5.Name = "nodeAct"
-        TreeNode5.SelectedImageIndex = 2
-        TreeNode5.Text = "Modes"
-        TreeNode6.ImageIndex = 0
-        TreeNode6.Name = "nodeMain"
-        TreeNode6.SelectedImageIndex = 0
-        TreeNode6.Text = "Configuration"
-        Me.Tree.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode6})
+        TreeNode1.ContextMenuStrip = Me.ServerContextMenu
+        TreeNode1.ImageIndex = 1
+        TreeNode1.Name = "NodeServer"
+        TreeNode1.SelectedImageIndex = 1
+        TreeNode1.Text = "Servers"
+        TreeNode2.ContextMenuStrip = Me.ModeContextMenu
+        TreeNode2.ImageIndex = 2
+        TreeNode2.Name = "nodeAct"
+        TreeNode2.SelectedImageIndex = 2
+        TreeNode2.Text = "Modes"
+        TreeNode3.ImageIndex = 0
+        TreeNode3.Name = "nodeMain"
+        TreeNode3.SelectedImageIndex = 0
+        TreeNode3.Text = "Configuration"
+        Me.Tree.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode3})
         Me.Tree.SelectedImageIndex = 0
         Me.Tree.Size = New System.Drawing.Size(350, 368)
         Me.Tree.TabIndex = 0
@@ -205,31 +205,31 @@ Partial Class frmConfig
         '
         Me.ActContextMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddToolStripMenuItem, Me.DeleteToolStripMenuItem})
         Me.ActContextMenu.Name = "ActContextMenu"
-        Me.ActContextMenu.Size = New System.Drawing.Size(181, 70)
+        Me.ActContextMenu.Size = New System.Drawing.Size(142, 48)
         '
         'AddToolStripMenuItem
         '
         Me.AddToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SendActionToolStripMenuItem, Me.ReceiveActionToolStripMenuItem})
         Me.AddToolStripMenuItem.Name = "AddToolStripMenuItem"
-        Me.AddToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.AddToolStripMenuItem.Size = New System.Drawing.Size(141, 22)
         Me.AddToolStripMenuItem.Text = "Add"
         '
         'SendActionToolStripMenuItem
         '
         Me.SendActionToolStripMenuItem.Name = "SendActionToolStripMenuItem"
-        Me.SendActionToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.SendActionToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.SendActionToolStripMenuItem.Text = "Send Action"
         '
         'ReceiveActionToolStripMenuItem
         '
         Me.ReceiveActionToolStripMenuItem.Name = "ReceiveActionToolStripMenuItem"
-        Me.ReceiveActionToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ReceiveActionToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.ReceiveActionToolStripMenuItem.Text = "Receive Action"
         '
         'DeleteToolStripMenuItem
         '
         Me.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem"
-        Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(141, 22)
         Me.DeleteToolStripMenuItem.Text = "Delete Mode"
         '
         'ModeActContextMenu

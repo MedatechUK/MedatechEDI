@@ -1,4 +1,5 @@
-﻿Imports System.Windows.Forms
+﻿Imports System.Drawing
+Imports System.Windows.Forms
 
 Public Class frmConfig
 
@@ -206,16 +207,26 @@ Public Class frmConfig
         With TryCast(e.Node, tvObject)
             Select Case .myObject.GetType
                 Case GetType(ftpconfigServer)
-                    With TryCast(.myObject, ftpconfigServer)
-                        .name = e.Label
-
-                    End With
+                    For Each s In config.server
+                        If String.Compare(s.name, e.Label, True) = 0 Then
+                            MsgBox(String.Format("A server called '{0}' already exists.", e.Label))
+                            e.CancelEdit() = True
+                            e.Node.BeginEdit()
+                            Exit Sub
+                        End If
+                    Next
+                    TryCast(.myObject, ftpconfigServer).name = e.Label
 
                 Case GetType(ftpconfigMode)
-                    With TryCast(.myObject, ftpconfigMode)
-                        .name = e.Label
-
-                    End With
+                    For Each s In config.mode
+                        If String.Compare(s.name, e.Label, True) = 0 Then
+                            MsgBox(String.Format("A mode called '{0}' already exists.", e.Label))
+                            e.CancelEdit() = True
+                            e.Node.BeginEdit()
+                            Exit Sub
+                        End If
+                    Next
+                    TryCast(.myObject, ftpconfigMode).name = e.Label
 
                 Case Else
 
@@ -230,27 +241,81 @@ Public Class frmConfig
         Dim n As New tvObject
         With TryCast(TryCast(Tree.SelectedNode, tvObject).myObject, ftpconfigMode)
             With .Act
-                .Add(New ftpconfigModeSend("/remote/folder"))
+                .Add(New ftpconfigModeSend("/remote/directory"))
                 With n
                     .Name = System.Guid.NewGuid.ToString
-                    .Text = "/remote/folder"
+                    .Text = "/remote/directory"
                     .myObject = TryCast(TryCast(Tree.SelectedNode, tvObject).myObject, ftpconfigMode).Act.Last
-                    .ContextMenuStrip = Me.ServerItemContextMenu
+                    .ContextMenuStrip = Me.ModeActContextMenu
                     .ImageIndex = 5
                     .SelectedImageIndex = 5
+
                 End With
             End With
         End With
 
-        Dim i As Integer = Tree.SelectedNode.Nodes.Add(n)
-        Tree.SelectedNode.Nodes(i).Tag = i
-        Tree.SelectedNode = Tree.Nodes(0).Nodes(1).Nodes(Tree.SelectedNode.Tag).Nodes(i)
-        Tree.SelectedNode.BeginEdit()
+        With Tree.SelectedNode
+            Dim i As Integer = .Nodes.Add(n)
+            With .Nodes(i)
+                .Tag = i
+                .Parent.ExpandAll()
+
+            End With
+
+        End With
 
     End Sub
 
     Private Sub ReceiveActionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReceiveActionToolStripMenuItem.Click
+        Dim n As New tvObject
+        With TryCast(TryCast(Tree.SelectedNode, tvObject).myObject, ftpconfigMode)
+            With .Act
+                .Add(New ftpconfigModeReceive("/remote/directory"))
+                With n
+                    .Name = System.Guid.NewGuid.ToString
+                    .Text = "/remote/directory"
+                    .myObject = TryCast(TryCast(Tree.SelectedNode, tvObject).myObject, ftpconfigMode).Act.Last
+                    .ContextMenuStrip = Me.ModeActContextMenu
+                    .ImageIndex = 4
+                    .SelectedImageIndex = 4
 
+                End With
+            End With
+        End With
+
+        With Tree.SelectedNode
+            Dim i As Integer = .Nodes.Add(n)
+            With .Nodes(i)
+                .Tag = i
+                .Parent.ExpandAll()
+
+            End With
+
+        End With
+
+    End Sub
+
+    Private Sub DeleteToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles DeleteToolStripMenuItem1.Click
+        If MsgBox(
+            String.Format(
+                "This will delete the selected action." & vbCrLf &
+                "Are you sure you wish to continue?", ""
+            ), vbYesNo, "Delete?"
+        ) = vbYes Then
+            Dim parent As Integer = Tree.SelectedNode.Parent.Tag
+            config.mode(parent).Act.RemoveAt(Tree.SelectedNode.Tag)
+            Tree.SelectedNode.Remove()
+
+        End If
+    End Sub
+
+    Private Sub Tree_MouseClick(sender As Object, e As MouseEventArgs) Handles Tree.MouseClick
+        Tree.SelectedNode = Tree.GetNodeAt(New Point(e.X, e.Y))
+
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Me.Close()
     End Sub
 
 End Class

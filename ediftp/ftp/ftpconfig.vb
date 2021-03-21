@@ -254,7 +254,8 @@ Partial Public MustInherit Class ftpconfigModeAct
     '''<remarks/>
     <DisplayName("Directory"),
     Description("The local directory for the action."),
-    Category("Action")>
+    Category("Action"),
+    Editor(GetType(FolderBrowse), GetType(System.Drawing.Design.UITypeEditor))>
     Public Property dir() As String
         Get
             Return Me.dirField

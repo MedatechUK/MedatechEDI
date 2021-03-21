@@ -6,7 +6,7 @@ Imports MedatechUK.Logging
 
 Module Module1
     Public config As ftpconfig
-    Public args As clArg
+    Public args As New clArg(AddressOf MedatechUK.Logging.Events.logHandler)
     Public curdir As New DirectoryInfo(Environment.CurrentDirectory)
 
     Public ReadOnly Property ConfigFile As FileInfo
@@ -26,7 +26,10 @@ Module Module1
 
 #Region "Make Config File"
 
+            args.Log("Executing in [{0}].", curdir.FullName)
             If Not ConfigFile.Exists Then
+
+                args.Log("Missing ftp.config. Creating.")
                 Using c As New ftpconfig("sandbox")
                     With c
                         With .server
@@ -66,15 +69,19 @@ Module Module1
 
                         Case "config"
                             With ex.LexByAssemblyName(GetType(ftpconfig).FullName)
-                                config = .Deserialise(New StreamReader(ConfigFile.FullName))
-                                Using c As New frmConfig()
-                                    c.ShowDialog()
-
+                                Using sr As New StreamReader(ConfigFile.FullName)
+                                    Using c As ftpconfig = .Deserialise(sr)
+                                        config = c
+                                    End Using
+                                    Using c As New frmConfig()
+                                        c.ShowDialog()
+                                    End Using
                                 End Using
-                                toFile(config)
-                                End
 
                             End With
+
+                            toFile(config)
+                            End
 
                         Case "mode", "m"
                             mode = args(k)
