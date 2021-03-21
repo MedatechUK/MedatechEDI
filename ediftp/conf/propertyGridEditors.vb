@@ -1,5 +1,6 @@
 ﻿Imports System.ComponentModel
 Imports System.Drawing.Design
+Imports System.Text
 Imports System.Windows.Forms.Design
 
 Public Class ServerList
@@ -76,13 +77,61 @@ Public Class FolderBrowse
 
     Public Overrides Function EditValue(context As ITypeDescriptorContext, provider As IServiceProvider, value As Object) As Object
         With brws
-            .SelectedPath = IO.Path.Combine(curdir.FullName, value.ToString)
+            .SelectedPath = IO.Path.Combine(curdir.FullName)
             If .ShowDialog = Windows.Forms.DialogResult.OK Then
-                Return .SelectedPath
+
+                Dim cur As New List(Of String)
+                For Each p As String In Split(curdir.FullName, "\")
+                    cur.Add(p)
+                Next
+                Dim add As New List(Of String)
+                For Each p As String In Split(.SelectedPath, "\")
+                    add.Add(p)
+                Next
+
+                For i As Integer = 0 To cur.Count - 1
+                    If Not String.Compare(cur(i), add(i), True) = 0 Then
+                        MsgBox(String.Format("The folder must be located in the [{0}] directory.", curdir.FullName))
+                        Return MyBase.EditValue(context, provider, value)
+                    End If
+                Next
+                Dim str As New StringBuilder
+                For i As Integer = cur.Count To add.Count - 1
+                    str.Append(add(i))
+                    If i < add.Count - 1 Then
+                        str.Append("\")
+                    End If
+                Next
+                Return str.ToString
             Else
                 Return MyBase.EditValue(context, provider, value)
             End If
         End With
+    End Function
+End Class
+
+Public Class BinSelEdit
+    Inherits UITypeEditor
+
+
+    Public Overrides Function GetEditStyle(context As ITypeDescriptorContext) As UITypeEditorEditStyle
+        Return UITypeEditorEditStyle.Modal
+    End Function
+
+    Public Overrides Function EditValue(context As ITypeDescriptorContext, provider As IServiceProvider, value As Object) As Object
+
+        Using sel As New binSelect()
+            With sel
+                .Value = value
+                If .ShowDialog = Windows.Forms.DialogResult.OK Then
+                    Return .Value
+                Else
+                    Return MyBase.EditValue(context, provider, value)
+                End If
+            End With
+
+        End Using
+
     End Function
 
 End Class

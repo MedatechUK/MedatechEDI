@@ -5,13 +5,24 @@ Imports MedatechUK.Deserialiser
 Imports MedatechUK.Logging
 
 Module Module1
+
     Public config As ftpconfig
+    Public oconfig As odataConfig
+    Public lexors As List(Of String)
     Public args As New clArg(AddressOf MedatechUK.Logging.Events.logHandler)
     Public curdir As New DirectoryInfo(Environment.CurrentDirectory)
 
     Public ReadOnly Property ConfigFile As FileInfo
         Get
             Return New FileInfo(Path.Combine(curdir.FullName, "ftp.config"))
+
+        End Get
+    End Property
+
+    Public ReadOnly Property oDataConfigFile As FileInfo
+        Get
+            Return New FileInfo(Path.Combine(curdir.FullName, "odata.config"))
+
         End Get
     End Property
 
@@ -21,10 +32,11 @@ Module Module1
         Dim send As Boolean = True
         Dim receive As Boolean = True
         Dim conf As ftpconfig = Nothing
+        Dim isConfig As Boolean = False
 
         Try
 
-#Region "Make Config File"
+#Region "Make Config Files"
 
             args.Log("Executing in [{0}].", curdir.FullName)
             If Not ConfigFile.Exists Then
@@ -54,9 +66,17 @@ Module Module1
 
             End If
 
+            If Not oDataConfigFile.Exists Then
+                Using c As New odataConfig("https://localhost")
+                    oDatatoFile(c)
+
+                End Using
+            End If
+
 #End Region
 
 #Region "Command Line Arguments"
+
             Using ex As New AppExtension(AddressOf Events.logHandler)
 
                 args = New clArg(AddressOf Events.logHandler)
@@ -68,20 +88,42 @@ Module Module1
                             End
 
                         Case "config"
-                            With ex.LexByAssemblyName(GetType(ftpconfig).FullName)
-                                Using sr As New StreamReader(ConfigFile.FullName)
-                                    Using c As ftpconfig = .Deserialise(sr)
-                                        config = c
+                            isConfig = True
+                            With ex
+                                lexors = .LoadedAssemblies
+                                With .LexByAssemblyName(GetType(ftpconfig).FullName)
+                                    Using sr As New StreamReader(ConfigFile.FullName)
+                                        Using c As ftpconfig = .Deserialise(sr)
+                                            config = c
+                                        End Using
                                     End Using
-                                    Using c As New frmConfig()
-                                        c.ShowDialog()
+                                End With
+
+                                With .LexByAssemblyName(GetType(odataConfig).FullName)
+                                    Using sr As New StreamReader(oDataConfigFile.FullName)
+                                        Using c As odataConfig = .Deserialise(sr)
+                                            oconfig = c
+                                        End Using
                                     End Using
+                                End With
+
+                                Using c As New frmConfig()
+                                    c.ShowDialog()
                                 End Using
 
                             End With
 
-                            toFile(config)
-                            End
+                            Try
+                                args.line("Saving configuration")
+                                toFile(config)
+                                oDatatoFile(oconfig)
+                                args.Colourise(ConsoleColor.Green, "OK")
+
+                            Catch exp As Exception
+                                args.Colourise(ConsoleColor.Red, "Fail")
+                            Finally
+                                Console.WriteLine()
+                            End Try
 
                         Case "mode", "m"
                             mode = args(k)
@@ -103,19 +145,25 @@ Module Module1
 
 #End Region
 
-                With ex.LexByAssemblyName(GetType(ftpconfig).FullName)
-                    Using ftp As New ftpConnection(.Deserialise(New StreamReader(ConfigFile.FullName)), ex, mode)
-                        ftp.connect(send, receive)
+                If Not isConfig Then
+                    With ex.LexByAssemblyName(GetType(ftpconfig).FullName)
+                        Using sr As New StreamReader(ConfigFile.FullName)
+                            Using ftp As New ftpConnection(.Deserialise(sr), ex, mode)
+                                ftp.connect(send, receive)
 
-                    End Using
-                End With
+                            End Using
+                        End Using
+                    End With
+                End If
 
             End Using
 
         Catch ex As Exception
+            args.Colourise(ConsoleColor.Red, ex.Message)
             Log(ex.Message)
 
         Finally
+            Console.WriteLine()
             args.wait()
 
         End Try
@@ -128,6 +176,17 @@ Module Module1
             writer = New XmlSerializer(GetType(ftpconfig))
         Catch : End Try
         Using f As New System.IO.StreamWriter(ConfigFile.FullName)
+            writer.Serialize(f, settings)
+        End Using
+
+    End Sub
+
+    Private Sub oDatatoFile(settings As odataConfig)
+        Dim writer As XmlSerializer
+        Try
+            writer = New XmlSerializer(GetType(odataConfig))
+        Catch : End Try
+        Using f As New System.IO.StreamWriter(oDataConfigFile.FullName)
             writer.Serialize(f, settings)
         End Using
 

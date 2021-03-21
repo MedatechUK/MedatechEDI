@@ -69,7 +69,7 @@ Public Class ftpConnection
                         If Not .bin Is Nothing Then
 
                             For Each l As Lazy(Of ILexor, ILexorProps) In appEx.Lexors
-                                If String.Compare(l.Metadata.LexName, .bin, True) = 0 Then
+                                If String.Compare(l.Metadata.SerialType.FullName, .bin, True) = 0 Then
                                     .isLexor = True
                                     Exit For
                                 End If
@@ -114,6 +114,8 @@ Public Class ftpConnection
 
                 Case Else
                     .Protocol = _configServer.Protocol
+                    '.FtpMode = FtpMode.Active
+
             End Select
 
             .HostName = _configServer.HostName
@@ -128,6 +130,8 @@ Public Class ftpConnection
 
         Using session As New Session
             Try
+                'session.SessionLogPath = IO.Path.Combine(New FileInfo(Reflection.Assembly.GetEntryAssembly.Location).Directory.FullName, "winscp.log")
+                'session.DebugLogPath = IO.Path.Combine(curdir.FullName, "winscp.log")                
                 args.line(
                     "Opening {0}://{1}",
                     sessionOptions.Protocol.ToString,
@@ -243,11 +247,13 @@ Public Class ftpConnection
         Try
             args.line("Getting files")
             transferResult = e.session.GetFiles(
-                String.Format(
-                    "/{0}/{1}",
-                    sender.remotedir,
-                    sender.filespec
-                ),
+                Replace(
+                    String.Format(
+                        "/{0}/{1}",
+                        sender.remotedir,
+                        sender.filespec
+                    ),
+                "//", "/"),
                 String.Format(
                     "{0}\",
                     e.Dir.FullName
@@ -296,7 +302,7 @@ Public Class ftpConnection
 
                 Select Case sender.isLexor
                     Case True
-                        With _appEx.LexByName(sender.bin)
+                        With _appEx.LexByAssemblyName(sender.bin)
                             Try
                                 args.line(
                                     "Deserialisng with [{0}].",
@@ -397,6 +403,7 @@ Public Class ftpConnection
         ' TODO: uncomment the following line if Finalize() is overridden above.
         ' GC.SuppressFinalize(Me)
     End Sub
+
 #End Region
 
 End Class

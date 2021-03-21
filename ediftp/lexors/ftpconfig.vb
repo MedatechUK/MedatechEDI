@@ -253,7 +253,7 @@ Partial Public MustInherit Class ftpconfigModeAct
 
     '''<remarks/>
     <DisplayName("Directory"),
-    Description("The local directory for the action."),
+    Description("The local directory for the action, relative to the current working directory."),
     Category("Action"),
     Editor(GetType(FolderBrowse), GetType(System.Drawing.Design.UITypeEditor))>
     Public Property dir() As String
@@ -383,7 +383,8 @@ Partial Public Class ftpconfigModeReceive
     '''<remarks/>
     <DisplayName("Binary"),
     Description("The batch (.bat), executable (.exe) or Lexor class that handles downloaded files. For .bat/.exe binary the downloaded filename is passed as %1 (1st parameter)."),
-    Category("Receive")>
+    Category("Receive"),
+    Editor(GetType(BinSelEdit), GetType(System.Drawing.Design.UITypeEditor))>
     Public Property bin() As String
         Get
             Return Me.binField

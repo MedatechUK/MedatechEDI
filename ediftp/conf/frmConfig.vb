@@ -5,8 +5,9 @@ Public Class frmConfig
 
     Private Sub frmConfig_Load(sender As Object, e As EventArgs) Handles Me.Load
 
+        Me.Text = String.Format("FTP Config | {0}", curdir)
         With Tree.Nodes(0)
-            With .Nodes(0)
+            With .Nodes(1)
                 Dim i As Integer = 0
                 For Each s As ftpconfigServer In config.server
                     Dim n As New tvObject
@@ -24,7 +25,7 @@ Public Class frmConfig
 
             End With
 
-            With .Nodes(1)
+            With .Nodes(2)
                 Dim i As Integer = 0
                 For Each s As ftpconfigMode In config.mode
                     Dim n As New tvObject
@@ -78,6 +79,7 @@ Public Class frmConfig
     End Sub
 
     Private Sub Tree_AfterSelect(sender As Object, e As TreeViewEventArgs) Handles Tree.AfterSelect
+
         If Not Tree.SelectedNode Is Nothing Then
             If Tree.SelectedNode.GetType Is GetType(tvObject) Then
                 With TryCast(Tree.SelectedNode, tvObject)
@@ -85,15 +87,21 @@ Public Class frmConfig
                         PropertyGrid.SelectedObject = .myObject
                     End If
                 End With
+
             ElseIf Tree.SelectedNode.Name = "nodeMain" Then
                 PropertyGrid.SelectedObject = config
+
+            ElseIf Tree.SelectedNode.Name = "oDataNode" Then
+                PropertyGrid.SelectedObject = oconfig
 
             Else
                 PropertyGrid.SelectedObject = Nothing
 
             End If
+
         Else
             PropertyGrid.SelectedObject = Nothing
+
         End If
 
     End Sub
@@ -197,6 +205,13 @@ Public Class frmConfig
         With e
             If Not .Node.GetType Is GetType(tvObject) Then
                 .CancelEdit = True
+
+            ElseIf TryCast(.Node, tvobject).myObject.GetType Is GetType(ftpconfigModeReceive) Then
+                .CancelEdit = True
+
+            ElseIf TryCast(.Node, tvObject).myObject.GetType Is GetType(ftpconfigModeSend) Then
+                .CancelEdit = True
+
             End If
         End With
     End Sub
@@ -318,4 +333,10 @@ Public Class frmConfig
         Me.Close()
     End Sub
 
+    Private Sub RenameServerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RenameServerToolStripMenuItem.Click
+        With Tree.SelectedNode
+            .BeginEdit()
+
+        End With
+    End Sub
 End Class

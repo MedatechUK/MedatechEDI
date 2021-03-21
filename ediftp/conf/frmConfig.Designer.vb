@@ -23,9 +23,10 @@ Partial Class frmConfig
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim TreeNode1 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Servers", 1, 1)
-        Dim TreeNode2 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Modes", 2, 2)
-        Dim TreeNode3 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Configuration", 0, 0, New System.Windows.Forms.TreeNode() {TreeNode1, TreeNode2})
+        Dim TreeNode5 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("oData Service", 6, 6)
+        Dim TreeNode6 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("File Servers", 1, 1)
+        Dim TreeNode7 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Run Modes", 2, 2)
+        Dim TreeNode8 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Configuration", 0, 0, New System.Windows.Forms.TreeNode() {TreeNode5, TreeNode6, TreeNode7})
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmConfig))
         Me.ServerContextMenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.AddServerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -48,6 +49,7 @@ Partial Class frmConfig
         Me.DeleteToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ServerItemContextMenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.DeleteServerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RenameServerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ServerContextMenu.SuspendLayout()
         Me.ModeContextMenu.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -130,21 +132,25 @@ Partial Class frmConfig
         Me.Tree.LabelEdit = True
         Me.Tree.Location = New System.Drawing.Point(0, 0)
         Me.Tree.Name = "Tree"
-        TreeNode1.ContextMenuStrip = Me.ServerContextMenu
-        TreeNode1.ImageIndex = 1
-        TreeNode1.Name = "NodeServer"
-        TreeNode1.SelectedImageIndex = 1
-        TreeNode1.Text = "Servers"
-        TreeNode2.ContextMenuStrip = Me.ModeContextMenu
-        TreeNode2.ImageIndex = 2
-        TreeNode2.Name = "nodeAct"
-        TreeNode2.SelectedImageIndex = 2
-        TreeNode2.Text = "Modes"
-        TreeNode3.ImageIndex = 0
-        TreeNode3.Name = "nodeMain"
-        TreeNode3.SelectedImageIndex = 0
-        TreeNode3.Text = "Configuration"
-        Me.Tree.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode3})
+        TreeNode5.ImageIndex = 6
+        TreeNode5.Name = "oDataNode"
+        TreeNode5.SelectedImageIndex = 6
+        TreeNode5.Text = "oData Service"
+        TreeNode6.ContextMenuStrip = Me.ServerContextMenu
+        TreeNode6.ImageIndex = 1
+        TreeNode6.Name = "NodeServer"
+        TreeNode6.SelectedImageIndex = 1
+        TreeNode6.Text = "File Servers"
+        TreeNode7.ContextMenuStrip = Me.ModeContextMenu
+        TreeNode7.ImageIndex = 2
+        TreeNode7.Name = "nodeAct"
+        TreeNode7.SelectedImageIndex = 2
+        TreeNode7.Text = "Run Modes"
+        TreeNode8.ImageIndex = 0
+        TreeNode8.Name = "nodeMain"
+        TreeNode8.SelectedImageIndex = 0
+        TreeNode8.Text = "Configuration"
+        Me.Tree.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode8})
         Me.Tree.SelectedImageIndex = 0
         Me.Tree.Size = New System.Drawing.Size(350, 368)
         Me.Tree.TabIndex = 0
@@ -159,6 +165,7 @@ Partial Class frmConfig
         Me.ImageList1.Images.SetKeyName(3, "settings.ico")
         Me.ImageList1.Images.SetKeyName(4, "download.ico")
         Me.ImageList1.Images.SetKeyName(5, "upload.ico")
+        Me.ImageList1.Images.SetKeyName(6, "oData.ico")
         '
         'PropertyGrid
         '
@@ -246,15 +253,21 @@ Partial Class frmConfig
         '
         'ServerItemContextMenu
         '
-        Me.ServerItemContextMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DeleteServerToolStripMenuItem})
+        Me.ServerItemContextMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DeleteServerToolStripMenuItem, Me.RenameServerToolStripMenuItem})
         Me.ServerItemContextMenu.Name = "ServerItemContextMenu"
-        Me.ServerItemContextMenu.Size = New System.Drawing.Size(143, 26)
+        Me.ServerItemContextMenu.Size = New System.Drawing.Size(181, 70)
         '
         'DeleteServerToolStripMenuItem
         '
         Me.DeleteServerToolStripMenuItem.Name = "DeleteServerToolStripMenuItem"
         Me.DeleteServerToolStripMenuItem.Size = New System.Drawing.Size(142, 22)
         Me.DeleteServerToolStripMenuItem.Text = "Delete Server"
+        '
+        'RenameServerToolStripMenuItem
+        '
+        Me.RenameServerToolStripMenuItem.Name = "RenameServerToolStripMenuItem"
+        Me.RenameServerToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.RenameServerToolStripMenuItem.Text = "Rename Server"
         '
         'frmConfig
         '
@@ -305,4 +318,5 @@ Partial Class frmConfig
     Friend WithEvents DeleteToolStripMenuItem1 As Windows.Forms.ToolStripMenuItem
     Friend WithEvents ServerItemContextMenu As Windows.Forms.ContextMenuStrip
     Friend WithEvents DeleteServerToolStripMenuItem As Windows.Forms.ToolStripMenuItem
+    Friend WithEvents RenameServerToolStripMenuItem As Windows.Forms.ToolStripMenuItem
 End Class
