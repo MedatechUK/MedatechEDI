@@ -12,20 +12,6 @@ Module Module1
     Public args As New clArg(AddressOf MedatechUK.Logging.Events.logHandler)
     Public curdir As New DirectoryInfo(Environment.CurrentDirectory)
 
-    Public ReadOnly Property ConfigFile As FileInfo
-        Get
-            Return New FileInfo(Path.Combine(curdir.FullName, "ftp.config"))
-
-        End Get
-    End Property
-
-    Public ReadOnly Property oDataConfigFile As FileInfo
-        Get
-            Return New FileInfo(Path.Combine(curdir.FullName, "odata.config"))
-
-        End Get
-    End Property
-
     Sub Main(arg() As String)
 
         Dim mode As String = Nothing
@@ -159,8 +145,8 @@ Module Module1
             End Using
 
         Catch ex As Exception
-            args.Colourise(ConsoleColor.Red, ex.Message)
-            Log(ex.Message)
+            args.Colourise(ConsoleColor.Red, "")
+            Log(ex)
 
         Finally
             Console.WriteLine()
@@ -169,6 +155,22 @@ Module Module1
         End Try
 
     End Sub
+
+#Region "Config Files"
+
+    Public ReadOnly Property ConfigFile As FileInfo
+        Get
+            Return New FileInfo(Path.Combine(curdir.FullName, "ftp.config"))
+
+        End Get
+    End Property
+
+    Public ReadOnly Property oDataConfigFile As FileInfo
+        Get
+            Return New FileInfo(Path.Combine(curdir.FullName, "odata.config"))
+
+        End Get
+    End Property
 
     Private Sub toFile(settings As ftpconfig)
         Dim writer As XmlSerializer
@@ -191,5 +193,7 @@ Module Module1
         End Using
 
     End Sub
+
+#End Region
 
 End Module

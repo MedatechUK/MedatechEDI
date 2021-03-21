@@ -58,6 +58,8 @@ Public Class ftpConnection
         Next
         If Not f Then
             Throw New Exception(String.Format("Mode not found: [{0}]", Mode))
+        Else
+            Console.WriteLine("Run Mode is [{0}].", _configMode.name)
 
         End If
 
@@ -130,12 +132,11 @@ Public Class ftpConnection
 
         Using session As New Session
             Try
-                'session.SessionLogPath = IO.Path.Combine(New FileInfo(Reflection.Assembly.GetEntryAssembly.Location).Directory.FullName, "winscp.log")
-                'session.DebugLogPath = IO.Path.Combine(curdir.FullName, "winscp.log")                
                 args.line(
-                    "Opening {0}://{1}",
+                    "Opening {0}://{1}:{2}",
                     sessionOptions.Protocol.ToString,
-                    sessionOptions.HostName
+                    sessionOptions.HostName,
+                    sessionOptions.PortNumber.ToString
                 )
 
                 ' Connect
@@ -245,7 +246,11 @@ Public Class ftpConnection
         Dim transferResult As TransferOperationResult
         ' Get inbound files
         Try
-            args.line("Getting files")
+            args.line("Getting [/{0}/{1}]",
+                sender.remotedir,
+                sender.filespec
+            )
+
             transferResult = e.session.GetFiles(
                 Replace(
                     String.Format(
@@ -293,8 +298,14 @@ Public Class ftpConnection
 
             args.Log(
                 String.Format(
-                    " Downloaded file {0}.",
-                    FN.Name
+                    "Downloaded file {0}.",
+                    FN.FullName
+                )
+            )
+            Console.WriteLine(
+                String.Format(
+                    "Downloaded file {0}.",
+                    FN.FullName
                 )
             )
 
@@ -304,15 +315,17 @@ Public Class ftpConnection
                     Case True
                         With _appEx.LexByAssemblyName(sender.bin)
                             Try
-                                args.line(
-                                    "Deserialisng with [{0}].",
+                                Console.WriteLine(
+                                    "Deserialising with [{0}].",
                                     New FileInfo(sender.bin).Name
                                 )
-                                .Deserialise(New StreamReader(FN.FullName), sender.environment)
-                                args.Colourise(ConsoleColor.Green, "OK")
+                                Using sr As New StreamReader(FN.FullName)
+                                    .Deserialise(sr, sender.environment)
+                                    args.Colourise(ConsoleColor.Green, "OK")
+
+                                End Using
 
                             Catch ex As Exception
-                                args.Colourise(ConsoleColor.Red, "FAILED")
                                 Throw ex
 
                             Finally
@@ -374,6 +387,7 @@ Public Class ftpConnection
 #End Region
 
 #Region "IDisposable Support"
+
     Private disposedValue As Boolean ' To detect redundant calls
 
     ' IDisposable
