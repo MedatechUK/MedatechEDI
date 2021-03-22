@@ -50,13 +50,15 @@ Public Class frmConfig
                                     Case eActType.receive
                                         .ImageIndex = 4
                                         .SelectedImageIndex = 4
+                                        .Text = "GET"
 
                                     Case Else
                                         .ImageIndex = 5
                                         .SelectedImageIndex = 5
+                                        .Text = "PUT"
 
                                 End Select
-                                .Text = a.remotedir
+
                                 .myObject = a
                                 .Tag = i2
                                 i2 += 1

@@ -61,8 +61,6 @@ Public Class RunBatSvc
 
     Overrides Sub svcStart(ByVal args As Dictionary(Of String, String))
 
-
-
         Try
             If _appEx Is Nothing Then _
                 _appEx = New AppExtension(Me.logHandler)
@@ -90,7 +88,7 @@ Public Class RunBatSvc
                     Else
                         ' Validate binaries                                
                         For Each l As Lazy(Of ILexor, ILexorProps) In _appEx.Lexors
-                            If String.Compare(l.Metadata.LexName, loc.bin, True) = 0 Then
+                            If String.Compare(l.Metadata.SerialType.FullName, loc.bin, True) = 0 Then
                                 loc.isLexor = True
                                 Exit For
                             End If
@@ -164,13 +162,22 @@ Public Class RunBatSvc
             For Each loc As runbatconfigLoc In _config.loc
                 Dim testdir As New DirectoryInfo(loc.path)
                 If String.Compare(testdir.FullName, dir.FullName, True) = 0 Then
-                    If loc.isLexor Then
-                        With _appEx.LexByName(loc.bin)
-                            .Deserialise(New StreamReader(e.FullPath), loc.environment)
+                    ' Validate binaries      
+                    Dim f As Boolean = False
+                    For Each l As Lazy(Of ILexor, ILexorProps) In _appEx.Lexors
+                        If String.Compare(l.Metadata.SerialType.FullName, loc.bin, True) = 0 Then
+                            With _appEx.LexByAssemblyName(loc.bin)
+                                Using sr As New StreamReader(e.FullPath)
+                                    .Deserialise(sr, loc.environment)
 
-                        End With
+                                End Using
+                            End With
+                            f = True
+                            Exit For
+                        End If
+                    Next
 
-                    Else
+                    If Not f Then
                         With New Process
                             With .StartInfo
                                 .UseShellExecute = False
@@ -198,6 +205,7 @@ Public Class RunBatSvc
 
                     End If
                     Exit For
+
                 End If
             Next
 

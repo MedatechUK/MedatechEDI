@@ -98,6 +98,7 @@ Partial Public Class runbatconfigLoc
 
     Private filetypeField As String
 
+    <System.Xml.Serialization.XmlIgnore()>
     Public isLexor As Boolean = False
 
 #Region "CTOR"

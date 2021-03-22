@@ -302,12 +302,6 @@ Public Class ftpConnection
                     FN.FullName
                 )
             )
-            Console.WriteLine(
-                String.Format(
-                    "Downloaded file {0}.",
-                    FN.FullName
-                )
-            )
 
             If Not sender.bin Is Nothing Then
 
