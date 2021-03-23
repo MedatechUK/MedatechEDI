@@ -72,7 +72,7 @@ Public Class RunBatSvc
             If Not ConfigFile.Exists Then
                 Using c As New runbatconfig
                     With c
-                        .loc.Add(New runbatconfigLoc("c:\out", "runbatconfig", "demo"))
+                        .loc.Add(New runbatconfigLoc("c:\out", "", "demo"))
                     End With
                     toFile(c)
                 End Using
@@ -94,24 +94,22 @@ Public Class RunBatSvc
                             End If
                         Next
 
-                        If Not loc.isLexor Then
-                            If Not New FileInfo(loc.bin).Exists Then
-                                Throw New Exception(String.Format("Executable not found: [{0}]", loc.bin))
+                        If loc.isLexor Or New FileInfo(loc.bin).Exists Then
+                            Dim fsw As New FileSystemWatcher
+                            With fsw
+                                AddHandler .Created, AddressOf fsw_Created
+                                .Path = loc.path
+                                .IncludeSubdirectories = False
+                                .EnableRaisingEvents = True
+                                If Not loc.filetype Is Nothing Then .Filter = loc.filetype
 
-                            End If
+                            End With
+                            Log("Monitoring folder [{0}].", .FullName)
+
+                        Else
+                            Log("Executable not found: [{0}]", loc.bin)
+
                         End If
-
-                        Dim fsw As New FileSystemWatcher
-                        With fsw
-                            AddHandler .Created, AddressOf fsw_Created
-                            .Path = loc.path
-                            .IncludeSubdirectories = False
-                            .EnableRaisingEvents = True
-                            If Not loc.filetype Is Nothing Then .Filter = loc.filetype
-
-                        End With
-
-                        Log("Monitoring folder [{0}].", .FullName)
 
                     End If
 
