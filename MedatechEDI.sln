@@ -47,6 +47,8 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ashridge", "lexors\ashridge
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Esterform", "lexors\esterform\Esterform\Esterform.vbproj", "{A20D4BF1-1750-40B4-9112-A6FEB0140507}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ediSVCSettings", "RunBat\ControlPanel\ediSVCSettings\ediSVCSettings.vbproj", "{CD800535-5331-4151-A479-A9C7CAE6B3F5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -103,6 +105,10 @@ Global
 		{A20D4BF1-1750-40B4-9112-A6FEB0140507}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A20D4BF1-1750-40B4-9112-A6FEB0140507}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A20D4BF1-1750-40B4-9112-A6FEB0140507}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD800535-5331-4151-A479-A9C7CAE6B3F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD800535-5331-4151-A479-A9C7CAE6B3F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD800535-5331-4151-A479-A9C7CAE6B3F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD800535-5331-4151-A479-A9C7CAE6B3F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -122,6 +128,7 @@ Global
 		{F50C0629-1208-4F79-A808-33D93C3DD18E} = {53755FB5-3F2D-493A-AB4B-0C612744EF6D}
 		{D98194A6-998E-45D5-87A7-F685DD235CAB} = {53755FB5-3F2D-493A-AB4B-0C612744EF6D}
 		{A20D4BF1-1750-40B4-9112-A6FEB0140507} = {53755FB5-3F2D-493A-AB4B-0C612744EF6D}
+		{CD800535-5331-4151-A479-A9C7CAE6B3F5} = {408B6152-DF9C-497B-8A7E-429C518938C9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F60F73C8-7AE3-427E-9E1C-EEE5B36DCC1D}

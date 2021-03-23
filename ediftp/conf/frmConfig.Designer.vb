@@ -255,7 +255,7 @@ Partial Class frmConfig
         '
         Me.ServerItemContextMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DeleteServerToolStripMenuItem, Me.RenameServerToolStripMenuItem})
         Me.ServerItemContextMenu.Name = "ServerItemContextMenu"
-        Me.ServerItemContextMenu.Size = New System.Drawing.Size(181, 70)
+        Me.ServerItemContextMenu.Size = New System.Drawing.Size(153, 48)
         '
         'DeleteServerToolStripMenuItem
         '
