@@ -29,7 +29,7 @@ Module Module1
                 If Not ConfigFile.Exists Then
                     Using c As New runbatconfig
                         With c
-                            .loc.Add(New runbatconfigLoc("c:\out", "runbatconfig", "demo"))
+                            .loc.Add(New runbatconfigLoc("c:\out", "", "demo"))
                         End With
                         toFile(c)
                     End Using

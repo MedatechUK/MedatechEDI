@@ -216,24 +216,28 @@
         End If
 
         If Not ServiceController1.Status = ServiceProcess.ServiceControllerStatus.Running Then
-            If MsgBox("The service is not currently running." & vbCrLf & "Start the service?", vbOKCancel) = vbOK Then
-                Select Case ServiceController1.Status
-                    Case ServiceProcess.ServiceControllerStatus.Paused
-                        ServiceController1.Continue()
-                    Case ServiceProcess.ServiceControllerStatus.Stopped
-                        ServiceController1.Start()
-                    Case Else
-                End Select
+            Select Case MsgBox("The service is not currently running." & vbCrLf & "Start the service?", vbYesNoCancel)
+                Case vbYes
+                    Select Case ServiceController1.Status
+                        Case ServiceProcess.ServiceControllerStatus.Paused
+                            ServiceController1.Continue()
+                        Case ServiceProcess.ServiceControllerStatus.Stopped
+                            ServiceController1.Start()
+                        Case Else
+                    End Select
 
-                While Not ServiceController1.Status = ServiceProcess.ServiceControllerStatus.Running
-                    Threading.Thread.Sleep(100)
-                    setbuttons()
+                    While Not ServiceController1.Status = ServiceProcess.ServiceControllerStatus.Running
+                        Threading.Thread.Sleep(100)
+                        setbuttons()
 
-                End While
+                    End While
 
-            End If
-        Else
-            Me.DialogResult = DialogResult.Cancel
+                Case vbNo
+                    Me.DialogResult = DialogResult.Cancel
+
+                Case vbCancel
+
+            End Select
 
         End If
 

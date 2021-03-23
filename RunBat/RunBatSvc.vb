@@ -81,40 +81,40 @@ Public Class RunBatSvc
 #End Region
 
             For Each loc As runbatconfigLoc In _config.loc
-                With New DirectoryInfo(loc.path)
-                    If Not .Exists Then
-                        Log("Monitor folder [{0}] missing.", .FullName)
-
-                    Else
-                        ' Validate binaries                                
-                        For Each l As Lazy(Of ILexor, ILexorProps) In _appEx.Lexors
-                            If String.Compare(l.Metadata.SerialType.FullName, loc.bin, True) = 0 Then
-                                loc.isLexor = True
-                                Exit For
-                            End If
-                        Next
-
-                        If loc.isLexor Or New FileInfo(loc.bin).Exists Then
-                            Dim fsw As New FileSystemWatcher
-                            With fsw
-                                AddHandler .Created, AddressOf fsw_Created
-                                .Path = loc.path
-                                .IncludeSubdirectories = False
-                                .EnableRaisingEvents = True
-                                If Not loc.filetype Is Nothing Then .Filter = loc.filetype
-
-                            End With
-                            Log("Monitoring folder [{0}].", .FullName)
+                If (loc.bin.Length > 0) And (loc.path.Length > 0) Then
+                    With New DirectoryInfo(loc.path)
+                        If Not .Exists Then
+                            Log("Monitor folder [{0}] missing.", .FullName)
 
                         Else
-                            Log("Executable not found: [{0}]", loc.bin)
+                            ' Validate binaries                                
+                            For Each l As Lazy(Of ILexor, ILexorProps) In _appEx.Lexors
+                                If String.Compare(l.Metadata.SerialType.FullName, loc.bin, True) = 0 Then
+                                    loc.isLexor = True
+                                    Exit For
+                                End If
+                            Next
+
+                            If loc.isLexor Or New FileInfo(loc.bin).Exists Then
+                                Dim fsw As New FileSystemWatcher
+                                With fsw
+                                    AddHandler .Created, AddressOf fsw_Created
+                                    .Path = loc.path
+                                    .IncludeSubdirectories = False
+                                    .EnableRaisingEvents = True
+                                    If Not loc.filetype Is Nothing Then .Filter = loc.filetype
+
+                                End With
+                                Log("Monitoring folder [{0}].", .FullName)
+
+                            Else
+                                Log("Executable not found: [{0}]", loc.bin)
+
+                            End If
 
                         End If
-
-                    End If
-
-                End With
-
+                    End With
+                End If
             Next
 
         Catch ex As Exception
