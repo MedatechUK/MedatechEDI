@@ -241,7 +241,7 @@
 
         End If
 
-
+        Me.DialogResult = DialogResult.Cancel
 
     End Sub
 

@@ -235,6 +235,7 @@ Partial Public MustInherit Class ftpconfigModeAct
     Category("Action"),
     [ReadOnly](True)>
     Public MustOverride ReadOnly Property actType As eActType
+    Public MustOverride ReadOnly Property Description As String
 
 #Region "CTOR"
     Sub New(filespec As String, remotedir As String)
@@ -407,6 +408,13 @@ Partial Public Class ftpconfigModeReceive
         End Set
     End Property
 
+    <Browsable(False)>
+    Public Overrides ReadOnly Property Description As String
+        Get
+            Return String.Format("GET {0}/{1}", Me.remotedir, Me.filespec)
+        End Get
+    End Property
+
     Public isLexor As Boolean
 
 End Class
@@ -440,6 +448,13 @@ Partial Public Class ftpconfigModeSend
     Public Overrides ReadOnly Property actType As eActType
         Get
             Return eActType.send
+        End Get
+    End Property
+
+    <Browsable(False)>
+    Public Overrides ReadOnly Property Description As String
+        Get
+            Return String.Format("PUT \{0}\{1}", Me.dir, Me.filespec)
         End Get
     End Property
 

@@ -1,0 +1,12 @@
+<DESADVC custno="CA14005" date="2010-10-21T00:00:00" whs="MAIN" shipmentnumber="SH10001812" TrackingNumber="" ivno="SI10000962" function="09">
+  <SF ADDRESS="Central Boulevard" ADDRESSB="Exhall" ADDRESSC="" STATE="Coventry" ZIP="CV6 4QJ" />
+  <ST ADDRESS="PO BOX 401," ADDRESSB="FINANCE SHARED SERVICE CENTRE" ADDRESSC="PRIORSWOOD PLACE" STATE="LANCASHIRE" ZIP="WN8 9QB" />
+  <item part="A 1 1347 00 03" custpo="" ordref="" site="" qty="2" lot="0" />
+  <item part="A 1 1509 00 19" custpo="" ordref="" site="" qty="1" lot="0" />
+  <item part="A 1 1509 00 19" custpo="" ordref="" site="" qty="29" lot="0" />
+  <item part="A 1 1667 00 05" custpo="" ordref="" site="" qty="2" lot="0" />
+  <item part="A 2 1532 00 12" custpo="" ordref="" site="" qty="20" lot="0" />
+  <item part="E 1 1892 00 23" custpo="" ordref="" site="" qty="8" lot="672" />
+  <item part="PNP 31420 03 00" custpo="" ordref="" site="" qty="1" lot="0" />
+  <item part="PNP 31420 03 00" custpo="" ordref="" site="" qty="9" lot="0" />
+</DESADVC>

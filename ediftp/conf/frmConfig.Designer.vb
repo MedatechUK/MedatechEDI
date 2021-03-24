@@ -23,10 +23,10 @@ Partial Class frmConfig
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim TreeNode5 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("oData Service", 6, 6)
-        Dim TreeNode6 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("File Servers", 1, 1)
-        Dim TreeNode7 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Run Modes", 2, 2)
-        Dim TreeNode8 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Configuration", 0, 0, New System.Windows.Forms.TreeNode() {TreeNode5, TreeNode6, TreeNode7})
+        Dim TreeNode1 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("oData Service", 6, 6)
+        Dim TreeNode2 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("File Servers", 1, 1)
+        Dim TreeNode3 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Run Modes", 2, 2)
+        Dim TreeNode4 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Configuration", 0, 0, New System.Windows.Forms.TreeNode() {TreeNode1, TreeNode2, TreeNode3})
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmConfig))
         Me.ServerContextMenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.AddServerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -132,25 +132,25 @@ Partial Class frmConfig
         Me.Tree.LabelEdit = True
         Me.Tree.Location = New System.Drawing.Point(0, 0)
         Me.Tree.Name = "Tree"
-        TreeNode5.ImageIndex = 6
-        TreeNode5.Name = "oDataNode"
-        TreeNode5.SelectedImageIndex = 6
-        TreeNode5.Text = "oData Service"
-        TreeNode6.ContextMenuStrip = Me.ServerContextMenu
-        TreeNode6.ImageIndex = 1
-        TreeNode6.Name = "NodeServer"
-        TreeNode6.SelectedImageIndex = 1
-        TreeNode6.Text = "File Servers"
-        TreeNode7.ContextMenuStrip = Me.ModeContextMenu
-        TreeNode7.ImageIndex = 2
-        TreeNode7.Name = "nodeAct"
-        TreeNode7.SelectedImageIndex = 2
-        TreeNode7.Text = "Run Modes"
-        TreeNode8.ImageIndex = 0
-        TreeNode8.Name = "nodeMain"
-        TreeNode8.SelectedImageIndex = 0
-        TreeNode8.Text = "Configuration"
-        Me.Tree.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode8})
+        TreeNode1.ImageIndex = 6
+        TreeNode1.Name = "oDataNode"
+        TreeNode1.SelectedImageIndex = 6
+        TreeNode1.Text = "oData Service"
+        TreeNode2.ContextMenuStrip = Me.ServerContextMenu
+        TreeNode2.ImageIndex = 1
+        TreeNode2.Name = "NodeServer"
+        TreeNode2.SelectedImageIndex = 1
+        TreeNode2.Text = "File Servers"
+        TreeNode3.ContextMenuStrip = Me.ModeContextMenu
+        TreeNode3.ImageIndex = 2
+        TreeNode3.Name = "nodeAct"
+        TreeNode3.SelectedImageIndex = 2
+        TreeNode3.Text = "Run Modes"
+        TreeNode4.ImageIndex = 0
+        TreeNode4.Name = "nodeMain"
+        TreeNode4.SelectedImageIndex = 0
+        TreeNode4.Text = "Configuration"
+        Me.Tree.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode4})
         Me.Tree.SelectedImageIndex = 0
         Me.Tree.Size = New System.Drawing.Size(350, 368)
         Me.Tree.TabIndex = 0
@@ -260,13 +260,13 @@ Partial Class frmConfig
         'DeleteServerToolStripMenuItem
         '
         Me.DeleteServerToolStripMenuItem.Name = "DeleteServerToolStripMenuItem"
-        Me.DeleteServerToolStripMenuItem.Size = New System.Drawing.Size(142, 22)
+        Me.DeleteServerToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.DeleteServerToolStripMenuItem.Text = "Delete Server"
         '
         'RenameServerToolStripMenuItem
         '
         Me.RenameServerToolStripMenuItem.Name = "RenameServerToolStripMenuItem"
-        Me.RenameServerToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.RenameServerToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.RenameServerToolStripMenuItem.Text = "Rename Server"
         '
         'frmConfig

@@ -46,16 +46,16 @@ Public Class frmConfig
                             Dim n2 As New tvObject
                             With n2
                                 .ContextMenuStrip = Me.ModeActContextMenu
+                                .Text = a.Description
+
                                 Select Case a.actType
                                     Case eActType.receive
                                         .ImageIndex = 4
                                         .SelectedImageIndex = 4
-                                        .Text = "GET"
 
                                     Case Else
                                         .ImageIndex = 5
                                         .SelectedImageIndex = 5
-                                        .Text = "PUT"
 
                                 End Select
 
@@ -112,7 +112,7 @@ Public Class frmConfig
 
         config.server.Add(New ftpconfigServer("", "New Host Name"))
         With Tree.Nodes(0)
-            With .Nodes(0)
+            With .Nodes(1)
                 Dim n As New tvObject
                 With n
                     .Text = "New Host Name"
@@ -153,7 +153,7 @@ Public Class frmConfig
     Private Sub AddModeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddModeToolStripMenuItem.Click
         config.mode.Add(New ftpconfigMode("New Mode", ""))
         With Tree.Nodes(0)
-            With .Nodes(1)
+            With .Nodes(2)
                 Dim n As New tvObject
                 With n
                     .Text = "New Mode"
@@ -258,16 +258,18 @@ Public Class frmConfig
         Dim n As New tvObject
         With TryCast(TryCast(Tree.SelectedNode, tvObject).myObject, ftpconfigMode)
             With .Act
-                .Add(New ftpconfigModeSend("/remote/directory"))
+                .Add(New ftpconfigModeSend(curdir.FullName))
                 With n
                     .Name = System.Guid.NewGuid.ToString
-                    .Text = "/remote/directory"
                     .myObject = TryCast(TryCast(Tree.SelectedNode, tvObject).myObject, ftpconfigMode).Act.Last
                     .ContextMenuStrip = Me.ModeActContextMenu
                     .ImageIndex = 5
                     .SelectedImageIndex = 5
 
+
                 End With
+                n.Text = .Last.Description
+
             End With
         End With
 
@@ -290,13 +292,14 @@ Public Class frmConfig
                 .Add(New ftpconfigModeReceive("/remote/directory"))
                 With n
                     .Name = System.Guid.NewGuid.ToString
-                    .Text = "/remote/directory"
                     .myObject = TryCast(TryCast(Tree.SelectedNode, tvObject).myObject, ftpconfigMode).Act.Last
                     .ContextMenuStrip = Me.ModeActContextMenu
                     .ImageIndex = 4
                     .SelectedImageIndex = 4
 
                 End With
+                n.Text = .Last.Description
+
             End With
         End With
 
@@ -341,4 +344,17 @@ Public Class frmConfig
 
         End With
     End Sub
+
+    Private Sub PropertyGrid_Leave(sender As Object, e As EventArgs) Handles PropertyGrid.Leave
+        Select Case PropertyGrid.SelectedObject.GetType
+            Case GetType(ftpconfigModeReceive)
+                Tree.SelectedNode.Text = TryCast(PropertyGrid.SelectedObject, ftpconfigModeReceive).Description
+
+            Case GetType(ftpconfigModeSend)
+                Tree.SelectedNode.Text = TryCast(PropertyGrid.SelectedObject, ftpconfigModeSend).Description
+
+        End Select
+
+    End Sub
+
 End Class

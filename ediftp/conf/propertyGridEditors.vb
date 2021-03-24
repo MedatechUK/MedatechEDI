@@ -113,7 +113,6 @@ End Class
 Public Class BinSelEdit
     Inherits UITypeEditor
 
-
     Public Overrides Function GetEditStyle(context As ITypeDescriptorContext) As UITypeEditorEditStyle
         Return UITypeEditorEditStyle.Modal
     End Function
