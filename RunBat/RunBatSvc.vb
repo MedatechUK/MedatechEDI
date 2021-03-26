@@ -149,71 +149,76 @@ Public Class RunBatSvc
 
     Private Sub hLoad(ByVal e As FileSystemEventArgs)
 
-        Try
-            Threading.Thread.Sleep(1000)
-            While IsFileInUse(e.FullPath)
-                Threading.Thread.Sleep(500)
+        Using Arch As New ArchiveFile(New FileInfo(e.FullPath))
 
-            End While
+            Try
+                Threading.Thread.Sleep(1000)
+                While IsFileInUse(e.FullPath)
+                    Threading.Thread.Sleep(500)
 
-            Dim dir As New DirectoryInfo(New FileInfo(e.FullPath).DirectoryName)
-            For Each loc As runbatconfigLoc In _config.loc
-                Dim testdir As New DirectoryInfo(loc.path)
-                If String.Compare(testdir.FullName, dir.FullName, True) = 0 Then
-                    ' Validate binaries      
-                    Dim f As Boolean = False
-                    For Each l As Lazy(Of ILexor, ILexorProps) In _appEx.Lexors
-                        If String.Compare(l.Metadata.SerialType.FullName, loc.bin, True) = 0 Then
-                            With _appEx.LexByAssemblyName(loc.bin)
-                                Using sr As New StreamReader(e.FullPath)
-                                    .Deserialise(sr, loc.environment)
+                End While
 
-                                End Using
+                Dim dir As New DirectoryInfo(New FileInfo(e.FullPath).DirectoryName)
+                For Each loc As runbatconfigLoc In _config.loc
+                    Dim testdir As New DirectoryInfo(loc.path)
+                    If String.Compare(testdir.FullName, dir.FullName, True) = 0 Then
+                        ' Validate binaries      
+                        Dim f As Boolean = False
+                        For Each l As Lazy(Of ILexor, ILexorProps) In _appEx.Lexors
+                            If String.Compare(l.Metadata.SerialType.FullName, loc.bin, True) = 0 Then
+                                With _appEx.LexByAssemblyName(loc.bin)
+                                    Using sr As New StreamReader(e.FullPath)
+                                        .Deserialise(sr, loc.environment)
+
+                                    End Using
+                                End With
+                                f = True
+                                Exit For
+                            End If
+                        Next
+
+                        If Not f Then
+                            With New Process
+                                With .StartInfo
+                                    .UseShellExecute = False
+                                    .WorkingDirectory = New FileInfo(loc.bin).Directory.FullName
+                                    .FileName = loc.bin
+                                    .Arguments = Chr(34) & e.FullPath & Chr(34) & Chr(32) & loc.environment
+                                    .RedirectStandardOutput = True
+                                    .RedirectStandardError = True
+
+                                End With
+
+                                AddHandler .OutputDataReceived, AddressOf hLogShell
+                                AddHandler .ErrorDataReceived, AddressOf hLogShell
+
+                                .Start()
+                                .BeginErrorReadLine()
+                                .BeginOutputReadLine()
+
+                                While Not .HasExited And .Responding
+                                    Thread.Sleep(100)
+
+                                End While
+
                             End With
-                            f = True
-                            Exit For
+
                         End If
-                    Next
-
-                    If Not f Then
-                        With New Process
-                            With .StartInfo
-                                .UseShellExecute = False
-                                .WorkingDirectory = New FileInfo(loc.bin).Directory.FullName
-                                .FileName = loc.bin
-                                .Arguments = Chr(34) & e.FullPath & Chr(34) & Chr(32) & loc.environment
-                                .RedirectStandardOutput = True
-                                .RedirectStandardError = True
-
-                            End With
-
-                            AddHandler .OutputDataReceived, AddressOf hLogShell
-                            AddHandler .ErrorDataReceived, AddressOf hLogShell
-
-                            .Start()
-                            .BeginErrorReadLine()
-                            .BeginOutputReadLine()
-
-                            While Not .HasExited And .Responding
-                                Thread.Sleep(100)
-
-                            End While
-
-                        End With
+                        Exit For
 
                     End If
-                    Exit For
+                Next
 
-                End If
-            Next
+            Catch ex As Exception
+                Log(ex.Message)
+                Arch.badmail = True
 
-        Catch ex As Exception
-            Log(ex.Message)
+            Finally
+                processing.Remove(e.FullPath)
 
-        Finally
-            processing.Remove(e.FullPath)
+            End Try
 
-        End Try
+        End Using
 
     End Sub
 

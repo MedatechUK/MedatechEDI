@@ -243,6 +243,8 @@ Public Class ftpConnection
 
     Public Sub hreceive(sender As ftpconfigModeReceive, e As ftpEventArgs)
 
+#Region "Download files"
+
         Dim transferResult As TransferOperationResult
         ' Get inbound files
         Try
@@ -288,6 +290,8 @@ Public Class ftpConnection
 
         End Try
 
+#End Region
+
         For Each transfer In transferResult.Transfers
             Dim FN As New FileInfo(
                 Path.Combine(
@@ -303,23 +307,68 @@ Public Class ftpConnection
                 )
             )
 
-            If Not sender.bin Is Nothing Then
+            Using arch As New ArchiveFile(FN)
+                Try
+                    If sender.bin Is Nothing Then Throw New Exception(String.Format("No bin set."))
 
-                Select Case sender.isLexor
-                    Case True
-                        With _appEx.LexByAssemblyName(sender.bin)
+                    Select Case sender.isLexor
+                        Case True
+                            With _appEx.LexByAssemblyName(sender.bin)
+                                Try
+                                    Console.WriteLine(
+                                            "Deserialising with [{0}].",
+                                            New FileInfo(sender.bin).Name
+                                        )
+                                    Using sr As New StreamReader(FN.FullName)
+                                        .Deserialise(sr, sender.environment)
+                                        args.Colourise(ConsoleColor.Green, "OK")
+
+                                    End Using
+
+                                Catch ex As Exception
+                                    Throw ex
+
+                                Finally
+                                    Console.WriteLine()
+
+                                End Try
+
+
+                            End With
+
+                        Case Else
                             Try
-                                Console.WriteLine(
-                                    "Deserialising with [{0}].",
-                                    New FileInfo(sender.bin).Name
-                                )
-                                Using sr As New StreamReader(FN.FullName)
-                                    .Deserialise(sr, sender.environment)
-                                    args.Colourise(ConsoleColor.Green, "OK")
+                                args.line(
+                                        "Executing {0} {1}.",
+                                        New FileInfo(sender.bin).Name,
+                                        FN.FullName.Replace(Directory.GetCurrentDirectory, "")
+                                    )
+
+                                Using myProcess As System.Diagnostics.Process = New System.Diagnostics.Process()
+                                    With myProcess
+                                        With .StartInfo
+                                            .FileName = sender.bin
+                                            .Arguments = String.Format("{0} {1}", FN.FullName, sender.environment)
+                                            .WorkingDirectory = curdir.FullName
+                                            .UseShellExecute = False
+                                            .WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden
+                                            .CreateNoWindow = True
+                                            .RedirectStandardOutput = True
+
+                                        End With
+
+                                        .Start()
+                                        Console.WriteLine(.StandardOutput.ReadToEnd)
+                                        .WaitForExit()
+
+                                        args.Colourise(ConsoleColor.Green, "OK")
+
+                                    End With
 
                                 End Using
 
                             Catch ex As Exception
+                                args.Colourise(ConsoleColor.Red, "FAILED")
                                 Throw ex
 
                             Finally
@@ -327,52 +376,15 @@ Public Class ftpConnection
 
                             End Try
 
+                    End Select
 
-                        End With
+                Catch ex As Exception
+                    Log(ex)
+                    arch.badmail = True
 
-                    Case Else
-                        Try
-                            args.line(
-                                "Executing {0} {1}.",
-                                New FileInfo(sender.bin).Name,
-                                FN.FullName.Replace(Directory.GetCurrentDirectory, "")
-                            )
+                End Try
 
-                            Using myProcess As System.Diagnostics.Process = New System.Diagnostics.Process()
-                                With myProcess
-                                    With .StartInfo
-                                        .FileName = sender.bin
-                                        .Arguments = String.Format("{0} {1}", FN.FullName, sender.environment)
-                                        .WorkingDirectory = curdir.FullName
-                                        .UseShellExecute = False
-                                        .WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden
-                                        .CreateNoWindow = True
-                                        .RedirectStandardOutput = True
-
-                                    End With
-
-                                    .Start()
-                                    Console.WriteLine(.StandardOutput.ReadToEnd)
-                                    .WaitForExit()
-
-                                    args.Colourise(ConsoleColor.Green, "OK")
-
-                                End With
-
-                            End Using
-
-                        Catch ex As Exception
-                            args.Colourise(ConsoleColor.Red, "FAILED")
-                            Throw ex
-
-                        Finally
-                            Console.WriteLine()
-
-                        End Try
-
-                End Select
-
-            End If
+            End Using
 
         Next
 
