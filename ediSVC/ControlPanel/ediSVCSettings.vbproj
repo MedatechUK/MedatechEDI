@@ -4,31 +4,35 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8095E1EA-50FC-4A27-A1CF-6064EF441137}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{CD800535-5331-4151-A479-A9C7CAE6B3F5}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>MedatechUK.Module1</StartupObject>
     <RootNamespace>MedatechUK</RootNamespace>
-    <AssemblyName>edihttp</AssemblyName>
+    <AssemblyName>ediSVC-cp</AssemblyName>
     <FileAlignment>512</FileAlignment>
-    <MyType>Windows</MyType>
+    <MyType>WindowsFormsWithCustomSubMain</MyType>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>edihttp.xml</DocumentationFile>
+    <OutputPath>C:\Program Files\MedatechUK\MedatechEDI\</OutputPath>
+    <DocumentationFile>ediSVC-cp.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <DefineDebug>false</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>edihttp.xml</DocumentationFile>
+    <DocumentationFile>ediSVC-cp.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -43,14 +47,35 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>emerge.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MedatechUK.CLI, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MedatechUK.CLI.1.6.0\lib\net461\MedatechUK.CLI.dll</HintPath>
+    </Reference>
+    <Reference Include="MedatechUK.Deserialiser, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MedatechUK.Deserial.1.2.0\lib\net461\MedatechUK.Deserialiser.dll</HintPath>
+    </Reference>
+    <Reference Include="MedatechUK.Log, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MedatechUK.Log.1.2.0\lib\net461\MedatechUK.Log.dll</HintPath>
+    </Reference>
+    <Reference Include="MedatechUK.oData, Version=1.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MedatechUK.oData.1.9.0\lib\net461\MedatechUK.oData.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Web" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -63,13 +88,32 @@
     <Import Include="System.Collections" />
     <Import Include="System.Collections.Generic" />
     <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
     <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
     <Import Include="System.Linq" />
     <Import Include="System.Xml.Linq" />
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="endpoint.vb" />
+    <Compile Include="conf\binSelect.Designer.vb">
+      <DependentUpon>binSelect.vb</DependentUpon>
+    </Compile>
+    <Compile Include="conf\binSelect.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="conf\oDataConfig.vb" />
+    <Compile Include="conf\propertyGridEditors.vb" />
+    <Compile Include="conf\RunBatConfig.vb" />
+    <Compile Include="conf\tvObject.vb" />
+    <Compile Include="frmConfig.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConfig.Designer.vb">
+      <DependentUpon>frmConfig.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module1.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -85,9 +129,14 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="sqlXML.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="conf\binSelect.resx">
+      <DependentUpon>binSelect.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConfig.resx">
+      <DependentUpon>frmConfig.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -96,6 +145,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -105,21 +155,11 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\MedatechUK.Packages\MedatechUK.Deserial\MedatechUK.Deserial.vbproj">
-      <Project>{bb85998b-e526-4e64-b1c6-e89e853baf03}</Project>
-      <Name>MedatechUK.Deserial</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\MedatechUK.Packages\MedatechUK.Log\MedatechUK.Log.vbproj">
-      <Project>{def77d25-0edd-42ad-84da-941965dd0eba}</Project>
-      <Name>MedatechUK.Log</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\MedatechUK.Packages\MedatechUK.oData\MedatechUK.oData.vbproj">
-      <Project>{92bbb2f7-f2a1-44e0-a64d-fafca1ad30a0}</Project>
-      <Name>MedatechUK.oData</Name>
-    </ProjectReference>
+    <Content Include="emerge.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

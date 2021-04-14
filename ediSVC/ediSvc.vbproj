@@ -61,6 +61,21 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MedatechUK.Deserialiser, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MedatechUK.Deserial.1.2.0\lib\net461\MedatechUK.Deserialiser.dll</HintPath>
+    </Reference>
+    <Reference Include="MedatechUK.Log, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MedatechUK.Log.1.2.0\lib\net461\MedatechUK.Log.dll</HintPath>
+    </Reference>
+    <Reference Include="MedatechUK.oData, Version=1.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MedatechUK.oData.1.9.0\lib\net461\MedatechUK.oData.dll</HintPath>
+    </Reference>
+    <Reference Include="MedatechUK.Service, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MedatechUK.Service.1.8.0\lib\net461\MedatechUK.Service.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Configuration.Install" />
@@ -171,20 +186,6 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\MedatechUK.Packages\MedatechUK.Deserial\MedatechUK.Deserial.vbproj">
-      <Project>{bb85998b-e526-4e64-b1c6-e89e853baf03}</Project>
-      <Name>MedatechUK.Deserial</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\MedatechUK.Packages\MedatechUK.Log\MedatechUK.Log.vbproj">
-      <Project>{def77d25-0edd-42ad-84da-941965dd0eba}</Project>
-      <Name>MedatechUK.Log</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\MedatechUK.Packages\MedatechUK.Service\MedatechUK.ntService.vbproj">
-      <Project>{0432b78f-e76a-450c-9dd9-ed55bf0f4eae}</Project>
-      <Name>MedatechUK.ntService</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -21,7 +21,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "unwise", "unwise", "{6750D0
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "edisvc", "edisvc", "{408B6152-DF9C-497B-8A7E-429C518938C9}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ediSvc", "RunBat\ediSvc.vbproj", "{AF69BA77-85B5-452D-B6F3-066833901368}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ediSvc", "ediSVC\ediSvc.vbproj", "{AF69BA77-85B5-452D-B6F3-066833901368}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MedatechUK.oData", "..\MedatechUK.Packages\MedatechUK.oData\MedatechUK.oData.vbproj", "{92BBB2F7-F2A1-44E0-A64D-FAFCA1AD30A0}"
 EndProject
@@ -39,13 +39,13 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MedatechUK.ntService", "..\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lexors", "Lexors", "{53755FB5-3F2D-493A-AB4B-0C612744EF6D}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "testSvc", "RunBat\testSvc\testSvc\testSvc.vbproj", "{F50C0629-1208-4F79-A808-33D93C3DD18E}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "testSvc", "ediSVC\testSvc\testSvc\testSvc.vbproj", "{F50C0629-1208-4F79-A808-33D93C3DD18E}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ashridge", "..\MedatechUK.Lexors\ashridge\ashridge\ashridge.vbproj", "{D98194A6-998E-45D5-87A7-F685DD235CAB}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Esterform", "..\MedatechUK.Lexors\esterform\Esterform\Esterform.vbproj", "{A20D4BF1-1750-40B4-9112-A6FEB0140507}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ediSVCSettings", "RunBat\ControlPanel\ediSVCSettings\ediSVCSettings.vbproj", "{CD800535-5331-4151-A479-A9C7CAE6B3F5}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ediSVCSettings", "ediSVC\ControlPanel\ediSVCSettings.vbproj", "{CD800535-5331-4151-A479-A9C7CAE6B3F5}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Seeburger", "..\MedatechUK.Lexors\dunlop\Seeburger\Seeburger.vbproj", "{216C1F8B-CA06-478F-A5B8-9B674EF5A43D}"
 EndProject

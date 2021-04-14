@@ -77,6 +77,18 @@
     <GenerateManifests>false</GenerateManifests>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MedatechUK.CLI, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MedatechUK.CLI.1.6.0\lib\net461\MedatechUK.CLI.dll</HintPath>
+    </Reference>
+    <Reference Include="MedatechUK.Deserialiser, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MedatechUK.Deserial.1.2.0\lib\net461\MedatechUK.Deserialiser.dll</HintPath>
+    </Reference>
+    <Reference Include="MedatechUK.Log, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MedatechUK.Log.1.2.0\lib\net461\MedatechUK.Log.dll</HintPath>
+    </Reference>
+    <Reference Include="MedatechUK.oData, Version=1.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MedatechUK.oData.1.9.0\lib\net461\MedatechUK.oData.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -179,20 +191,6 @@
     <EmbeddedResource Include="syntax.txt" />
     <None Include="packages.config" />
     <Content Include="ReadMe.md" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\MedatechUK.Packages\MedatechUK.CLI\MedatechUK.CLI.vbproj">
-      <Project>{B7E43843-B380-43BB-B73D-C61E51BB84B0}</Project>
-      <Name>MedatechUK.CLI</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\MedatechUK.Packages\MedatechUK.Deserial\MedatechUK.Deserial.vbproj">
-      <Project>{bb85998b-e526-4e64-b1c6-e89e853baf03}</Project>
-      <Name>MedatechUK.Deserial</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\MedatechUK.Packages\MedatechUK.Log\MedatechUK.Log.vbproj">
-      <Project>{def77d25-0edd-42ad-84da-941965dd0eba}</Project>
-      <Name>MedatechUK.Log</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
