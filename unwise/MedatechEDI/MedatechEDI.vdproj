@@ -22,7 +22,7 @@
         "Entry"
         {
         "MsmKey" = "8:_0821FE329A7721E522D461A074269419"
-        "OwnerKey" = "8:_EC3B330EADCE03FFADC651BAD3B8043A"
+        "OwnerKey" = "8:_A1CC08CC1A072F5623CE9B6CC1727659"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -46,49 +46,13 @@
         "Entry"
         {
         "MsmKey" = "8:_118683D11AD95F6A226C53E11C2370FB"
-        "OwnerKey" = "8:_51322B3269B148BA8037921243EF9A29"
+        "OwnerKey" = "8:_1DEE288F5CA6433386C5A2B8E665E832"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_118683D11AD95F6A226C53E11C2370FB"
-        "OwnerKey" = "8:_F9BEA0B3C42B86336D4845B7045781A0"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_118683D11AD95F6A226C53E11C2370FB"
-        "OwnerKey" = "8:_FE033741C6904DD98BCE79E6ED15C050"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_118683D11AD95F6A226C53E11C2370FB"
-        "OwnerKey" = "8:_A9319C97FEFF4B34BF478BB474CDE220"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_118683D11AD95F6A226C53E11C2370FB"
-        "OwnerKey" = "8:_A0F1ECCE62B4455EA9ECC05AA6FF51F8"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_118683D11AD95F6A226C53E11C2370FB"
-        "OwnerKey" = "8:_694EE25DB9CAFA01B29E5229DFE6BFE1"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_118683D11AD95F6A226C53E11C2370FB"
-        "OwnerKey" = "8:_EC3B330EADCE03FFADC651BAD3B8043A"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_118683D11AD95F6A226C53E11C2370FB"
-        "OwnerKey" = "8:_5EFE7BB02AEC21212B5A6DC82D917E5E"
+        "OwnerKey" = "8:_217844C6F38F3548E17230E069ED64B3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -100,25 +64,37 @@
         "Entry"
         {
         "MsmKey" = "8:_118683D11AD95F6A226C53E11C2370FB"
+        "OwnerKey" = "8:_E8378CA7E9BA69B8BECFD0CE7A8CCF36"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_118683D11AD95F6A226C53E11C2370FB"
+        "OwnerKey" = "8:_A1CC08CC1A072F5623CE9B6CC1727659"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_118683D11AD95F6A226C53E11C2370FB"
+        "OwnerKey" = "8:_C7F32CFA94862E22E48113DB54C19990"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_118683D11AD95F6A226C53E11C2370FB"
         "OwnerKey" = "8:_0821FE329A7721E522D461A074269419"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_118683D11AD95F6A226C53E11C2370FB"
-        "OwnerKey" = "8:_1DEE288F5CA6433386C5A2B8E665E832"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_118683D11AD95F6A226C53E11C2370FB"
-        "OwnerKey" = "8:_B166A2F700754A35BFD980D796BAAA61"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_1DEE288F5CA6433386C5A2B8E665E832"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_217844C6F38F3548E17230E069ED64B3"
+        "OwnerKey" = "8:_FE033741C6904DD98BCE79E6ED15C050"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -142,7 +118,7 @@
         "Entry"
         {
         "MsmKey" = "8:_45E1A910DA78D5B57190867DD66D4F9D"
-        "OwnerKey" = "8:_51322B3269B148BA8037921243EF9A29"
+        "OwnerKey" = "8:_1DEE288F5CA6433386C5A2B8E665E832"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -166,25 +142,25 @@
         "Entry"
         {
         "MsmKey" = "8:_45E1A910DA78D5B57190867DD66D4F9D"
-        "OwnerKey" = "8:_694EE25DB9CAFA01B29E5229DFE6BFE1"
+        "OwnerKey" = "8:_E8378CA7E9BA69B8BECFD0CE7A8CCF36"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_45E1A910DA78D5B57190867DD66D4F9D"
-        "OwnerKey" = "8:_EC3B330EADCE03FFADC651BAD3B8043A"
+        "OwnerKey" = "8:_A1CC08CC1A072F5623CE9B6CC1727659"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_45E1A910DA78D5B57190867DD66D4F9D"
+        "OwnerKey" = "8:_51322B3269B148BA8037921243EF9A29"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_45E1A910DA78D5B57190867DD66D4F9D"
         "OwnerKey" = "8:_0821FE329A7721E522D461A074269419"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_45E1A910DA78D5B57190867DD66D4F9D"
-        "OwnerKey" = "8:_1DEE288F5CA6433386C5A2B8E665E832"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -201,50 +177,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_5EFE7BB02AEC21212B5A6DC82D917E5E"
-        "OwnerKey" = "8:_A0F1ECCE62B4455EA9ECC05AA6FF51F8"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_5EFE7BB02AEC21212B5A6DC82D917E5E"
-        "OwnerKey" = "8:_A9319C97FEFF4B34BF478BB474CDE220"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_694EE25DB9CAFA01B29E5229DFE6BFE1"
-        "OwnerKey" = "8:_A0F1ECCE62B4455EA9ECC05AA6FF51F8"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_694EE25DB9CAFA01B29E5229DFE6BFE1"
-        "OwnerKey" = "8:_FE033741C6904DD98BCE79E6ED15C050"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_694EE25DB9CAFA01B29E5229DFE6BFE1"
-        "OwnerKey" = "8:_A9319C97FEFF4B34BF478BB474CDE220"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_6B29FABB6E96AB2CD176D710E6C103B2"
-        "OwnerKey" = "8:_51322B3269B148BA8037921243EF9A29"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_6B29FABB6E96AB2CD176D710E6C103B2"
-        "OwnerKey" = "8:_A9319C97FEFF4B34BF478BB474CDE220"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_6B29FABB6E96AB2CD176D710E6C103B2"
-        "OwnerKey" = "8:_A0F1ECCE62B4455EA9ECC05AA6FF51F8"
+        "OwnerKey" = "8:_1DEE288F5CA6433386C5A2B8E665E832"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -256,25 +190,85 @@
         "Entry"
         {
         "MsmKey" = "8:_6B29FABB6E96AB2CD176D710E6C103B2"
+        "OwnerKey" = "8:_B166A2F700754A35BFD980D796BAAA61"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6B29FABB6E96AB2CD176D710E6C103B2"
+        "OwnerKey" = "8:_A9319C97FEFF4B34BF478BB474CDE220"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6B29FABB6E96AB2CD176D710E6C103B2"
+        "OwnerKey" = "8:_A0F1ECCE62B4455EA9ECC05AA6FF51F8"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6B29FABB6E96AB2CD176D710E6C103B2"
         "OwnerKey" = "8:_5E02936FC0AA478386E645BB3E634686"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_6B29FABB6E96AB2CD176D710E6C103B2"
-        "OwnerKey" = "8:_1DEE288F5CA6433386C5A2B8E665E832"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_6B29FABB6E96AB2CD176D710E6C103B2"
-        "OwnerKey" = "8:_B166A2F700754A35BFD980D796BAAA61"
+        "OwnerKey" = "8:_51322B3269B148BA8037921243EF9A29"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_A0F1ECCE62B4455EA9ECC05AA6FF51F8"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A1CA3CFEEB5A3AEE1E928C88CF50569C"
+        "OwnerKey" = "8:_51322B3269B148BA8037921243EF9A29"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A1CA3CFEEB5A3AEE1E928C88CF50569C"
+        "OwnerKey" = "8:_FE033741C6904DD98BCE79E6ED15C050"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A1CA3CFEEB5A3AEE1E928C88CF50569C"
+        "OwnerKey" = "8:_B166A2F700754A35BFD980D796BAAA61"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A1CA3CFEEB5A3AEE1E928C88CF50569C"
+        "OwnerKey" = "8:_A9319C97FEFF4B34BF478BB474CDE220"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A1CA3CFEEB5A3AEE1E928C88CF50569C"
+        "OwnerKey" = "8:_A0F1ECCE62B4455EA9ECC05AA6FF51F8"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A1CC08CC1A072F5623CE9B6CC1727659"
+        "OwnerKey" = "8:_A0F1ECCE62B4455EA9ECC05AA6FF51F8"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A1CC08CC1A072F5623CE9B6CC1727659"
+        "OwnerKey" = "8:_FE033741C6904DD98BCE79E6ED15C050"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A1CC08CC1A072F5623CE9B6CC1727659"
+        "OwnerKey" = "8:_A9319C97FEFF4B34BF478BB474CDE220"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -291,6 +285,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_C7F32CFA94862E22E48113DB54C19990"
+        "OwnerKey" = "8:_A0F1ECCE62B4455EA9ECC05AA6FF51F8"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C7F32CFA94862E22E48113DB54C19990"
+        "OwnerKey" = "8:_A9319C97FEFF4B34BF478BB474CDE220"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_DE22D63C77C8467D9F58BE1D46C6A8F2"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -303,26 +309,20 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_EC3B330EADCE03FFADC651BAD3B8043A"
+        "MsmKey" = "8:_E8378CA7E9BA69B8BECFD0CE7A8CCF36"
         "OwnerKey" = "8:_A0F1ECCE62B4455EA9ECC05AA6FF51F8"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_EC3B330EADCE03FFADC651BAD3B8043A"
+        "MsmKey" = "8:_E8378CA7E9BA69B8BECFD0CE7A8CCF36"
         "OwnerKey" = "8:_FE033741C6904DD98BCE79E6ED15C050"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_EC3B330EADCE03FFADC651BAD3B8043A"
+        "MsmKey" = "8:_E8378CA7E9BA69B8BECFD0CE7A8CCF36"
         "OwnerKey" = "8:_A9319C97FEFF4B34BF478BB474CDE220"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_F9BEA0B3C42B86336D4845B7045781A0"
-        "OwnerKey" = "8:_FE033741C6904DD98BCE79E6ED15C050"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -334,7 +334,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_6B29FABB6E96AB2CD176D710E6C103B2"
+        "OwnerKey" = "8:_B166A2F700754A35BFD980D796BAAA61"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -346,7 +346,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_F9BEA0B3C42B86336D4845B7045781A0"
+        "OwnerKey" = "8:_217844C6F38F3548E17230E069ED64B3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_E2479AFC7F694940832D50BF3F08AFB4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -370,19 +376,25 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_694EE25DB9CAFA01B29E5229DFE6BFE1"
+        "OwnerKey" = "8:_E8378CA7E9BA69B8BECFD0CE7A8CCF36"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_EC3B330EADCE03FFADC651BAD3B8043A"
+        "OwnerKey" = "8:_A1CC08CC1A072F5623CE9B6CC1727659"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_5EFE7BB02AEC21212B5A6DC82D917E5E"
+        "OwnerKey" = "8:_C7F32CFA94862E22E48113DB54C19990"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_5E02936FC0AA478386E645BB3E634686"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -394,13 +406,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E2479AFC7F694940832D50BF3F08AFB4"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_5E02936FC0AA478386E645BB3E634686"
+        "OwnerKey" = "8:_A1CA3CFEEB5A3AEE1E928C88CF50569C"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -418,7 +424,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_B166A2F700754A35BFD980D796BAAA61"
+        "OwnerKey" = "8:_118683D11AD95F6A226C53E11C2370FB"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -430,7 +436,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_118683D11AD95F6A226C53E11C2370FB"
+        "OwnerKey" = "8:_6B29FABB6E96AB2CD176D710E6C103B2"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -600,7 +606,7 @@
             "SourcePath" = "8:MedatechUK.oData.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
-            "Folder" = "8:_E35EFA2D63544A90B5B69F5ADDA6FDBE"
+            "Folder" = "8:_26AE5DC5A340424F94EE13631A503708"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -611,7 +617,7 @@
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
-            "Exclude" = "11:TRUE"
+            "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
@@ -689,6 +695,37 @@
                     }
                 }
             "SourcePath" = "8:MedatechUK.Log.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_26AE5DC5A340424F94EE13631A503708"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_217844C6F38F3548E17230E069ED64B3"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:MedatechUK.Service, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_217844C6F38F3548E17230E069ED64B3"
+                    {
+                    "Name" = "8:MedatechUK.Service.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:MedatechUK.Service.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_E35EFA2D63544A90B5B69F5ADDA6FDBE"
@@ -808,68 +845,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5EFE7BB02AEC21212B5A6DC82D917E5E"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:MedatechUK.CLI, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_5EFE7BB02AEC21212B5A6DC82D917E5E"
-                    {
-                    "Name" = "8:MedatechUK.CLI.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:MedatechUK.CLI.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_E35EFA2D63544A90B5B69F5ADDA6FDBE"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:TRUE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_694EE25DB9CAFA01B29E5229DFE6BFE1"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:MedatechUK.oData, Version=1.7.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_694EE25DB9CAFA01B29E5229DFE6BFE1"
-                    {
-                    "Name" = "8:MedatechUK.oData.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:MedatechUK.oData.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_E35EFA2D63544A90B5B69F5ADDA6FDBE"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:TRUE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6B29FABB6E96AB2CD176D710E6C103B2"
             {
             "AssemblyRegister" = "3:1"
@@ -901,12 +876,23 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DE22D63C77C8467D9F58BE1D46C6A8F2"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A1CA3CFEEB5A3AEE1E928C88CF50569C"
             {
-            "SourcePath" = "8:..\\EDI Tools Project (GitHub).url"
-            "TargetName" = "8:EDI Tools Project (GitHub).url"
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:MedatechUK.Log, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_A1CA3CFEEB5A3AEE1E928C88CF50569C"
+                    {
+                    "Name" = "8:MedatechUK.Log.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:MedatechUK.Log.dll"
+            "TargetName" = "8:"
             "Tag" = "8:"
-            "Folder" = "8:_C70521524C744AE8AB156B5A4E12492A"
+            "Folder" = "8:_26AE5DC5A340424F94EE13631A503708"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -918,17 +904,17 @@
             "PackageAs" = "3:1"
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_EC3B330EADCE03FFADC651BAD3B8043A"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A1CC08CC1A072F5623CE9B6CC1727659"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:MedatechUK.Deserialiser, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_EC3B330EADCE03FFADC651BAD3B8043A"
+                    "_A1CC08CC1A072F5623CE9B6CC1727659"
                     {
                     "Name" = "8:MedatechUK.Deserialiser.dll"
                     "Attributes" = "3:512"
@@ -952,20 +938,20 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F9BEA0B3C42B86336D4845B7045781A0"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C7F32CFA94862E22E48113DB54C19990"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:MedatechUK.Service, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:MedatechUK.CLI, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_F9BEA0B3C42B86336D4845B7045781A0"
+                    "_C7F32CFA94862E22E48113DB54C19990"
                     {
-                    "Name" = "8:MedatechUK.Service.dll"
+                    "Name" = "8:MedatechUK.CLI.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:MedatechUK.Service.dll"
+            "SourcePath" = "8:MedatechUK.CLI.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_E35EFA2D63544A90B5B69F5ADDA6FDBE"
@@ -980,6 +966,57 @@
             "PackageAs" = "3:1"
             "Register" = "3:1"
             "Exclude" = "11:TRUE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DE22D63C77C8467D9F58BE1D46C6A8F2"
+            {
+            "SourcePath" = "8:..\\EDI Tools Project (GitHub).url"
+            "TargetName" = "8:EDI Tools Project (GitHub).url"
+            "Tag" = "8:"
+            "Folder" = "8:_C70521524C744AE8AB156B5A4E12492A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E8378CA7E9BA69B8BECFD0CE7A8CCF36"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:MedatechUK.oData, Version=1.7.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_E8378CA7E9BA69B8BECFD0CE7A8CCF36"
+                    {
+                    "Name" = "8:MedatechUK.oData.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:MedatechUK.oData.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_26AE5DC5A340424F94EE13631A503708"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
@@ -1035,6 +1072,17 @@
                                     "Condition" = "8:"
                                     "Transitive" = "11:FALSE"
                                     "Property" = "8:_23D20A0778C94C4B833CBD79CC18D222"
+                                        "Folders"
+                                        {
+                                        }
+                                    }
+                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_6B42DF5A2EAF408DADC79A688D3BE1F4"
+                                    {
+                                    "Name" = "8:web"
+                                    "AlwaysCreate" = "11:FALSE"
+                                    "Condition" = "8:"
+                                    "Transitive" = "11:FALSE"
+                                    "Property" = "8:_9DB226EC3C59445EB73685E39C8DF31E"
                                         "Folders"
                                         {
                                         }
@@ -1215,18 +1263,18 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:MedatechEDI"
-        "ProductCode" = "8:{47880864-EF35-43C1-B4CD-0B044E3214DD}"
-        "PackageCode" = "8:{219F22AD-A4DE-4535-B424-9C387274934C}"
+        "ProductCode" = "8:{C3ED0EF3-E58B-4EBD-AF3A-62D76B83DEDB}"
+        "PackageCode" = "8:{71C71253-BD27-4F85-9F9C-C7024C9586D6}"
         "UpgradeCode" = "8:{7E177C5E-C29C-4F93-9EF5-E13D82207012}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:2.1.0"
+        "ProductVersion" = "8:2.2.0"
         "Manufacturer" = "8:MedatechUK"
         "ARPHELPTELEPHONE" = "8:"
-        "ARPHELPLINK" = "8:"
+        "ARPHELPLINK" = "8:https://github.com/MedatechUK/MedatechEDI"
         "Title" = "8:MedatechEDI"
         "Subject" = "8:"
         "ARPCONTACT" = "8:si@medatechuk.com"
@@ -1999,7 +2047,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_A0F1ECCE62B4455EA9ECC05AA6FF51F8"
             {
-            "SourcePath" = "8:..\\..\\RunBat\\ControlPanel\\ediSVCSettings\\obj\\Debug\\ediSVC-cp.exe"
+            "SourcePath" = "8:..\\..\\ediSVC\\ControlPanel\\obj\\Debug\\ediSVC-cp.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_26AE5DC5A340424F94EE13631A503708"
@@ -2076,6 +2124,34 @@
             "OutputConfiguration" = "8:"
             "OutputGroupCanonicalName" = "8:Built"
             "OutputProjectGuid" = "8:{D5F6EBFB-C69A-49C2-99E6-1FE8B207B143}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_AC2BEE21308247EB9AAA4D5BFB368E91"
+            {
+            "SourcePath" = "8:"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_6B42DF5A2EAF408DADC79A688D3BE1F4"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:SourceFiles"
+            "OutputProjectGuid" = "8:{8095E1EA-50FC-4A27-A1CF-6064EF441137}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {
@@ -2223,7 +2299,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_FE033741C6904DD98BCE79E6ED15C050"
             {
-            "SourcePath" = "8:..\\..\\RunBat\\obj\\Debug\\ediSvc.exe"
+            "SourcePath" = "8:..\\..\\ediSVC\\obj\\Debug\\ediSvc.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_26AE5DC5A340424F94EE13631A503708"
