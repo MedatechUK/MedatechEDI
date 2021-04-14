@@ -121,7 +121,11 @@ Partial Public Class runbatconfigLoc
     <System.Xml.Serialization.XmlAttributeAttribute()>
     Public Property path() As String
         Get
-            Return Me.pathField
+            Dim ret As String = Me.pathField
+            While Right(ret, 1) = "\" Or Right(ret, 1) = "/"
+                ret = ret.Substring(0, Len(ret) - 1)
+            End While
+            Return ret
         End Get
         Set
             Me.pathField = Value

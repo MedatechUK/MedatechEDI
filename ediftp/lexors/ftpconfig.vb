@@ -411,7 +411,7 @@ Partial Public Class ftpconfigModeReceive
     <Browsable(False)>
     Public Overrides ReadOnly Property Description As String
         Get
-            Return String.Format("GET {0}/{1}", Me.remotedir, Me.filespec)
+            Return Replace(String.Format("GET {0}/{1}", Me.remotedir, Me.filespec), "//", "/")
         End Get
     End Property
 
@@ -454,7 +454,7 @@ Partial Public Class ftpconfigModeSend
     <Browsable(False)>
     Public Overrides ReadOnly Property Description As String
         Get
-            Return String.Format("PUT \{0}\{1}", Me.dir, Me.filespec)
+            Return Replace(String.Format("PUT \{0}\{1}", Me.dir, Me.filespec), "\\", "\")
         End Get
     End Property
 

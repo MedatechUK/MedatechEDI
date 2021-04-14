@@ -161,7 +161,7 @@ Public Class RunBatSvc
                 Dim dir As New DirectoryInfo(New FileInfo(e.FullPath).DirectoryName)
                 For Each loc As runbatconfigLoc In _config.loc
                     Dim testdir As New DirectoryInfo(loc.path)
-                    If String.Compare(testdir.FullName, dir.FullName, True) = 0 Then
+                    If Path.GetFullPath(testdir.FullName).Equals(Path.GetFullPath(dir.FullName)) Then
                         ' Validate binaries      
                         Dim f As Boolean = False
                         For Each l As Lazy(Of ILexor, ILexorProps) In _appEx.Lexors
