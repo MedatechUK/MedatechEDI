@@ -1,6 +1,15 @@
-﻿Public Class frmConfig
+﻿Imports System.IO
+Imports System.Reflection
+
+Public Class frmConfig
 
     Private Sub frmConfig_Load(sender As Object, e As EventArgs) Handles Me.Load
+
+        With Me.FrmLog1
+            .Root = New DirectoryInfo(Path.Combine(New FileInfo((Assembly.GetEntryAssembly.Location)).Directory.FullName, "log"))
+            .Date = Now
+
+        End With
 
         setbuttons()
 
@@ -16,6 +25,7 @@
                     .ContextMenuStrip = Me.ContextMenuStrip2
                     .Tag = i
                     i += 1
+
                 End With
                 .Nodes.Add(n)
 

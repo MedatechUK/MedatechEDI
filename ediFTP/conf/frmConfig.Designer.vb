@@ -33,10 +33,14 @@ Partial Class frmConfig
         Me.ModeContextMenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.AddModeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
+        Me.TabControl1 = New System.Windows.Forms.TabControl()
+        Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.Tree = New System.Windows.Forms.TreeView()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.PropertyGrid = New System.Windows.Forms.PropertyGrid()
+        Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.FrmLog1 = New MedatechUK.frmLog()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
@@ -53,10 +57,13 @@ Partial Class frmConfig
         Me.ServerContextMenu.SuspendLayout()
         Me.ModeContextMenu.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
+        Me.TabControl1.SuspendLayout()
+        Me.TabPage1.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
         Me.SplitContainer1.SuspendLayout()
+        Me.TabPage2.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ActContextMenu.SuspendLayout()
@@ -93,7 +100,7 @@ Partial Class frmConfig
         Me.TableLayoutPanel1.BackColor = System.Drawing.SystemColors.Control
         Me.TableLayoutPanel1.ColumnCount = 1
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.Controls.Add(Me.SplitContainer1, 0, 1)
+        Me.TableLayoutPanel1.Controls.Add(Me.TabControl1, 0, 1)
         Me.TableLayoutPanel1.Controls.Add(Me.Button1, 0, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.Panel1, 0, 0)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
@@ -103,13 +110,38 @@ Partial Class frmConfig
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 68.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(681, 492)
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1096, 669)
         Me.TableLayoutPanel1.TabIndex = 3
+        '
+        'TabControl1
+        '
+        Me.TabControl1.Alignment = System.Windows.Forms.TabAlignment.Bottom
+        Me.TabControl1.Controls.Add(Me.TabPage1)
+        Me.TabControl1.Controls.Add(Me.TabPage2)
+        Me.TabControl1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TabControl1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TabControl1.Location = New System.Drawing.Point(3, 71)
+        Me.TabControl1.Name = "TabControl1"
+        Me.TabControl1.SelectedIndex = 0
+        Me.TabControl1.Size = New System.Drawing.Size(1090, 545)
+        Me.TabControl1.TabIndex = 4
+        '
+        'TabPage1
+        '
+        Me.TabPage1.Controls.Add(Me.SplitContainer1)
+        Me.TabPage1.Location = New System.Drawing.Point(4, 4)
+        Me.TabPage1.Name = "TabPage1"
+        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage1.Size = New System.Drawing.Size(667, 337)
+        Me.TabPage1.TabIndex = 0
+        Me.TabPage1.Text = "Settings"
+        Me.TabPage1.UseVisualStyleBackColor = True
         '
         'SplitContainer1
         '
         Me.SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SplitContainer1.Location = New System.Drawing.Point(3, 71)
+        Me.SplitContainer1.Location = New System.Drawing.Point(3, 3)
         Me.SplitContainer1.Name = "SplitContainer1"
         '
         'SplitContainer1.Panel1
@@ -119,13 +151,14 @@ Partial Class frmConfig
         'SplitContainer1.Panel2
         '
         Me.SplitContainer1.Panel2.Controls.Add(Me.PropertyGrid)
-        Me.SplitContainer1.Size = New System.Drawing.Size(675, 368)
-        Me.SplitContainer1.SplitterDistance = 350
-        Me.SplitContainer1.TabIndex = 1
+        Me.SplitContainer1.Size = New System.Drawing.Size(661, 331)
+        Me.SplitContainer1.SplitterDistance = 341
+        Me.SplitContainer1.TabIndex = 2
         '
         'Tree
         '
         Me.Tree.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Tree.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Tree.ImageIndex = 0
         Me.Tree.ImageList = Me.ImageList1
         Me.Tree.Indent = 5
@@ -136,12 +169,10 @@ Partial Class frmConfig
         TreeNode1.Name = "oDataNode"
         TreeNode1.SelectedImageIndex = 6
         TreeNode1.Text = "oData Service"
-        TreeNode2.ContextMenuStrip = Me.ServerContextMenu
         TreeNode2.ImageIndex = 1
         TreeNode2.Name = "NodeServer"
         TreeNode2.SelectedImageIndex = 1
         TreeNode2.Text = "File Servers"
-        TreeNode3.ContextMenuStrip = Me.ModeContextMenu
         TreeNode3.ImageIndex = 2
         TreeNode3.Name = "nodeAct"
         TreeNode3.SelectedImageIndex = 2
@@ -152,7 +183,7 @@ Partial Class frmConfig
         TreeNode4.Text = "Configuration"
         Me.Tree.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode4})
         Me.Tree.SelectedImageIndex = 0
-        Me.Tree.Size = New System.Drawing.Size(350, 368)
+        Me.Tree.Size = New System.Drawing.Size(341, 331)
         Me.Tree.TabIndex = 0
         '
         'ImageList1
@@ -172,14 +203,35 @@ Partial Class frmConfig
         Me.PropertyGrid.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PropertyGrid.Location = New System.Drawing.Point(0, 0)
         Me.PropertyGrid.Name = "PropertyGrid"
-        Me.PropertyGrid.Size = New System.Drawing.Size(321, 368)
+        Me.PropertyGrid.Size = New System.Drawing.Size(316, 331)
         Me.PropertyGrid.TabIndex = 0
+        '
+        'TabPage2
+        '
+        Me.TabPage2.Controls.Add(Me.FrmLog1)
+        Me.TabPage2.Location = New System.Drawing.Point(4, 4)
+        Me.TabPage2.Name = "TabPage2"
+        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage2.Size = New System.Drawing.Size(1082, 514)
+        Me.TabPage2.TabIndex = 1
+        Me.TabPage2.Text = "Log"
+        Me.TabPage2.UseVisualStyleBackColor = True
+        '
+        'FrmLog1
+        '
+        Me.FrmLog1.Date = New Date(2021, 5, 2, 11, 31, 19, 338)
+        Me.FrmLog1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.FrmLog1.Location = New System.Drawing.Point(3, 3)
+        Me.FrmLog1.Name = "FrmLog1"
+        Me.FrmLog1.Root = Nothing
+        Me.FrmLog1.Size = New System.Drawing.Size(1076, 508)
+        Me.FrmLog1.TabIndex = 0
         '
         'Button1
         '
         Me.Button1.Dock = System.Windows.Forms.DockStyle.Right
         Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(583, 445)
+        Me.Button1.Location = New System.Drawing.Point(998, 622)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(95, 44)
         Me.Button1.TabIndex = 2
@@ -193,7 +245,7 @@ Partial Class frmConfig
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(3, 3)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(675, 62)
+        Me.Panel1.Size = New System.Drawing.Size(1090, 62)
         Me.Panel1.TabIndex = 3
         '
         'PictureBox1
@@ -201,7 +253,7 @@ Partial Class frmConfig
         Me.PictureBox1.BackColor = System.Drawing.Color.White
         Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Right
         Me.PictureBox1.Image = Global.ediftp.My.Resources.Resources.top
-        Me.PictureBox1.Location = New System.Drawing.Point(180, 0)
+        Me.PictureBox1.Location = New System.Drawing.Point(595, 0)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(495, 62)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -273,7 +325,7 @@ Partial Class frmConfig
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(681, 492)
+        Me.ClientSize = New System.Drawing.Size(1096, 669)
         Me.ControlBox = False
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -283,10 +335,13 @@ Partial Class frmConfig
         Me.ServerContextMenu.ResumeLayout(False)
         Me.ModeContextMenu.ResumeLayout(False)
         Me.TableLayoutPanel1.ResumeLayout(False)
+        Me.TabControl1.ResumeLayout(False)
+        Me.TabPage1.ResumeLayout(False)
         Me.SplitContainer1.Panel1.ResumeLayout(False)
         Me.SplitContainer1.Panel2.ResumeLayout(False)
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer1.ResumeLayout(False)
+        Me.TabPage2.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -298,12 +353,8 @@ Partial Class frmConfig
     End Sub
 
     Friend WithEvents TableLayoutPanel1 As Windows.Forms.TableLayoutPanel
-    Friend WithEvents SplitContainer1 As Windows.Forms.SplitContainer
-    Friend WithEvents Tree As Windows.Forms.TreeView
-    Friend WithEvents PropertyGrid As Windows.Forms.PropertyGrid
     Friend WithEvents Button1 As Windows.Forms.Button
     Friend WithEvents ImageList1 As Windows.Forms.ImageList
-    Friend WithEvents Panel1 As Windows.Forms.Panel
     Friend WithEvents PictureBox1 As Windows.Forms.PictureBox
     Friend WithEvents ServerContextMenu As Windows.Forms.ContextMenuStrip
     Friend WithEvents AddServerToolStripMenuItem As Windows.Forms.ToolStripMenuItem
@@ -319,4 +370,12 @@ Partial Class frmConfig
     Friend WithEvents ServerItemContextMenu As Windows.Forms.ContextMenuStrip
     Friend WithEvents DeleteServerToolStripMenuItem As Windows.Forms.ToolStripMenuItem
     Friend WithEvents RenameServerToolStripMenuItem As Windows.Forms.ToolStripMenuItem
+    Friend WithEvents Panel1 As Windows.Forms.Panel
+    Friend WithEvents TabControl1 As Windows.Forms.TabControl
+    Friend WithEvents TabPage1 As Windows.Forms.TabPage
+    Friend WithEvents SplitContainer1 As Windows.Forms.SplitContainer
+    Friend WithEvents Tree As Windows.Forms.TreeView
+    Friend WithEvents PropertyGrid As Windows.Forms.PropertyGrid
+    Friend WithEvents TabPage2 As Windows.Forms.TabPage
+    Friend WithEvents FrmLog1 As MedatechUK.frmLog
 End Class

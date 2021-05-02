@@ -29,7 +29,6 @@
         Me.ServiceInstaller1.Description = "Folder monitoring for EDI."
         Me.ServiceInstaller1.DisplayName = "MedatechUK EDI Service"
         Me.ServiceInstaller1.ServiceName = "edisvc"
-        Me.ServiceInstaller1.StartType = System.ServiceProcess.ServiceStartMode.Automatic
         '
         'ServiceProcessInstaller1
         '

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="DELFOR">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="ITEM">
+          <xs:complexType>
+            <xs:attribute name="part" type="xs:integer" use="required" />
+            <xs:attribute name="custpo" type="xs:string" use="required" />
+            <xs:attribute name="site" type="xs:string" use="required" />
+            <xs:attribute name="qty" type="xs:integer" use="required" />
+            <xs:attribute name="cumulativeqty" type="xs:integer" use="required" />
+            <xs:attribute name="prevcumqty" type="xs:integer" use="required" />
+            <xs:attribute name="packqty" type="xs:integer" use="required" />
+            <xs:attribute name="duedate" type="xs:string" use="required" />
+            <xs:attribute name="unloadingpoint" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="customernumber" type="xs:string" use="required" />
+      <xs:attribute name="Horizonsdate" type="xs:string" use="required" />
+      <xs:attribute name="Horizonedate" type="xs:string" use="required" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

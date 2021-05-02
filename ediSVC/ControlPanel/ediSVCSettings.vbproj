@@ -60,9 +60,6 @@
     <Reference Include="MedatechUK.Deserialiser, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MedatechUK.Deserial.1.2.0\lib\net461\MedatechUK.Deserialiser.dll</HintPath>
     </Reference>
-    <Reference Include="MedatechUK.Log, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\MedatechUK.Log.1.2.0\lib\net461\MedatechUK.Log.dll</HintPath>
-    </Reference>
     <Reference Include="MedatechUK.oData, Version=1.7.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MedatechUK.oData.1.9.0\lib\net461\MedatechUK.oData.dll</HintPath>
     </Reference>
@@ -160,6 +157,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="emerge.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\MedatechUK.Packages\MedatechUK.Log\MedatechUK.Log.vbproj">
+      <Project>{def77d25-0edd-42ad-84da-941965dd0eba}</Project>
+      <Name>MedatechUK.Log</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

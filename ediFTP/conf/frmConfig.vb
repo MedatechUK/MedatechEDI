@@ -1,9 +1,16 @@
 ﻿Imports System.Drawing
+Imports System.IO
 Imports System.Windows.Forms
 
 Public Class frmConfig
 
     Private Sub frmConfig_Load(sender As Object, e As EventArgs) Handles Me.Load
+
+        With Me.FrmLog1
+            .Root = New DirectoryInfo(Path.Combine(Environment.CurrentDirectory, "log"))
+            .Date = Now
+
+        End With
 
         Me.Text = String.Format("FTP Config | {0}", curdir)
         With Tree.Nodes(0)
@@ -208,7 +215,7 @@ Public Class frmConfig
             If Not .Node.GetType Is GetType(tvObject) Then
                 .CancelEdit = True
 
-            ElseIf TryCast(.Node, tvobject).myObject.GetType Is GetType(ftpconfigModeReceive) Then
+            ElseIf TryCast(.Node, tvObject).myObject.GetType Is GetType(ftpconfigModeReceive) Then
                 .CancelEdit = True
 
             ElseIf TryCast(.Node, tvObject).myObject.GetType Is GetType(ftpconfigModeSend) Then
@@ -356,5 +363,7 @@ Public Class frmConfig
         End Select
 
     End Sub
+
+
 
 End Class
