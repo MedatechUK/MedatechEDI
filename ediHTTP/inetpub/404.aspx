@@ -1,4 +1,4 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="test.aspx.vb" Inherits="test" %>
+﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="404.aspx.vb" Inherits="test" %>
 
 <!DOCTYPE html>
 
