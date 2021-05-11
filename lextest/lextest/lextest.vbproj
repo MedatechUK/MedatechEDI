@@ -111,6 +111,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\MedatechUK.Lexors\dunlop\Seeburger\Seeburger.vbproj">
+      <Project>{216c1f8b-ca06-478f-a5b8-9b674ef5a43d}</Project>
+      <Name>Seeburger</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\MedatechUK.Packages\MedatechUK.CLI\MedatechUK.CLI.vbproj">
       <Project>{b7e43843-b380-43bb-b73d-c61e51bb84b0}</Project>
       <Name>MedatechUK.CLI</Name>
