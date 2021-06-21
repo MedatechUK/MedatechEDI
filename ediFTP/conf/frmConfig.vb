@@ -28,11 +28,13 @@ Public Class frmConfig
                     .Nodes.Add(n)
 
                 Next
+                .ContextMenuStrip = Me.ServerContextMenu
                 .ExpandAll()
 
             End With
 
             With .Nodes(2)
+                .ContextMenuStrip = Me.ModeContextMenu
                 Dim i As Integer = 0
                 For Each s As ftpconfigMode In config.mode
                     Dim n As New tvObject

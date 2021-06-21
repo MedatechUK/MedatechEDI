@@ -14,6 +14,7 @@ Public Class frmConfig
         setbuttons()
 
         With Tree.Nodes(0)
+            .ContextMenuStrip = Me.ContextMenuStrip1
             Dim i As Integer = 0
             For Each loc As runbatconfigLoc In config.loc
                 Dim n As New tvObject
@@ -74,23 +75,26 @@ Public Class frmConfig
     Private Sub AddMonitorFolderToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddMonitorFolderToolStripMenuItem.Click
         If Tree.SelectedNode Is Nothing Then Exit Sub
         changes = True
-        config.loc.Add(New runbatconfigLoc("c:\", "", "demo", "*"))
-        With Tree.Nodes(0)
-            Dim n As New tvObject
-            With n
-                .Text = "c:\"
-                .myObject = config.loc.Last
-                .ContextMenuStrip = Me.ContextMenuStrip2
-                .SelectedImageIndex = 2
-                .ImageIndex = 2
+        Dim bws As New System.Windows.Forms.FolderBrowserDialog()
+        If bws.ShowDialog = DialogResult.OK Then
+            config.loc.Add(New runbatconfigLoc(bws.SelectedPath, "", "demo", "*"))
+            With Tree.Nodes(0)
+                Dim n As New tvObject
+                With n
+                    .Text = bws.SelectedPath
+                    .myObject = config.loc.Last
+                    .ContextMenuStrip = Me.ContextMenuStrip2
+                    .SelectedImageIndex = 2
+                    .ImageIndex = 2
+
+                End With
+
+                Dim i As Integer = .Nodes.Add(n)
+                .Nodes(i).Tag = i
+                Tree.SelectedNode = .Nodes(i)
 
             End With
-
-            Dim i As Integer = .Nodes.Add(n)
-            .Nodes(i).Tag = i
-            Tree.SelectedNode = .Nodes(i)
-
-        End With
+        End If
     End Sub
 
     Private Sub Tree_MouseClick(sender As Object, e As MouseEventArgs) Handles Tree.MouseClick
