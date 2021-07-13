@@ -7,7 +7,10 @@ Imports MedatechUK.Deserialiser
 Public Class RunBatSvc
     Inherits MedatechUK.ntService
 
+    ' Files we are already processing 
     Private processing As New List(Of String)
+
+    Private Running As Boolean
 
     Sub New()
 
@@ -59,6 +62,27 @@ Public Class RunBatSvc
 
 #Region "Override Service Methods"
 
+    Public Overrides Sub svcContinue()
+        ' Start a thread waiting for files
+        With New Thread(AddressOf hWait)
+            .Name = "Wait"
+            .Start()
+
+        End With
+        Running = True
+        MyBase.svcContinue()
+    End Sub
+
+    Protected Overrides Sub onpause()
+        Running = False
+        MyBase.OnContinue()
+    End Sub
+
+    Public Overrides Sub svcStop()
+        Running = False
+        MyBase.svcStop()
+    End Sub
+
     Overrides Sub svcStart(ByVal args As Dictionary(Of String, String))
 
         Try
@@ -80,6 +104,7 @@ Public Class RunBatSvc
 
 #End Region
 
+            ' Read the config file for monitor locations
             For Each loc As runbatconfigLoc In _config.loc
                 If (loc.bin.Length > 0) And (loc.path.Length > 0) Then
                     With New DirectoryInfo(loc.path)
@@ -92,19 +117,12 @@ Public Class RunBatSvc
                                 If String.Compare(l.Metadata.SerialType.FullName, loc.bin, True) = 0 Then
                                     loc.isLexor = True
                                     Exit For
+
                                 End If
                             Next
 
                             If loc.isLexor Or New FileInfo(loc.bin).Exists Then
-                                Dim fsw As New FileSystemWatcher
-                                With fsw
-                                    AddHandler .Created, AddressOf fsw_Created
-                                    .Path = loc.path
-                                    .IncludeSubdirectories = False
-                                    .EnableRaisingEvents = True
-                                    If Not loc.filetype Is Nothing Then .Filter = loc.filetype
-
-                                End With
+                                ' Si: FSW control removed 13/07/21                                
                                 Log("Monitoring folder [{0}].", .FullName)
 
                             Else
@@ -117,6 +135,14 @@ Public Class RunBatSvc
                 End If
             Next
 
+            ' Start a thread waiting for files
+            With New Thread(AddressOf hWait)
+                .Name = "Wait"
+                .Start()
+
+            End With
+            Running = True
+
         Catch ex As Exception
             Log(ex.Message)
             End
@@ -127,12 +153,56 @@ Public Class RunBatSvc
 
 #End Region
 
+    Private Sub hWait()
+        Do
+            For Each d As runbatconfigLoc In _config.loc
+                With New DirectoryInfo(d.path)
+                    .Refresh()
+                    If Not .Exists Then
+                        Log("Monitor folder not found [{0}].", .FullName)
+
+                    Else ' Exists  
+                        For Each f As FileInfo In .GetFiles
+
+                            ' Check file extention
+                            If String.Compare(Split("." & f.Extension, ".").Last, Split("." & d.filetype, ".").Last, True) = 0 _
+                                Or String.Compare(Split("." & d.filetype, ".").Last, "*") = 0 Then
+
+                                ' Raise the file created event
+                                fsw_Created(Me, New FileSystemEventArgs(WatcherChangeTypes.Created, .FullName, f.Name))
+
+                            End If
+                        Next
+                    End If
+
+                End With
+
+            Next
+
+            ' Wait for 15 seconds before repeating
+            For i = 0 To 150
+                If Running Then
+                    Threading.Thread.Sleep(100)
+                Else
+                    Exit For
+                End If
+
+            Next
+
+        Loop While Running
+
+    End Sub
+
 #Region "FileSystemWatcher Handler"
 
     Private Sub fsw_Created(ByVal sender As Object, ByVal e As FileSystemEventArgs)
 
+        ' Ensure we aren't already processing the file
         If Not processing.Contains(e.FullPath) Then
+            Log("Found [{0}]", e.FullPath)
             processing.Add(e.FullPath)
+
+            ' Start processing the file
             With New Thread(AddressOf hLoad)
                 .Name = e.FullPath
                 .Start(e)

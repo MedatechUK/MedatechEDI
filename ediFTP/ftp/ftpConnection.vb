@@ -325,6 +325,8 @@ Public Class ftpConnection
 
                                     End Using
 
+                                    Threading.Thread.Sleep(15000)
+
                                 Catch ex As Exception
                                     Throw ex
 

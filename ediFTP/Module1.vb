@@ -25,6 +25,8 @@ Module Module1
 #Region "Make Config Files"
 
             args.Log("Executing in [{0}].", curdir.FullName)
+
+
             If Not ConfigFile.Exists Then
 
                 args.Log("Missing ftp.config. Creating.")
